@@ -348,7 +348,7 @@ function progressBar() {
 //#################################################################################
 async function MakeTextEditable(){
 	//make the text editable
-	$('#edit').attr('contenteditable', 'true');
+	$('#prediction_list').attr('contenteditable', 'true');
 	//change the cursor style
 	document.getElementById("prediction_list").style.cursor = "text";
 
