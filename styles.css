@@ -415,8 +415,7 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
     color: #363634;
     line-height: 36px;
     font-weight: 100;
-    letter-spacing: 0.2px;
-    
+    letter-spacing: 0.2px;  
 }
 
 .dropbtn {
@@ -437,9 +436,7 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
     -moz-transition: all 0.3s;
     -o-transition: all 0.3s;
     transition: all 0.3s;
-
 }
-
   
 .dropdown {
     position: relative;
@@ -447,9 +444,7 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
     border: none;
     box-sizing:inherit;
     outline:0;
-
 }
-
 
 .dropdown-content {
     display: none;
@@ -460,7 +455,6 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
     width: 100%;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
-
 }
   
 .dropdown-content a {
@@ -469,9 +463,7 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
     padding: 15px 40px 15px 40px;
     background-color: #f1f1f1;
     color: #363634;
-    text-decoration: none;
-
-    
+    text-decoration: none; 
 }
   
 .dropdown-content a:hover {
@@ -498,8 +490,8 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
 
 #divModelDownloadFraction{
     width: 100%;
-    height:100%;
-    margin:0;
+    height: 100%;
+    margin: 0;
     margin-top: 19%!important;
     padding: 0 10% 0 10% ;   
     cursor: default; 
@@ -517,9 +509,6 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
     -o-transition: all 0.3s;
     transition: all 0.3s;
 }
-
-
-
 
 #progress_bar_container {
     width: 100%;
@@ -549,11 +538,8 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
     -webkit-transition: all 0.3s!important;
     -moz-transition: all 0.3s!important;
     -o-transition: all 0.3s!important;
-    transition: all 0.3s!important;
-
-    
+    transition: all 0.3s!important; 
 }
-
 
 .right_container p{
     display: block;
@@ -590,7 +576,6 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
     padding: 0;
 }
 
-
 .export_button {
     display: none;
     position: absolute;
@@ -610,9 +595,7 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
     -moz-transition: all 0.3s;
     -o-transition: all 0.3s;
     transition: all 0.3s;
-
 }
-
 
 .export_button:hover{
     -webkit-transition: all 0.3s;
@@ -621,7 +604,6 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
     transition: all 0.3s;
     opacity: 0.7;
 }
-
 
 .textedit_button{
     display: none;
@@ -642,7 +624,6 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
     -moz-transition: all 0.3s;
     -o-transition: all 0.3s;
     transition: all 0.3s;
-
 }
 
 .textedit_button:hover{
@@ -652,7 +633,6 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
     transition: all 0.3s;
     opacity: 0.7;
 }
-
 
 .right_container h1{
     display: block;
@@ -743,11 +723,9 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
     transition: all 0.3s;
 }
 
-
 [contenteditable] {
     outline: 0px solid transparent;
 }
-
 
 .right_container ol{
     display: block;
@@ -763,7 +741,6 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
     -moz-transition: all 0.3s!important;
     -o-transition: all 0.3s!important;
     transition: all 0.3s!important;
-
 }
 
 .right_container ol li{
@@ -789,7 +766,6 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
     -moz-transition: all 0.3s!important;
     -o-transition: all 0.3s!important;
     transition: all 0.3s!important;
-
 }
 
 .gridrow {
@@ -830,8 +806,6 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
     transition: all 0.3s;
 }
 
-
-
 .footer{
     display:block;
     text-decoration:none;
@@ -847,13 +821,11 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
 }
 
 
-
 ol { 
     padding:0;
 } 
 
  
-
 
 @media only screen and (max-width: 1700px) {
     .sitecontainer {
@@ -1026,8 +998,6 @@ ol {
         height: 13%;;
         border-bottom: 4px solid #f1f1f1;
     }
-
-
     .right_container h1 {
         margin-top: 20px;
     }
@@ -1044,7 +1014,7 @@ ol {
 
 @media only screen and (max-width: 800px) {
     .all_work_container {
-        height: 1000px;
+        height: 1200px;
     }
     .left_container {
         height: 39%;
@@ -1069,7 +1039,7 @@ ol {
         height: 60%;
     }
     .right_container p {
-        height: 13%;;
+        height: 12%;;
         border-bottom: 4px solid #f1f1f1;
     }
     .right_container h3 {
@@ -1085,6 +1055,13 @@ ol {
     #divModelDownloadFraction {
         margin-top: 45%!important;
     }
+    .export_button {
+        right: -7px;
+    }
+    .textedit_button {
+        right: 25px;
+    }
+    
 }
 
 
