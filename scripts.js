@@ -430,9 +430,3 @@ function CreatePDFfromHTML() {
 
 
 
-
-
-
-
-
-
