@@ -1059,8 +1059,10 @@ ol {
         padding: 15px 40px 15px 40px;
     }
     .left_container label {
+        font-family: 'Larsseit-Light';
+        font-size: 18px;
         padding: 25px 0 25px 0;
-    }
+    }        
     .right_container {
         height: 60%;
     }
