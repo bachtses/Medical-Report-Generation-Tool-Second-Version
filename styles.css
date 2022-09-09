@@ -839,15 +839,15 @@ ol {
     }
 }
 
-@media only screen and (max-width: 1400px) {
+@media only screen and (max-width: 1380px) {
     .top_menu_bar {
-        padding-top: 7px;
+        padding-top: 10px;
     }
     .top_menu_bar img {
-        min-width: 165px;
+        min-width: 190px;
     }
     .just_a_border {
-        top: 70px;
+        top: 80px;
     }
     .just_another_border{
         margin-top: 8px;
@@ -860,15 +860,15 @@ ol {
         top: 90px;
     }
     .top_title h1 {
-        font-size: 42px;
-        line-height: 45px;
+        font-size: 40px;
+        line-height: 36px;
     }
     .top_title h3 {
-        margin-top: 16px;
+        margin-top: 14px;
         line-height: 35px;
     }
     .top_title h2 {
-        font-size: 21px;
+        font-size: 18px;
     }
     .sitecontainer {
         width:100%;
@@ -886,26 +886,15 @@ ol {
     }
 }
 
-@media only screen and (max-width: 1280px) {
+@media only screen and (max-width: 1290px) {
     .sitecontainer {
         width:100%;
-        padding-right: min(20px);
-        padding-left: min(20px);
+        padding-left: 6%;
+        padding-right: 6%;
     }
     .info_dropdown{
         right: 22px;  
-        top: 80px;
-    }
-    .top_title h1 {
-        font-size: 40px;
-        line-height: 36px;
-    }
-    .top_title h3 {
-        margin-top: 14px;
-        line-height: 35px;
-    }
-    .top_title h2 {
-        font-size: 18px;
+        top: 90px;
     }
     .all_work_container {
         min-height: 560px;
