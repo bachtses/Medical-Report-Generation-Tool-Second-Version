@@ -342,10 +342,18 @@ function progressBar() {
 // ### MAKE REPORT TEXT EDITABLE
 //#################################################################################
 async function MakeTextEditable(){
+	$('#prediction_list').css('color', '#BABABA');
+	setTimeout(function(){ MakeTextEditableMechanism(); }, 400);
+}
+
+async function MakeTextEditableMechanism(){
+	console.log("Manual report edit")
+	$('#prediction_list').css('color', '#363634');
+	
 	var post = $("#prediction_list").clone();
 	post.find("span:not(.post_tag):not(.post_mentioned)").remove();
 	post = $.trim(post.text());
-	console.log("Manual report edit")
+
 	console.log("Characters count: ", post.length);
 	//make the text editable
 	$('#prediction_list').attr('contenteditable', 'true');
@@ -357,13 +365,10 @@ async function MakeTextEditable(){
       	maxLen: 430,
     }
 	keys = {'backspace': 8,'shift': 16,'ctrl': 17,'alt': 18,'delete': 46,'leftArrow': 37,'upArrow': 38,'rightArrow': 39,'downArrow': 40, }
-	utils = {special: {},navigational: {},
-			isSpecial(e) {
-		  		return typeof this.special[e.keyCode] !== 'undefined';
-			},
-			isNavigational(e) {
-		  	return typeof this.navigational[e.keyCode] !== 'undefined';
-			}
+	utils = {special: {},
+			navigational: {},
+			isSpecial(e) {return typeof this.special[e.keyCode] !== 'undefined';},
+			isNavigational(e) {return typeof this.navigational[e.keyCode] !== 'undefined';}
 	}
 	utils.special[keys['backspace']] = true;
 	utils.special[keys['shift']] = true;
@@ -427,6 +432,19 @@ function CreatePDFfromHTML() {
 	
 	console.log("PDF exported")
 }
+
+
+//#################################################################################
+// ### SCROLL TO TOP
+//#################################################################################
+function scrolltopFunction() {
+	document.body.scrollTop = 0;
+	document.documentElement.scrollTop = 0;
+}
+
+
+
+
 
 
 
