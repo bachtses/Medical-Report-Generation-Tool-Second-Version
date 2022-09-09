@@ -1040,7 +1040,7 @@ ol {
 /* Mobile */
 @media only screen and (max-width: 800px) {
     .all_work_container {
-        height: 1200px;
+        height: 1400px;
     }
     .left_container {
         height: 39%;
@@ -1097,7 +1097,6 @@ ol {
     .gridrow li {
         font-size: 18px!important;
     }
-
     #divModelDownloadFraction {
         margin-top: 45%!important;
         font-size: 18px;
