@@ -1,4 +1,3 @@
-
 let model_five_diseases = null;
 let model_pneumonia = null;
 let model_lung_cancer = null;
@@ -15,14 +14,9 @@ async function loadmodelsFunction(){
     console.log("MODEL LOADED!: Pneumonia model");
     console.log("MODEL LOADED!: Lung Cancer model");
 	//console.log("MODEL LOADED!: Nature");
-
-	
-	$("#summary_title").hide();
-	$("#summary_title").replaceWith(`<p id="summary_title">Notifications Panel</p>`);
-	$('#summary_title').fadeIn(500);
-
 	
 	await progressBar();
+	
 
 }
 
@@ -33,6 +27,9 @@ async function loadmodelsFunction(){
 async function dropdownSelection() {
 	$(".modality_option_container").fadeOut("fast");
 	document.getElementById("right_container").style.display = "inline";
+	$("#summary_title").hide();
+	$("#summary_title").replaceWith(`<p id="summary_title">Notifications Panel</p>`);
+	$('#summary_title').fadeIn(500);
 
 	await loadmodelsFunction();
 
@@ -79,6 +76,7 @@ async function showFiles() {
 		document.getElementById("divModelDownloadFraction").style.marginTop = "22%";
 		document.getElementById("divModelDownloadFraction").innerHTML = "Image Processing...";
 		
+		
 	}else if (allowed_extensions_for_other_formats.includes(file_extension)){
 		$(".cornerstone-canvas").fadeOut("fast");
 		$("#initial_image_display").fadeIn("fast");
@@ -97,12 +95,10 @@ async function showFiles() {
 
 		setTimeout(() => {predict()}, 500);
 		document.getElementById("divModelDownloadFraction").style.marginTop = "22%";
-		document.getElementById("divModelDownloadFraction").innerHTML = "Image Processing...";
-		
+		document.getElementById("divModelDownloadFraction").innerHTML = "Image Processing...";	
 	}
-
 }  
-
+ 
 
 //#################################################################################
 // ### PREDICTIONS
@@ -314,7 +310,6 @@ async function predict(){
 }
 
 
-
 //#################################################################################
 // ### LOADING PROGRESS BAR
 //#################################################################################
@@ -347,12 +342,56 @@ function progressBar() {
 // ### MAKE REPORT TEXT EDITABLE
 //#################################################################################
 async function MakeTextEditable(){
+	var post = $("#prediction_list").clone();
+	post.find("span:not(.post_tag):not(.post_mentioned)").remove();
+	post = $.trim(post.text());
+	console.log("Manual report edit")
+	console.log("Characters count: ", post.length);
 	//make the text editable
 	$('#prediction_list').attr('contenteditable', 'true');
 	//change the cursor style
 	document.getElementById("prediction_list").style.cursor = "text";
 
-	console.log("Manual report edit")
+	input = document.querySelector('#prediction_list');
+    settings = {
+      	maxLen: 430,
+    }
+	keys = {'backspace': 8,'shift': 16,'ctrl': 17,'alt': 18,'delete': 46,'leftArrow': 37,'upArrow': 38,'rightArrow': 39,'downArrow': 40, }
+	utils = {special: {},navigational: {},
+			isSpecial(e) {
+		  		return typeof this.special[e.keyCode] !== 'undefined';
+			},
+			isNavigational(e) {
+		  	return typeof this.navigational[e.keyCode] !== 'undefined';
+			}
+	}
+	utils.special[keys['backspace']] = true;
+	utils.special[keys['shift']] = true;
+	utils.special[keys['ctrl']] = true;
+	utils.special[keys['alt']] = true;
+	utils.special[keys['delete']] = true;
+	utils.navigational[keys['upArrow']] = true;
+	utils.navigational[keys['downArrow']] = true;
+	utils.navigational[keys['leftArrow']] = true;
+	utils.navigational[keys['rightArrow']] = true;
+	
+	input.addEventListener('keydown', function(event) {
+		let len = event.target.innerText.trim().length;
+		hasSelection = false;
+		selection = window.getSelection();
+		isSpecial = utils.isSpecial(event);
+		isNavigational = utils.isNavigational(event);
+		if (selection) {
+		  hasSelection = !!selection.toString();
+		}
+		if (isSpecial || isNavigational) {
+		  return true;
+		}
+		if (len >= settings.maxLen && !hasSelection) {
+		  event.preventDefault();
+		  return false;
+		}
+	});
 }
 
 
@@ -388,3 +427,12 @@ function CreatePDFfromHTML() {
 	
 	console.log("PDF exported")
 }
+
+
+
+
+
+
+
+
+
