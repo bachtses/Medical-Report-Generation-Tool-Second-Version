@@ -839,9 +839,10 @@ ol {
     }
 }
 
+/* Laptop 15" */
 @media only screen and (max-width: 1380px) {
     .top_menu_bar {
-        padding-top: 10px;
+        padding-top: 12px;
     }
     .top_menu_bar img {
         min-width: 190px;
@@ -864,7 +865,7 @@ ol {
         line-height: 36px;
     }
     .top_title h3 {
-        margin-top: 14px;
+        margin-top: 16px;
         line-height: 35px;
     }
     .top_title h2 {
@@ -886,6 +887,7 @@ ol {
     }
 }
 
+/* Laptop 13" */
 @media only screen and (max-width: 1290px) {
     .sitecontainer {
         width:100%;
@@ -924,7 +926,8 @@ ol {
     }
 }
 
-@media only screen and (max-width: 1000px) {
+/* Tablet */
+@media only screen and (max-width: 1020px) {
     .sitecontainer {
         width:100%;
         padding-right: min(20px);
@@ -1045,7 +1048,7 @@ ol {
 }
 
 
-
+/* Mobile */
 @media only screen and (max-width: 800px) {
     .all_work_container {
         height: 1200px;
