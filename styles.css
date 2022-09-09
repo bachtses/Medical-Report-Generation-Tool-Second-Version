@@ -818,12 +818,10 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
     background-color: #fff;
 }
 
-
 ol { 
     padding:0;
 } 
 
- 
 
 @media only screen and (max-width: 1700px) {
     .info_dropdown{
@@ -889,15 +887,6 @@ ol {
 
 /* Laptop 13" */
 @media only screen and (max-width: 1290px) {
-    .sitecontainer {
-        width:100%;
-        padding-left: 6%;
-        padding-right: 6%;
-    }
-    .info_dropdown{
-        right: 22px;  
-        top: 90px;
-    }
     .all_work_container {
         min-height: 560px;
     }
