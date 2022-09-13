@@ -415,7 +415,7 @@ async function MakeTextEditableMechanism(){
 function createPDFfromHTML() {	
 	let iframe = document.createElement("iframe");
 	iframe.setAttribute("id", "iframe");
-	iframe.style.width = "810px";
+	iframe.style.width = "1050px";
 	iframe.style.height = "100%";
 	iframe.style.visibility = 'hidden';      
 
