@@ -403,35 +403,16 @@ async function MakeTextEditableMechanism(){
 //#################################################################################
 // ### EXPORT TO PDF
 //#################################################################################
-function CreatePDFfromHTML() {	
-	let iframe = document.createElement("iframe");
-	iframe.setAttribute("id", "iframe");
-	iframe.style.width = "810px";
-	iframe.style.height = "100%";
-	iframe.style.visibility = 'hidden';      
-
-	document.body.appendChild(iframe);
-	let html = document.documentElement.outerHTML;
-	iframe.srcdoc = html;
-	iframe.addEventListener("load", () => {
-		html2canvas(iframe.contentWindow.document.getElementById("results"),{background: '#fff', scale: 5}).then(function(canvas) {
-			//let link = document.createElement("a");
-			//link.download = "Medical_Report.jpg";
-			//canvas.toBlob( function(blob) {
-			//link.href = URL.createObjectURL(blob);
-			//link.click();
-			//}, 'image/jpg');
-			//document.body.appendChild(canvas);
-			var imgData = canvas.toDataURL("image/png", 1.0);
-			var pdf = new jsPDF("p", "mm", "a4");
-			pdf.addImage(imgData, 'PNG', 0, 40);
-			pdf.save('report_export.pdf');
-			$("#iframe").replaceWith(``);
+function createPDFfromHTML() {
+	domtoimage.toJpeg(document.getElementById('content'), { quality: 0.95 })
+		.then(function (dataUrl) {
+			var link = document.createElement('a');
+			link.download = 'my-image-name.jpeg';
+			link.href = dataUrl;
+			link.click();
 		});
-	});
-	
-	console.log("PDF exported")
 }
+
 
 
 //#################################################################################
