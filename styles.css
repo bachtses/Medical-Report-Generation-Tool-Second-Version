@@ -554,7 +554,7 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
     font-weight: 100;
     letter-spacing: 0.2px;
     text-decoration: none;
-    padding-top: 30px;
+    padding-top: 33px;
     margin: 0 0 5px 0;
     border-bottom: 7px solid #ffffff;
     background-color: #f8f8f8;
@@ -703,7 +703,7 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
 .right_container h4{
     display: block;
     object-fit: fill;
-    margin:20px 8% 0 8%;
+    margin:7px 8% 4px 8%;
     padding:0;   
     cursor: default; 
     text-align: justify!important;
@@ -1065,7 +1065,7 @@ ol {
     .left_container label {
         font-family: 'Larsseit-Light';
         font-size: 18px;
-        padding: 25px 0 25px 0;
+        padding: 37px 0 25px 0;
     }        
     .right_container {
         height: 60%;
