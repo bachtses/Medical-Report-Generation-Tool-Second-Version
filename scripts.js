@@ -425,14 +425,14 @@ function createPDFfromHTML() {
 	iframe.addEventListener("load", () => {
 		html2canvas(iframe.contentWindow.document.getElementById("content"),{background: '#fff'}).then(function(canvas) {
 			let link = document.createElement("a");
-			link.download = "Medical_Report.jpg";
-			canvas.toBlob( function(blob) {
-				link.href = URL.createObjectURL(blob);
-				link.click();
-			}, 'image/jpg');
+			//link.download = "Medical_Report.jpg";
+			//canvas.toBlob( function(blob) {
+				//link.href = URL.createObjectURL(blob);
+				//link.click();
+			//}, 'image/jpg');
 			//document.body.appendChild(canvas);
 			var imgData = canvas.toDataURL("image/png", 1.0);
-			var pdf = new jsPDF("p", "mm", "a4");
+			var pdf = new jsPDF("l", "mm", "a4");
 			pdf.addImage(imgData, 'PNG', 0, 40);
 			pdf.save('report_export.pdf');
 			$("#iframe").replaceWith(``);
