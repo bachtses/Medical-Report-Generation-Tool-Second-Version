@@ -435,7 +435,7 @@ function createPDFfromHTML() {
 			//var pdf = new jsPDF("p", "mm", "a4");
 			//pdf.addImage(imgData, 'PNG', 0, 40);
 			//pdf.save('report_export.pdf');
-			//$("#iframe").replaceWith(``);
+			$("#iframe").replaceWith(``);
 		});
 	});
 	console.log("PDF exported")
