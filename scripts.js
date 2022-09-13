@@ -431,10 +431,10 @@ function createPDFfromHTML() {
 				link.click();
 			}, 'image/jpg');
 			//document.body.appendChild(canvas);
-			//var imgData = canvas.toDataURL("image/png", 1.0);
-			//var pdf = new jsPDF("p", "mm", "a4");
-			//pdf.addImage(imgData, 'PNG', 0, 40);
-			//pdf.save('report_export.pdf');
+			var imgData = canvas.toDataURL("image/png", 1.0);
+			var pdf = new jsPDF("p", "mm", "a4");
+			pdf.addImage(imgData, 'PNG', 0, 40);
+			pdf.save('report_export.pdf');
 			$("#iframe").replaceWith(``);
 		});
 	});
