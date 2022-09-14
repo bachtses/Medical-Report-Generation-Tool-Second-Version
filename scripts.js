@@ -9,10 +9,10 @@ async function loadmodelsFunction(){
 	model_five_diseases = await tf.loadLayersModel('https://raw.githubusercontent.com/bachtses/Medical-Report-Generation-Tool-First-Prototype/main/models/X-Ray_5_Diseases_Classification/model.json');
 	model_pneumonia = await tf.loadLayersModel('https://raw.githubusercontent.com/bachtses/Medical-Report-Generation-Tool-First-Prototype/main/models/X-Ray_Pneumonia_Detection/model.json');
 	model_lung_cancer = await tf.loadLayersModel('https://raw.githubusercontent.com/bachtses/Medical-Report-Generation-Tool-First-Prototype/main/models/X-Ray_Lung_Cancer_Classification/model.json');
-   //model_nature = await tf.loadLayersModel('https://raw.githubusercontent.com/bachtses/Chest_X-Ray_Medical_Report_Web_App/main/models/X-Ray_Nature_Classification/model.json');
-    console.log("MODEL LOADED!: Five Diseases model");
-    console.log("MODEL LOADED!: Pneumonia model");
-    console.log("MODEL LOADED!: Lung Cancer model");
+   	//model_nature = await tf.loadLayersModel('https://raw.githubusercontent.com/bachtses/Chest_X-Ray_Medical_Report_Web_App/main/models/X-Ray_Nature_Classification/model.json');
+    	console.log("MODEL LOADED!: Five Diseases model");
+    	console.log("MODEL LOADED!: Pneumonia model");
+    	console.log("MODEL LOADED!: Lung Cancer model");
 	//console.log("MODEL LOADED!: Nature");
 	
 	await progressBar();
@@ -412,7 +412,7 @@ async function MakeTextEditableMechanism(){
 //#################################################################################
 // ### EXPORT TO PDF
 //#################################################################################
-function createPDFfromHTML() {	
+function DownloadScreenshotPDF() {	
 	let iframe = document.createElement("iframe");
 	iframe.setAttribute("id", "iframe");
 	iframe.style.width = "1880px";
