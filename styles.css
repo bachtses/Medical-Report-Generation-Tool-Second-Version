@@ -516,6 +516,7 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
 #progress_bar {
     width: 1%;
     height: 8px;
+    margin-top: 26%!important;
     background-color: #2a8aff;
 }
 
@@ -554,7 +555,7 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
     font-weight: 100;
     letter-spacing: 0.2px;
     text-decoration: none;
-    padding-top: 33px;
+    padding-top: 30px;
     margin: 0 0 5px 0;
     border-bottom: 7px solid #ffffff;
     background-color: #f8f8f8;
