@@ -433,7 +433,7 @@ function DownloadScreenshotPDF() {
 			//document.body.appendChild(canvas);
 			var imgData = canvas.toDataURL("image/png", 1.0);
 			var pdf = new jsPDF("l", "mm", "a4");
-			pdf.addImage(imgData, 'PNG', 0, 0, 250);
+			pdf.addImage(imgData, 'PNG', 0, 0, 250, 200);
 			pdf.save('report_export.pdf');
 			$("#iframe").replaceWith(``);
 		});
