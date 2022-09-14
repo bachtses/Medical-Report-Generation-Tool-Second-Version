@@ -424,12 +424,12 @@ function DownloadScreenshotPDF() {
 	iframe.srcdoc = html;
 	iframe.addEventListener("load", () => {
 		html2canvas(iframe.contentWindow.document.getElementById("content"),{background: '#fff'}).then(function(canvas) {
-			let link = document.createElement("a");
-			link.download = "Medical_Report.jpg";
-			canvas.toBlob( function(blob) {
-				link.href = URL.createObjectURL(blob);
-				link.click();
-			}, 'image/jpg');
+			//let link = document.createElement("a");
+			//link.download = "Medical_Report.jpg";
+			//canvas.toBlob( function(blob) {
+			//	link.href = URL.createObjectURL(blob);
+			//	link.click();
+			//}, 'image/jpg');
 			//document.body.appendChild(canvas);
 			var imgData = canvas.toDataURL("image/png", 1.0);
 			var pdf = new jsPDF("l", "px", [842, 595]);
