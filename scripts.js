@@ -432,8 +432,8 @@ function DownloadScreenshotPDF() {
 			//}, 'image/jpg');
 			//document.body.appendChild(canvas);
 			var imgData = canvas.toDataURL("image/png", 1.0);
-			var pdf = new jsPDF("l", "px", [842, 595]);
-			pdf.addImage(imgData, 'PNG', 0, 0, 842, 595);
+			var pdf = new jsPDF("l", "px", [742, 505]);
+			pdf.addImage(imgData, 'PNG', 0, 0, 742, 505);
 			pdf.save('report_export.pdf');
 			$("#iframe").replaceWith(``);
 		});
