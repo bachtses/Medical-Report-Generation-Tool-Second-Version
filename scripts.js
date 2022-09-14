@@ -415,9 +415,9 @@ async function MakeTextEditableMechanism(){
 function DownloadScreenshotPDF() {	
 	let iframe = document.createElement("iframe");
 	iframe.setAttribute("id", "iframe");
-	iframe.style.width = "1280px";
+	iframe.style.width = "1380px";
 	iframe.style.height = "100%";
-	//iframe.style.visibility = 'hidden';      
+	iframe.style.visibility = 'hidden';      
 
 	document.body.appendChild(iframe);
 	let html = document.documentElement.outerHTML;
@@ -432,10 +432,10 @@ function DownloadScreenshotPDF() {
 			}, 'image/jpg');
 			//document.body.appendChild(canvas);
 			//var imgData = canvas.toDataURL("image/png", 1.0);
-			//var pdf = new jsPDF("l", "mm", "a4");
+			//var pdf = new jsPDF("l", "mm");
 			//pdf.addImage(imgData, 'PNG', 0, 0, 300, 200);
 			//pdf.save('report_export.pdf');
-			//$("#iframe").replaceWith(``);
+			$("#iframe").replaceWith(``);
 		});
 	});
 	console.log("PDF exported")
