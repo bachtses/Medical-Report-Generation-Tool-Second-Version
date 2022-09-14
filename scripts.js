@@ -423,7 +423,7 @@ function DownloadScreenshotPDF() {
 	let html = document.documentElement.outerHTML;
 	iframe.srcdoc = html;
 	iframe.addEventListener("load", () => {
-		html2canvas(iframe.contentWindow.document.getElementById("sitecontainer"),{background: '#fff'}).then(function(canvas) {
+		html2canvas(iframe.contentWindow.document.getElementById("content"),{background: '#fff'}).then(function(canvas) {
 			let link = document.createElement("a");
 			link.download = "Medical_Report.jpg";
 			canvas.toBlob( function(blob) {
