@@ -97,7 +97,7 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
     opacity: 0.7;
 }
 
-.info_dropdown{
+.info_dropdown {
     position: absolute;
     top:100px;
     right: 16%;
@@ -893,6 +893,12 @@ ol {
 
 /* Laptop 13" */
 @media only screen and (max-width: 1290px) {
+    .info_dropdown{
+        display:none;
+    }
+    .top_menu_bar i {
+        display:none;
+    }
     .sitecontainer {
         width:1000px;
         margin:auto;
@@ -922,7 +928,7 @@ ol {
         height: 15%;
     }
     #divModelDownloadFraction {
-        margin-top: 22%!important;
+        margin-top: 28%!important;
     }
 }
 
@@ -932,7 +938,6 @@ ol {
         width:730px;
         margin:auto;
         padding:0;
-        
     }
     .top_menu_bar {
         padding-top: 10px;
