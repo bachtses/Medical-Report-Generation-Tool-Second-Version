@@ -1049,6 +1049,11 @@ ol {
 
 /* Mobile */
 @media only screen and (max-width: 800px) {
+    .sitecontainer {
+        width: 100%;
+        padding-left: 2%;
+        padding-right: 2%;
+    }
     .all_work_container {
         height: 1400px;
     }
@@ -1061,7 +1066,7 @@ ol {
         font-size: 18px;
     }       
     .modality_option_text {
-        padding: 30vw 0 0 0;
+        padding: 38vw 0 0 0;
     }
     .dropbtn {
         height: 75px;
