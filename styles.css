@@ -157,13 +157,12 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
     margin:0;
     padding:0;
     text-decoration: none;
-    font-family: 'Larsseit-Light';
+    font-family: 'Larsseit-Thin';
     font-size: 22px;
     color: #363634;
     letter-spacing: 0.5px;
     line-height: 36px;
     font-weight: 700;
-    
 }
 
 .top_title h3 {
@@ -179,7 +178,6 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
     margin-top:22px;
     line-height: 70px;
     font-weight: 100;
-
 }
   
 .just_another_border {
@@ -227,7 +225,6 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
     transition: all 0.3s;
     overflow:hidden;    
     cursor: default;
-   
 }
 
 .left_container{
@@ -966,6 +963,7 @@ ol {
         font-size: 18px;
         line-height: 18px; 
         font-weight: 100;
+        font-family: 'Larsseit-Light';
     }
     .just_another_border {
         margin-top: 12px;
@@ -1050,7 +1048,7 @@ ol {
 /* Mobile */
 @media only screen and (max-width: 800px) {
     .just_another_border {
-        height: 35px;
+        height: 20px;
     }
     .sitecontainer {
         width: 100%;
