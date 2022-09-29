@@ -236,7 +236,6 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
     height:100%;
     cursor: default;
     opacity:0.6;
-
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
     -o-transition: all 0.3s;
@@ -275,7 +274,6 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
     -o-transition: all 0.3s!important;
     transition: all 0.3s!important;
     
-
 }
 
 .left_container img {
@@ -290,7 +288,6 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
     -moz-transition: all 0.3s!important;
     -o-transition: all 0.3s!important;
     transition: all 0.3s!important;
-    
 
 }
 
@@ -318,10 +315,10 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
     background-color: #f8f8f8;
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
-     -khtml-user-select: none; /* Konqueror HTML */
-       -moz-user-select: none; /* Old versions of Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-            user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
     -o-transition: all 0.3s;
@@ -344,12 +341,14 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
 }
 
 
-.modality_option_container{
+.menu_options_container{
+    position: relative;
     float: right;
-    width:70%;
-    height:100%;
-    margin: auto;
-    padding: auto;
+    width: 70%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
     background-color: #f8f8f8;
     background-image: url("images/incisive_watermark_gray_blur.png");
     background-repeat: no-repeat;
@@ -370,54 +369,66 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
     -moz-transition: all 0.3s;
     -o-transition: all 0.3s;
     transition: all 0.3s;
-
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
-     -khtml-user-select: none; /* Konqueror HTML */
-       -moz-user-select: none; /* Old versions of Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-            user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
     
 }
 
-.modality_option_text {
-    background-color: transparent;
-    width:100%;
-    height:100%;
-    margin:auto;
-    padding: 10vw 0 0 0;
-    place-items: center;
-    align-items: center;
-    justify-content: center;
+.menu_options_container p {
+    display: block;
+    object-fit: fill;
+    width: 100%;
+    height: 16%;    
+    cursor: default; 
     text-align: center;
- 
+    font-family: 'Larsseit-Light';
+    font-size: 15px;
+    color: #363634;
+    font-weight: 100;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    padding: 0;
+    padding-top: 30px;
+    margin: 0;
+    border-bottom: 7px solid #ffffff;
+    background-color: #f8f8f8;
+    -webkit-transition: all 0.3s!important;
+    -moz-transition: all 0.3s!important;
+    -o-transition: all 0.3s!important;
+    transition: all 0.3s!important;
+}
+
+.cancer_types_dropdown {
+    display: grid;
+    grid-template-rows: 50% 50%;
+    grid-template-columns: 50% 50%;
+    background-color: transparent;
+    float: left;
+    height: 68%;
+    width: 80%;
+    margin:  30px 10% 0 10%;
+    text-align: center;
+    overflow: hidden;
+    border: none;
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
     -o-transition: all 0.3s;
     transition: all 0.3s;
-
 }
 
-.modality_option_text h1 {
-    display:block;
-    text-align: center;
-    margin:0;
-    margin-bottom: 0px;
-    padding:0;
-    text-decoration: none;
-    font-family: 'Larsseit-Light';
-    font-size: 15px;
-    color: #363634;
-    line-height: 36px;
-    font-weight: 100;
-    letter-spacing: 0.5px;
-}
-
-.dropbtn {
+.cancer_types_dropdown a{
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    padding: 2.8vw 0% 0% 0%;
+    align-items: center; 
+    justify-content: center;
     background-color: transparent;
-    height:75px;
-    width: 320px;
-    text-align: center;
     font-family: 'Larsseit-Light';
     font-size: 15px;
     line-height: 25px;
@@ -425,63 +436,79 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
     font-weight: 100;
     letter-spacing: 0.5px;
     text-decoration: none;
-    outline:0;
-    border: none;
-    -webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    -o-transition: all 0.3s;
-    transition: all 0.3s;
-}
-  
-.dropdown {
-    position: relative;
-    display: inline-block;
-    border: none;
-    box-sizing:inherit;
-    outline:0;
+    outline: 0;
+    border: none; 
 }
 
-.dropdown-content {
-    display: none;
-    position: absolute;
-    padding: auto;
-    margin:auto;
-    background-color: #f1f1f1;
+  
+.cancer_types_dropdown a:hover {
+    background-color: rgba(42, 138, 255, 1)!important ;
+    color: #ffffff!important;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.cancer_types_dropdown img {
+    display: inline;
+    object-fit: fill;
+    align-items: center; 
+    width: 70px;
+    height: 70px;
+    margin: 0;
+    margin-right: 10px;
+    padding: 0;   
+    cursor: default; 
+    -webkit-transition: all 0.3s!important;
+    -moz-transition: all 0.3s!important;
+    -o-transition: all 0.3s!important;
+    transition: all 0.3s!important;
+}
+
+.modalities_dropdown {
+    background-color: transparent;
+    height: 68%;
+    width: 0%;
+    margin-top: 30px;
+    margin-right: 5vw;
+    float: right;
+    display: grid;
+    grid-template-rows: 16.6% 16.6% 16.6% 16.6% 16.6% 16.6%;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+    opacity: 0;
+    border: none;
+}
+
+
+.modalities_dropdown a{
+    padding: 15px;
+    margin: auto;
     width: 100%;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
+    background-color: transparent;
+    font-family: 'Larsseit-Light';
+    font-size: 15px;
+    line-height: 25px;
+    color: #b3b3b3;
+    font-weight: 100;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    outline: 0;
+    border-bottom: 0.2px solid #363634; 
 }
   
-.dropdown-content a {
-    display: block;
-    width:100%;
-    padding: 15px 40px 15px 40px;
-    background-color: #f1f1f1;
-    color: #363634;
-    text-decoration: none; 
-}
-  
-.dropdown-content a:hover {
-    background-color: #2a8aff;
-    color: #f8f8f8!important;
+.modalities_dropdown a:hover {
+    background-color: #2a8aff!important ;
+    color: #ffffff!important;
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
     -o-transition: all 0.3s;
     transition: all 0.3s;
 }
   
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-  
-.dropdown:hover .dropbtn {
-    color:#fff;
-    background-color: #2a8aff!important;
-    -webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    -o-transition: all 0.3s;
-    transition: all 0.3s;
-}
 
 #divModelDownloadFraction{
     width: 100%;
@@ -833,6 +860,10 @@ ol {
     .all_work_container {
         height: 36vw;
     }
+    .cancer_types_dropdown img {
+        width: 60px;
+        height: 60px;
+    }
 }
 
 /* Laptop 15" */
@@ -873,9 +904,28 @@ ol {
     .left_container label {
         padding: 9% 0 9% 0;
     }
+    .cancer_types_dropdown {
+        margin: 50px 10% 0 10%;
+        height: 58%;
+    }
+    .cancer_types_dropdown a {
+        padding: 3.5vw 0% 0% 0%;
+    }
+
+    .cancer_types_dropdown img {
+        display: block;
+        width: 50px;
+        height: 50px;
+        margin: auto;
+        margin-bottom: 10px;
+        padding: auto;
+        align-items: center; 
+        justify-content: center;
+    }
     .modality_option_text {
         padding: 15vw 0 0 0;
     }
+
     #divModelDownloadFraction {
         margin-top: 20%!important;
     }
@@ -918,6 +968,7 @@ ol {
         padding: 2.5vw 0 2.5vw 0;
         height: 15%;
     }
+    
     #divModelDownloadFraction {
         margin-top: 28%!important;
     }
@@ -1000,21 +1051,12 @@ ol {
         padding: 3% 0 3% 0;
         height: 18%;
     }
-    .modality_option_container {
+    .menu_options_container {
         width: 100%;
         height: 57%;
         margin: 0;
         padding: 0;
         margin-top: 7px;
-    }
-    .modality_option_text {
-        padding: 20vw 0 0 0;
-    }
-    .dropbtn {
-        height: 70px;
-    }
-    .dropdown-content a {
-        padding: 15px 40px 15px 40px;
     }
     .right_container {
         display:block;
@@ -1038,6 +1080,7 @@ ol {
     .gridrow {
         margin: 2px 8% 2px 8%;
     }
+
     #divModelDownloadFraction {
         margin-top: 20%!important;
     }
@@ -1062,28 +1105,38 @@ ol {
     .left_container {
         height: 39%;
     }
-    .modality_option_container {
+    .menu_options_container {
         height: 60%;
         font-family: 'Larsseit-Light';
         font-size: 18px;
-    }       
-    .modality_option_text {
-        padding: 38vw 0 0 0;
-    }
-    .dropbtn {
-        height: 75px;
-        width: 300px;
+    }   
+    .menu_options_container p{
+        font-family: 'Larsseit-Light';
+        height: 12%;
+        font-size: 18px;
+    }    
+    .cancer_types_dropdown a {
         font-family: 'Larsseit-Light';
         font-size: 18px;
     }
-    .dropdown-content a {
-        padding: 15px 40px 15px 40px;
+    .cancer_types_dropdown img {
+        display: block;
+        width: 50px;
+        height: 50px;
+        margin: auto;
+        margin-bottom: 10px;
+        padding: auto;
+        align-items: center; 
+        justify-content: center;
+    }
+    .modalities_dropdown {
+        width: 35%;
     }
     .left_container label {
         font-family: 'Larsseit-Light';
         font-size: 18px;
         padding: 37px 0 25px 0;
-    }        
+    }       
     .right_container {
         height: 60%;
     }
