@@ -17,24 +17,40 @@ async function loadmodelsFunction(){
 	
 	await progressBar();
 	
-
 }
 
 
 //#################################################################################
 // ### DROPDOWN MENU
 //#################################################################################
-async function dropdownSelection() {
-	$(".modality_option_container").fadeOut("fast");
+let cancer_type_selected = null;
+let modality_selected = null;
+async function cancertypeSelection(cancertypeselection) {
+	cancer_type_selected = cancertypeselection;
+	document.getElementById("cancer_types_dropdown").style.width = "50%";
+	document.getElementById("cancer_types_dropdown").style.marginLeft = "3vw";
+	document.getElementById("cancer_types_dropdown").style.marginRight = "0";
+	document.getElementById("modalities_dropdown").style.opacity = 1;
+	document.getElementById("modalities_dropdown").style.width = "30%";
+	if (800 > $(window).width() ) {
+		document.getElementById("cancer_types_dropdown").style.width = "30%";
+		document.getElementById("modalities_dropdown").style.width = "55%";
+		document.getElementById("modalities_dropdown").style.marginRight = "7vw";
+	}
+}
+
+async function modalitySelection(modalityselection) {
+	modality_selected = modalityselection;
+	console.log("Cancer type selected: ", cancer_type_selected);
+	console.log("Modality selected: ", modality_selected);
+	$(".menu_options_container").fadeOut("fast");
 	document.getElementById("right_container").style.display = "inline";
 	$("#summary_title").hide();
 	$("#summary_title").replaceWith(`<p id="summary_title">Notifications Panel</p>`);
 	$('#summary_title').fadeIn(500);
 
 	await loadmodelsFunction();
-
 }
-
 
 //#################################################################################
 // ### DISPLAY DICOM IMAGE
