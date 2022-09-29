@@ -72,29 +72,30 @@
                     <!-- upload Button -->                
                     <label for="files_upload" id="btnn"><i class='fa fa-camera'></i> &nbsp; Upload Medical Image</label>
                     <input disabled type="file" id="files_upload" onchange="showFiles(event)" accept=".dcm , .jpeg , .jpg , .png"> 
-                    
                 </div> <!-- end of left container  -->
-                <div class="modality_option_container" id="modality_option_container">
-                    <div class="modality_option_text">    
-                        <h1> </h1> 
-                        <div class="dropdown">
-                            <button class="dropbtn">
-                                <i class="fa fa-bars"></i> &nbsp; Modalities
-                            </button>
-                            <div class="dropdown-content" id="modalities_dropdown">
-                                <a >MRI</a>
-                                <a >PET/CT</a>
-                                <a onclick="dropdownSelection()">X-Ray</a>
-                            </div>
-                        </div>
+                <!-- menu container  -->
+                <div class="menu_options_container" id="menu_options_container">
+                    <p>Please select AI service</p> 
+                    <div class="cancer_types_dropdown" id="cancer_types_dropdown">
+                        <a onclick="cancertypeSelection('Breast')"><img src="images/breast-cancer.png" alt="icon"> Breast Cancer</a>
+                        <a onclick="cancertypeSelection('Prostate')"><img src="images/prostate-cancer.png" alt="icon"> Prostate Cancer</a>
+                        <a onclick="cancertypeSelection('Lung')"><img src="images/lung-cancer.png" alt="icon"> Lung Cancer</a>
+                        <a onclick="cancertypeSelection('Colorectal')" style="border-bottom: none"><img src="images/colorectal-cancer.png" alt="icon"> Colorectal Cancer</a>
                     </div>
-                </div>
+                    <div class="modalities_dropdown" id="modalities_dropdown">
+                        <a onclick="modalitySelection('MRI')">MRI</a>
+                        <a onclick="modalitySelection('CT')">CT</a>
+                        <a onclick="modalitySelection('Mammography')">Mammography</a>
+                        <a onclick="modalitySelection('Xray')">X-Ray</a>
+                        <a onclick="modalitySelection('PetCt')">PET/CT</a>
+                        <a onclick="modalitySelection('Ultrasound')" style="border-bottom: none">Ultrasound</a>
+                    </div>
+                </div> <!-- end of menu container  -->
                 <!-- right container  -->
                 <div class="right_container" id="right_container">
                     <button id="export_button" class="export_button" type="button" onClick="DownloadScreenshotPDF();" >
                         <!--<i class="fa fa-file-pdf-o" aria-hidden="true"></i>-->
                         <i class="fa fa-download" aria-hidden="true"></i>
-                        
                     </button>    
                     <button id="textedit_button" class="textedit_button" type="button" onClick="MakeTextEditable();" >
                         <i class="fa fa-pencil" aria-hidden="true"></i>
@@ -134,10 +135,11 @@
 
 
 
-
         <!-- footer -->
         <div class="footer">
         </div>
+
+
     
     </div> <!-- end of content -->
        
