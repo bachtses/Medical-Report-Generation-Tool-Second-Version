@@ -9,7 +9,7 @@ async function loadmodelsFunction(){
 	model_five_diseases = await tf.loadLayersModel('https://raw.githubusercontent.com/bachtses/Medical-Report-Generation-Tool-First-Prototype/main/models/X-Ray_5_Diseases_Classification/model.json');
 	model_pneumonia = await tf.loadLayersModel('https://raw.githubusercontent.com/bachtses/Medical-Report-Generation-Tool-First-Prototype/main/models/X-Ray_Pneumonia_Detection/model.json');
 	model_lung_cancer = await tf.loadLayersModel('https://raw.githubusercontent.com/bachtses/Medical-Report-Generation-Tool-First-Prototype/main/models/X-Ray_Lung_Cancer_Classification/model.json');
-   //model_nature = await tf.loadLayersModel('https://raw.githubusercontent.com/bachtses/Chest_X-Ray_Medical_Report_Web_App/main/models/X-Ray_Nature_Classification/model.json');
+    //model_nature = await tf.loadLayersModel('https://raw.githubusercontent.com/bachtses/Chest_X-Ray_Medical_Report_Web_App/main/models/X-Ray_Nature_Classification/model.json');
     console.log("MODEL LOADED!: Five Diseases model");
     console.log("MODEL LOADED!: Pneumonia model");
     console.log("MODEL LOADED!: Lung Cancer model");
@@ -27,14 +27,18 @@ let cancer_type_selected = null;
 let modality_selected = null;
 async function cancertypeSelection(cancertypeselection) {
 	cancer_type_selected = cancertypeselection;
+
+	$("#menu_options_container_p").replaceWith(`<p id="menu_options_container_p" > AI service for: ${cancer_type_selected} Cancer <br> Please select an imaging modality </p>`);
+	document.getElementById("menu_options_container_p").style.paddingTop = "15px";
+
 	document.getElementById("cancer_types_dropdown").style.width = "50%";
-	document.getElementById("cancer_types_dropdown").style.marginLeft = "3vw";
+	document.getElementById("cancer_types_dropdown").style.marginLeft = "4vw";
 	document.getElementById("cancer_types_dropdown").style.marginRight = "0";
 	document.getElementById("modalities_dropdown").style.opacity = 1;
-	document.getElementById("modalities_dropdown").style.width = "30%";
+	document.getElementById("modalities_dropdown").style.width = "22%";
 	if (800 > $(window).width() ) {
-		document.getElementById("cancer_types_dropdown").style.width = "30%";
-		document.getElementById("modalities_dropdown").style.width = "55%";
+		document.getElementById("cancer_types_dropdown").style.width = "50%";
+		document.getElementById("modalities_dropdown").style.width = "35%";
 		document.getElementById("modalities_dropdown").style.marginRight = "7vw";
 	}
 }
@@ -51,6 +55,8 @@ async function modalitySelection(modalityselection) {
 
 	await loadmodelsFunction();
 }
+
+
 
 //#################################################################################
 // ### DISPLAY DICOM IMAGE
@@ -90,7 +96,7 @@ async function showFiles() {
 
 		setTimeout(() => {predict()}, 500);
 		document.getElementById("divModelDownloadFraction").style.marginTop = "22%";
-		document.getElementById("divModelDownloadFraction").innerHTML = "Image Processing...";
+		document.getElementById("divModelDownloadFraction").innerHTML = "Image Processing... <br> This might take a few minutes.";
 		
 		
 	}else if (allowed_extensions_for_other_formats.includes(file_extension)){
@@ -111,7 +117,7 @@ async function showFiles() {
 
 		setTimeout(() => {predict()}, 500);
 		document.getElementById("divModelDownloadFraction").style.marginTop = "22%";
-		document.getElementById("divModelDownloadFraction").innerHTML = "Image Processing...";	
+		document.getElementById("divModelDownloadFraction").innerHTML = "Image Processing... <br> This might take a few minutes.";	
 	}
 }  
  
@@ -119,10 +125,11 @@ async function showFiles() {
 //#################################################################################
 // ### PREDICTIONS
 //#################################################################################
+var fileName = null;
 async function predict(){
 
 	let file = document.querySelector('input[type=file]').files[0];
-	var fileName = file.name;
+	fileName = file.name;
 	var file_extension = fileName.split('.').pop().toLowerCase(); 	
 	if (allowed_extensions_for_dicom_formats.includes(file_extension)){
 		var img_ = document.getElementById('idImage').getElementsByClassName("cornerstone-canvas")[0];
@@ -267,13 +274,13 @@ async function predict(){
 
 	$('#image_name').fadeOut(slow_velocity, function(){
 		$("#image_name").hide();
-		$("#image_name").replaceWith(`<h1 id="image_name">Uploaded Image: imagename </h1>`);
+		$("#image_name").replaceWith(`<h1 id="image_name">Uploaded Scan: ${fileName} </h1>`);
 		$('#image_name').fadeIn(slow_velocity);
 	});
 	$('#image_modality').fadeOut(slow_velocity, function(){
 		$("#image_modality").hide();
 		var todayDate = new Date().toISOString().slice(0, 10);
-		$("#image_modality").replaceWith(`<h2>Imaging Modality: X-Ray &nbsp; Location: Chest &nbsp; Date: ${todayDate}</h2>`);
+		$("#image_modality").replaceWith(`<h2>Imaging Modality: ${modality_selected} &nbsp; Location: Chest/Thorax &nbsp; Date: ${todayDate}</h2>`);
 		$('#image_modality').fadeIn(slow_velocity);
 	});
 	$('#findings').fadeOut(slow_velocity, function(){
@@ -314,7 +321,7 @@ async function predict(){
 
 	$('#prediction_list').fadeOut(slow_velocity, function(){
 		$("#prediction_list").hide();
-		$("#prediction_list").replaceWith(`<h4 id='prediction_list'>The patient of the x-ray image image name, has been diagnosed with ${text_lungcancer} ${text} Also, there is ${text_pneumonia} suggestion. ${text_clear_report}</h4>`);
+		$("#prediction_list").replaceWith(`<h4 id='prediction_list'>The patient of the scan ${fileName}, has been diagnosed with ${text_lungcancer} ${text} Also, there is ${text_pneumonia} suggestion. ${text_clear_report}</h4>`);
 		$('#prediction_list').fadeIn(slow_velocity);
 	});
 
