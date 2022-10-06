@@ -6,16 +6,44 @@ let model_lung_cancer = null;
 // ### MODELS LOAD
 //#################################################################################
 async function loadmodelsFunction(){
-	model_five_diseases = await tf.loadLayersModel('https://raw.githubusercontent.com/bachtses/Medical-Report-Generation-Tool-First-Prototype/main/models/X-Ray_5_Diseases_Classification/model.json');
-	model_pneumonia = await tf.loadLayersModel('https://raw.githubusercontent.com/bachtses/Medical-Report-Generation-Tool-First-Prototype/main/models/X-Ray_Pneumonia_Detection/model.json');
-	model_lung_cancer = await tf.loadLayersModel('https://raw.githubusercontent.com/bachtses/Medical-Report-Generation-Tool-First-Prototype/main/models/X-Ray_Lung_Cancer_Classification/model.json');
-    //model_nature = await tf.loadLayersModel('https://raw.githubusercontent.com/bachtses/Chest_X-Ray_Medical_Report_Web_App/main/models/X-Ray_Nature_Classification/model.json');
-    console.log("MODEL LOADED!: Five Diseases model");
-    console.log("MODEL LOADED!: Pneumonia model");
-    console.log("MODEL LOADED!: Lung Cancer model");
-	//console.log("MODEL LOADED!: Nature");
+	var progressgraphic = document.getElementById("progress_bar");
+	progressgraphic.style.width = "0%";
 	
-	await progressBar();
+	model_five_diseases = await tf.loadLayersModel('https://raw.githubusercontent.com/bachtses/Medical-Report-Generation-Tool-First-Prototype/main/models/X-Ray_5_Diseases_Classification/model.json', {
+		onProgress: function (fraction) {
+			console.log(Math.round(100*fraction))
+			if (fraction == 1) {
+				console.log("MODEL DOWNLOADED!: Five Diseases model")
+				progressgraphic.style.width = "33%";
+			}
+		}
+	});
+	model_pneumonia = await tf.loadLayersModel('https://raw.githubusercontent.com/bachtses/Medical-Report-Generation-Tool-First-Prototype/main/models/X-Ray_Pneumonia_Detection/model.json', {
+		onProgress: function (fraction) {
+			console.log(Math.round(100*fraction))
+			if (fraction == 1) {
+				console.log("MODEL DOWNLOADED!: Pneumonia model")
+				progressgraphic.style.width = "66%";
+			}
+		}
+	});
+	model_lung_cancer = await tf.loadLayersModel('https://raw.githubusercontent.com/bachtses/Medical-Report-Generation-Tool-First-Prototype/main/models/X-Ray_Lung_Cancer_Classification/model.json', {
+		onProgress: function (fraction) {
+			console.log(Math.round(100*fraction))
+			if (fraction == 1) {
+				console.log("MODEL DOWNLOADED!: Lung Cancer model")
+				progressgraphic.style.width = "99%";
+			}
+		}
+	});
+
+    //model_nature = await tf.loadLayersModel('https://raw.githubusercontent.com/bachtses/Chest_X-Ray_Medical_Report_Web_App/main/models/X-Ray_Nature_Classification/model.json');
+	//console.log("MODEL DOWNLOADED!: Nature");
+
+	document.getElementById("divModelDownloadFraction").style.marginTop = "22%";
+	document.getElementById("divModelDownloadFraction").innerHTML = "<b>Model Loaded Succesfully:</b> Five Diseases model <br><b>Model Loaded Succesfully:</b> Pneumonia model  <br><b>Model Loaded Succesfully:</b> Lung Cancer model<br><h1 style='font-size:20px;'>Please proceed to the image upload</h1>";
+	document.getElementById("files_upload").disabled = false;
+	document.getElementById("left_container").style.opacity = "1";
 	
 }
 
@@ -362,15 +390,6 @@ function progressBar() {
 
 
 //#################################################################################
-// ### SCROLL TO TOP
-//#################################################################################
-function scrolltopFunction() {
-	document.body.scrollTop = 0;
-	document.documentElement.scrollTop = 0;
-}
-
-
-//#################################################################################
 // ### MAKE REPORT TEXT EDITABLE
 //#################################################################################
 async function MakeTextEditable(){
@@ -463,3 +482,8 @@ function DownloadScreenshotPDF() {
 	});
 	console.log("PDF exported")
 }
+
+
+
+
+
