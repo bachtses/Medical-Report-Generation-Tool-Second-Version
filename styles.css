@@ -909,8 +909,9 @@ ol {
         height: 40%;
     }
     .cancer_types_dropdown a {
-        padding: 5.5vw 0% 0% 0%;
+        padding: 4vw 0% 0% 0%;
     }
+    
 
     .cancer_types_dropdown img {
         display: block;
