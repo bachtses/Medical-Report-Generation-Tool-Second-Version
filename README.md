@@ -2,7 +2,7 @@
 
 Instructions To run the application:
 
-1. Visit https://medical-report-generation.incisive.iti.gr/
+1. Visit http://medical-report-generation-tool.incisive.iti.gr/
 2. From the menu, select first the cancer type and then the imaging modality
 3. Wait until the loading of the corresponding AI models from the server is done
 4. Upload a medical image of a breast/lung/colorectal/prostate scan (.png or .jpeg format)
