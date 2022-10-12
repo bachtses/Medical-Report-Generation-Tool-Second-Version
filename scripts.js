@@ -11,7 +11,7 @@ async function loadmodelsFunction(){
 	
 	model_five_diseases = await tf.loadLayersModel('https://raw.githubusercontent.com/bachtses/Medical-Report-Generation-Tool-First-Prototype/main/models/X-Ray_5_Diseases_Classification/model.json', {
 		onProgress: function (fraction) {
-			console.log(Math.round(100*fraction))
+			//console.log(Math.round(100*fraction))
 			if (fraction == 1) {
 				console.log("MODEL DOWNLOADED!: Five Diseases model")
 				progressgraphic.style.width = "33%";
@@ -20,7 +20,7 @@ async function loadmodelsFunction(){
 	});
 	model_pneumonia = await tf.loadLayersModel('https://raw.githubusercontent.com/bachtses/Medical-Report-Generation-Tool-First-Prototype/main/models/X-Ray_Pneumonia_Detection/model.json', {
 		onProgress: function (fraction) {
-			console.log(Math.round(100*fraction))
+			//console.log(Math.round(100*fraction))
 			if (fraction == 1) {
 				console.log("MODEL DOWNLOADED!: Pneumonia model")
 				progressgraphic.style.width = "66%";
@@ -29,7 +29,7 @@ async function loadmodelsFunction(){
 	});
 	model_lung_cancer = await tf.loadLayersModel('https://raw.githubusercontent.com/bachtses/Medical-Report-Generation-Tool-First-Prototype/main/models/X-Ray_Lung_Cancer_Classification/model.json', {
 		onProgress: function (fraction) {
-			console.log(Math.round(100*fraction))
+			//console.log(Math.round(100*fraction))
 			if (fraction == 1) {
 				console.log("MODEL DOWNLOADED!: Lung Cancer model")
 				progressgraphic.style.width = "99%";
@@ -482,8 +482,6 @@ function DownloadScreenshotPDF() {
 	});
 	console.log("PDF exported")
 }
-
-
 
 
 
