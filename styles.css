@@ -227,124 +227,13 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
     cursor: default;
 }
 
-.left_container{
-    display:inline;
-    float: left;
-    margin:0;
-    padding:0;
-    width:29%;
-    height:100%;
-    cursor: default;
-    opacity:0.6;
-    -webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    -o-transition: all 0.3s;
-    transition: all 0.3s;
-    
-}
 
 
-.image_container {
+.menuoptions_container{
     display: block;
-    object-fit: fill;
-    width: 100%;
-    height: 83%; 
-    margin:0;
-    margin-bottom:7px!important;
-    padding:0;   
-    margin-bottom:0px;
-    cursor: default; 
-    overflow:hidden;
-    -webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    -o-transition: all 0.3s;
-    transition: all 0.3s;
-}
-
-.left_container canvas {
-    display: block;
-    object-fit: fill;
-    width: 100% !important;
-    height: 100% !important;
-    margin:0;
-    padding:0;   
-    cursor: default; 
-    -webkit-transition: all 0.3s!important;
-    -moz-transition: all 0.3s!important;
-    -o-transition: all 0.3s!important;
-    transition: all 0.3s!important;
-    
-}
-
-.left_container img {
-    display: block;
-    object-fit: fill;
-    width: 100% !important;
-    height: 100% !important;
-    margin:0;
-    padding:0;   
-    cursor: default; 
-    -webkit-transition: all 0.3s!important;
-    -moz-transition: all 0.3s!important;
-    -o-transition: all 0.3s!important;
-    transition: all 0.3s!important;
-
-}
-
-
-.left_container label {
-    display: block;
-    border:none;
-    overflow:hidden;
-    text-decoration:none;
-    text-align:center!important;
-    font-family: 'Larsseit-Light';
-    font-size: 15px;
-    line-height: 25px;
-    color: #363634;
-    font-weight: 100;
-    letter-spacing: 0.5px;
-    cursor:pointer;
-    white-space:nowrap; 
-    transition: 0.3s;
-    outline:0;
-    margin:0;
-    padding: 7% 0 9% 0;
-    width: 100%;
-    height: 16%; 
-    background-color: #f8f8f8;
-    -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-    -khtml-user-select: none; /* Konqueror HTML */
-    -moz-user-select: none; /* Old versions of Firefox */
-    -ms-user-select: none; /* Internet Explorer/Edge */
-    user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
-    -webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    -o-transition: all 0.3s;
-    transition: all 0.3s;
-
-}
-
-
-.left_container label:hover{
-    color:#fff;
-    background-color: #2a8aff!important;
-    -webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    -o-transition: all 0.3s;
-    transition: all 0.3s;
-}
-
-.left_container input{
-    display: none;
-}
-
-
-.menu_options_container{
     position: relative;
     float: right;
-    width: 70%;
+    width: 100%;
     height: 100%;
     margin: 0;
     padding: 0;
@@ -378,7 +267,7 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
     
 }
 
-.menu_options_container p {
+.menuoptions_container p {
     display: block;
     object-fit: fill;
     width: 100%;
@@ -404,13 +293,15 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
 
 .cancer_types_dropdown {
     display: grid;
-    grid-template-rows: 50% 50%;
-    grid-template-columns: 50% 50%;
+    grid-template-rows: 45% 45%;
+    grid-template-columns: 45% 45%;
+    grid-gap: 10%;
+    justify-items: center;
+    align-items: center;
     background-color: transparent;
-    float: left;
-    height: 68%;
-    width: 80%;
-    margin:  30px 10% 0 10%;
+    height: 70%;
+    width: 70%;
+    margin: 3% 15% 3% 15%;
     text-align: center;
     overflow: hidden;
     border: none;
@@ -425,7 +316,7 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
     width: 100%;
     height: 100%;
     margin: auto;
-    padding: 2.8vw 0% 0% 0%;
+    padding: 2vw 0% 0% 0%;
     align-items: center; 
     justify-content: center;
     background-color: transparent;
@@ -466,55 +357,60 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
     transition: all 0.3s!important;
 }
 
-.modalities_dropdown {
-    background-color: transparent;
-    height: 68%;
-    width: 0%;
-    margin-top: 30px;
-    margin-right: 7vw;
+
+
+.notifications_container{
+    display: none;
+    position: relative;
+    cursor: default;
     float: right;
-    display: grid;
-    grid-template-rows: 16.6% 16.6% 16.6% 16.6% 16.6% 16.6%;
-    -webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    -o-transition: all 0.3s;
-    transition: all 0.3s;
-    opacity: 0;
-    border: none;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #f8f8f8;
+    background-image: url("images/incisive_watermark_gray_blur.png");
+    background-repeat: no-repeat;
+    background-position: right 15% bottom;
+    -webkit-transition: all 0.3s!important;
+    -moz-transition: all 0.3s!important;
+    -o-transition: all 0.3s!important;
+    transition: all 0.3s!important; 
 }
 
-
-.modalities_dropdown a{
-    padding: 15px;
-    margin: auto;
+.notifications_container p{
+    display: block;
+    object-fit: fill;
     width: 100%;
-    background-color: transparent;
+    height: 16%; 
+    margin:0;
+    padding:0;   
+    cursor: default; 
+    text-align: center;
     font-family: 'Larsseit-Light';
     font-size: 15px;
-    line-height: 25px;
-    color: #b3b3b3;
+    color: #363634;
     font-weight: 100;
     letter-spacing: 0.5px;
     text-decoration: none;
-    outline: 0;
-    border-bottom: 0.2px solid #363634; 
+    padding-top: 30px;
+    margin: 0 0 5px 0;
+    border-bottom: 7px solid #ffffff;
+    background-color: #f8f8f8;
+    -webkit-transition: all 0.3s!important;
+    -moz-transition: all 0.3s!important;
+    -o-transition: all 0.3s!important;
+    transition: all 0.3s!important;
 }
-  
-.modalities_dropdown a:hover {
-    background-color: #2a8aff!important ;
-    color: #ffffff!important;
-    -webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    -o-transition: all 0.3s;
-    transition: all 0.3s;
-}
-  
+
+
 
 #divModelDownloadFraction{
     width: 100%;
     height: 100%;
     margin: 0;
-    margin-top: 18%!important;
+    margin-top: 12%!important;
     padding: 0 10% 0 10% ;   
     cursor: default; 
     text-align: center!important;
@@ -544,12 +440,346 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
     background-color: #2a8aff;
 }
 
-.right_container{
+
+.proceed_button{
+    display: block;
+    border:none;
+    overflow:hidden;
+    text-decoration:none;
+    text-align:center!important;
+    font-family: 'Larsseit-Light';
+    font-size: 15px;
+    line-height: 25px;
+    color: #363634;
+    font-weight: 100;
+    letter-spacing: 0.5px;
+    cursor:pointer;
+    white-space:nowrap; 
+    transition: 0.3s;
+    outline: 0;
+    width: 260px;
+    height: 60px;
+    margin: auto;
+    padding: 16px;
+    border: 1px solid #363634;
+    background-color: #f8f8f8;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+
+}
+
+.proceed_button:hover {
+    color: #fff!important;
+    background-color: #2a8aff!important;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+
+}
+
+
+.upload_container{
+    display: inline;
+    margin:0;
+    padding:0;
+    width:100%;
+    height:100%;
+    cursor: default;
+    opacity: 1;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.upload_area{
+    display: grid;
+    grid-template-rows: 100%;
+    grid-template-columns: 100%;
+    margin:0;
+    padding:0;
+    width: 30%;
+    height: 100%; 
+    float: left;
+    cursor: default;
+    opacity: 1;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+
+.upload_subcontainer{
+    margin:0;
+    padding:0;
+    padding-right:3px;
+    padding-left:3px;
+    cursor: default;
+    opacity: 1;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+
+.image_container {
+    display: block;
+    object-fit: fill;
+    width: 100%;
+    height: 83%; 
+    margin:0;
+    margin-bottom:7px!important;
+    padding:0;   
+    margin-bottom:0px;
+    cursor: default; 
+    overflow:hidden;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.upload_subcontainer canvas {
+    display: block;
+    object-fit: fill;
+    width: 100% !important;
+    height: 100% !important;
+    margin:0;
+    padding:0;   
+    cursor: default; 
+    -webkit-transition: all 0.3s!important;
+    -moz-transition: all 0.3s!important;
+    -o-transition: all 0.3s!important;
+    transition: all 0.3s!important;
+    
+}
+
+.upload_subcontainer img {
+    display: block;
+    object-fit: fill;
+    width: 100% !important;
+    height: 100% !important;
+    margin:0;
+    padding:0;   
+    cursor: default; 
+    -webkit-transition: all 0.3s!important;
+    -moz-transition: all 0.3s!important;
+    -o-transition: all 0.3s!important;
+    transition: all 0.3s!important;
+
+}
+
+
+.upload_subcontainer h1 {
+    display: block;
+    border:none;
+    overflow:hidden;
+    text-decoration:none;
+    text-align:center!important;
+    font-family: 'Larsseit-Light';
+    font-size: 15px;
+    line-height: 25px;
+    color: #363634;
+    font-weight: 100;
+    letter-spacing: 0.5px;
+    cursor: default;
+    white-space:nowrap; 
+    transition: 0.3s;
+    outline:0;
+    margin:0;
+    padding: 6% 0 7% 0;
+    width: 100%;
+    height: 16%; 
+    background-color: #f8f8f8;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+
+}
+
+
+
+.instructions_area{
+    display:block;
+    margin:0;
+    padding:0px;
+    width: 69%;
+    height: 100%; 
+    float: right;
+    cursor: default;
+    white-space: initial;
+    opacity: 1;
+    background-color: #f8f8f8;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.instructions_area h1{
+    display: block;
+    object-fit: fill;
+    width: 100%;
+    height: 16%;
+    cursor: default;
+    text-align: center;
+    font-family: 'Larsseit-Light';
+    font-size: 15px;
+    color: #363634;
+    font-weight: 100;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    padding: 0;
+    padding-top: 30px;
+    margin: 0;
+    border-bottom: 7px solid #ffffff;
+    background-color: #f8f8f8;
+    -webkit-transition: all 0.3s!important;
+    -moz-transition: all 0.3s!important;
+    -o-transition: all 0.3s!important;
+    transition: all 0.3s!important;
+}
+
+.instructions_area h2{
+    display: block;   
+    cursor: default; 
+    text-align: center;
+    font-family: 'Larsseit-Light';
+    font-size: 15px;
+    color: #363634;
+    font-weight: 100;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    padding: 0;
+    padding-top: 60px;
+    margin: 0;
+    border: 0;
+    background-color: #f8f8f8;
+    -webkit-transition: all 0.3s!important;
+    -moz-transition: all 0.3s!important;
+    -o-transition: all 0.3s!important;
+    transition: all 0.3s!important;
+}
+
+
+.instructions_area label {
+    display: block;
+    border:none;
+    overflow:hidden;
+    text-decoration:none;
+    text-align:center!important;
+    font-family: 'Larsseit-Light';
+    font-size: 15px;
+    line-height: 25px;
+    color: #363634!important;
+    font-weight: 100;
+    letter-spacing: 0.5px;
+    cursor:pointer;
+    white-space:nowrap; 
+    transition: 0.3s;
+    outline: 0;
+    width: 230px;
+    height: 60px;
+    margin: auto;
+    margin-top: 10px;
+    padding: 16px;
+    border: 1px solid #363634;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+
+}
+
+.instructions_area label:hover{
+    color: #fff!important;
+    background-color: #2a8aff!important;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.instructions_area input{
+    display: none;
+}
+
+
+.upload_buttons{
+    display: block;
+    border: none;
+    overflow: hidden;
+    text-decoration: none;
+    text-align: center!important;
+    font-family: 'Larsseit-Light';
+    font-size: 15px;
+    line-height: 25px;
+    color: #363634!important;
+    font-weight: 100;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: 0.3s;
+    outline: 0;
+    width: 304px;
+    height: 75px;
+    margin: auto;
+    margin-top: 107px;
+    padding: 24px;
+    border: 1px solid #363634;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+
+}
+
+.upload_buttons:hover {
+    color: #fff!important;
+    background-color: #2a8aff!important;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+
+}
+
+.report_container{
     display: none;
     position: relative;
     cursor: default;
     float: right;
-    width: 70%;
+    width: 100%;
     height: 100%;
     margin: 0;
     padding: 0;
@@ -564,7 +794,7 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
     transition: all 0.3s!important; 
 }
 
-.right_container p{
+.report_container p{
     display: block;
     object-fit: fill;
     width: 100%;
@@ -657,7 +887,7 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
     opacity: 0.7;
 }
 
-.right_container h1{
+.report_container h1{
     display: block;
     object-fit: fill;
     width: 100%;
@@ -680,7 +910,7 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
     transition: all 0.3s;
 }
 
-.right_container h2{
+.report_container h2{
     display: block;
     object-fit: fill;
     width: 100%;
@@ -703,7 +933,7 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
     transition: all 0.3s;
 }
 
-.right_container h3{
+.report_container h3{
     display: block;
     object-fit: fill;
     margin:20px 8% 0 8%;
@@ -725,7 +955,7 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
 }
 
 
-.right_container h4{
+.report_container h4{
     display: block;
     object-fit: fill;
     margin:7px 8% 4px 8%;
@@ -750,7 +980,7 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
     outline: 0px solid transparent;
 }
 
-.right_container ol{
+.report_container ol{
     display: block;
     text-decoration:none;
     list-style:none;
@@ -766,7 +996,7 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
     transition: all 0.3s!important;
 }
 
-.right_container ol li{
+.report_container ol li{
     display: block;
     object-fit: fill;
     width:84%;
@@ -903,7 +1133,7 @@ ol {
     .all_work_container {
         height: 40vw;
     }
-    .left_container label {
+    .upload_container label {
         padding: 9% 0 9% 0;
     }
     .cancer_types_dropdown {
@@ -963,10 +1193,10 @@ ol {
         margin-bottom: 0!important;
         background-color: #000000;
     }
-    .left_container img {
+    .upload_container img {
         object-fit: cover;
     }
-    .left_container label {
+    .upload_container label {
         margin: 0;
         padding: 2.5vw 0 2.5vw 0;
         height: 15%;
@@ -1025,7 +1255,7 @@ ol {
     .all_work_container {
         height: 115vw;
     }
-    .left_container {
+    .upload_container {
         display: block;
         overflow: hidden;
         width: 100%;
@@ -1043,18 +1273,18 @@ ol {
         margin-bottom: 0!important;
         background-color: #000000;
     }
-    .left_container img {
+    .upload_container img {
         display: block;
         object-fit: contain;
         margin: 0;
         padding: 0;
     }
-    .left_container label {
+    .upload_container label {
         margin: 0;
         padding: 3% 0 3% 0;
         height: 18%;
     }
-    .menu_options_container {
+    .menuoptions_container {
         width: 100%;
         height: 57%;
         margin: 0;
@@ -1064,7 +1294,7 @@ ol {
     .cancer_types_dropdown a {
         padding: 5.5vw 0% 0% 0%;
     }
-    .right_container {
+    .report_container {
         display:block;
         width: 100%;
         height: 57%;
@@ -1072,7 +1302,7 @@ ol {
         padding: 0;
         margin-top: 7px;
     }
-    .right_container p {
+    .report_container p {
         background-color: transparent;
         margin-bottom: 0;
         border-bottom: 0;
@@ -1080,7 +1310,7 @@ ol {
         height: 13%;;
         border-bottom: 4px solid #fff;
     }
-    .right_container h1 {
+    .report_container h1 {
         margin-top: 20px;
     }
     .gridrow {
@@ -1108,15 +1338,15 @@ ol {
         height: 1400px;
         margin-top:0;
     }
-    .left_container {
+    .upload_container {
         height: 39%;
     }
-    .menu_options_container {
+    .menuoptions_container {
         height: 60%;
         font-family: 'Larsseit-Light';
         font-size: 18px;
     }   
-    .menu_options_container p{
+    .menuoptions_container p{
         font-family: 'Larsseit-Light';
         height: 12%;
         font-size: 18px;
@@ -1138,32 +1368,32 @@ ol {
     .modalities_dropdown {
         width: 35%;
     }
-    .left_container label {
+    .upload_container label {
         font-family: 'Larsseit-Light';
         font-size: 18px;
         padding: 37px 0 25px 0;
     }       
-    .right_container {
+    .report_container {
         height: 60%;
     }
-    .right_container p {
+    .report_container p {
         height: 12%;
         font-size: 18px;
     }
-    .right_container h1 {
+    .report_container h1 {
         margin-top: 30px;
         font-size: 18px!important;
     }
-    .right_container h2 {
+    .report_container h2 {
         width: 96%;
         margin: 0 2% 0 2%;
         font-size: 18px!important;
     }
-    .right_container h3 {
+    .report_container h3 {
         margin: 20px 2% 0 2%;
         font-size: 18px!important;
     }
-    .right_container h4 {
+    .report_container h4 {
         margin: 20px 5% 0 5%;
         font-size: 18px!important;
     }
@@ -1188,7 +1418,7 @@ ol {
 
 
 @media only screen and (max-width: 550px) {
-    .left_container img {
+    .upload_container img {
         object-fit: cover;
     }
 }
