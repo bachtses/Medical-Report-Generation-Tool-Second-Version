@@ -61,38 +61,53 @@
             <div class="just_another_border">
                 <img src="images/incisive-background.jpg" alt="icon">
             </div>
-            <!-- all work container  -->
+             <!-- all work container  -->
             <div class="all_work_container" id="all_work_container">
-                <!-- left container  -->
-                <div class="left_container" id="left_container">
-                    <!-- upload DICOM Image -->
-                    <div class="image_container" id="idImage">
-                        <img id="initial_image_display" src="https://gitcdn.link/cdn/bachtses/Medical-Report-Generation-Tool-First-Prototype/main/images/initial_image.png">
-                    </div> 
-                    <!-- upload Button -->                
-                    <label for="files_upload" id="btnn"><i class='fa fa-camera'></i> &nbsp; Upload Medical Image</label>
-                    <input disabled type="file" id="files_upload" onchange="showFiles(event)" accept=".dcm , .jpeg , .jpg , .png"> 
-                </div> <!-- end of left container  -->
-                <!-- menu container  -->
-                <div class="menu_options_container" id="menu_options_container">
-                    <p id="menu_options_container_p" >Please select AI service </p> 
+        
+                <div class="menuoptions_container" id="menuoptions_container">
+                    <p id="menuoptions_container_p" >Please select a Cancer type </p> 
                     <div class="cancer_types_dropdown" id="cancer_types_dropdown">
                         <a onclick="cancertypeSelection('Breast')"><img src="images/breast-cancer.png" alt="icon"> Breast Cancer</a>
                         <a onclick="cancertypeSelection('Prostate')"><img src="images/prostate-cancer.png" alt="icon"> Prostate Cancer</a>
                         <a onclick="cancertypeSelection('Lung')"><img src="images/lung-cancer.png" alt="icon"> Lung Cancer</a>
                         <a onclick="cancertypeSelection('Colorectal')" style="border-bottom: none"><img src="images/colorectal-cancer.png" alt="icon"> Colorectal Cancer</a>
                     </div>
-                    <div class="modalities_dropdown" id="modalities_dropdown">
-                        <a onclick="modalitySelection('MRI')">MRI</a>
-                        <a onclick="modalitySelection('CT')">CT</a>
-                        <a onclick="modalitySelection('Mammography')">Mammography</a>
-                        <a onclick="modalitySelection('Xray')">X-Ray</a>
-                        <a onclick="modalitySelection('PetCt')">PET/CT</a>
-                        <a onclick="modalitySelection('Ultrasound')" style="border-bottom: none">Ultrasound</a>
+                </div> 
+
+                <div class="notifications_container" id="notifications_container">
+                    <div id="divModelDownloadFraction"> 
+                        <div id="progress_bar_container">
+                            <div id="progress_bar"></div>
+                        </div>  
+                        AI models downloading... 
+                    </div> 
+                </div> 
+                
+                <div class="upload_container" id="upload_container">
+                    <div class="upload_area" id="upload_area">
+                        <div class="upload_subcontainer" id="upload_subcontainer">
+                            <!-- upload DICOM Image -->
+                            <div class="image_container" id="idImage">
+                                <img id="initial_image_display" src="https://gitcdn.link/cdn/bachtses/Medical-Report-Generation-Tool-First-Prototype/main/images/initial_image.png">
+                            </div>    
+                            <h1>Image preview</h1>     
+                        </div> 
                     </div>
-                </div> <!-- end of menu container  -->
-                <!-- right container  -->
-                <div class="right_container" id="right_container">
+                    <div class="instructions_area" id="instructions_area">
+                        <h1> Medical report for lung cancer requires X-RAY scan, CT scan and PET-CT scan.</h1>
+                        <h2 id="instructions_area_h2" ></h2> 
+
+                        <!-- upload Button -->    
+                        <input type="file" id="files_upload" onchange="showFiles(event)" accept=".dcm , .jpeg , .jpg , .png"> 
+                        <label for="files_upload" onclick="buttonClicked('lungxray')"><i class='fa fa-camera'></i> &nbsp; X-Ray scan</label>
+                        <label for="files_upload" onclick="buttonClicked('lungct')"><i class='fa fa-camera'></i> &nbsp; CT scan</label>
+
+                        <a class='upload_buttons' onclick='getMedicalreport()'> Get Medical Report</a>
+                    </div>
+                </div> 
+           
+
+                <div class="report_container" id="report_container">
                     <button id="export_button" class="export_button" type="button" onClick="DownloadScreenshotPDF();" >
                         <!--<i class="fa fa-file-pdf-o" aria-hidden="true"></i>-->
                         <i class="fa fa-download" aria-hidden="true"></i>
@@ -100,24 +115,13 @@
                     <button id="textedit_button" class="textedit_button" type="button" onClick="MakeTextEditable();" >
                         <i class="fa fa-pencil" aria-hidden="true"></i>
                     </button>  
-
                     <div class="results" id="results">
                         <!-- Results Box -->
                         <p id="summary_title"></p>  
                         <h1 id="image_name"></h1>
                         <h2 id="image_modality"></h2>
                         <h3 id="findings"></h3>    
-
-                        <div id="divModelDownloadFraction"> 
-                            <div id="progress_bar_container">
-                                <div id="progress_bar"></div>
-                            </div>  
-                            AI models downloading... 
-                        </div>
-
-                        <h4 id="prediction_list" contenteditable="false">   
-                        </h4>
-                         
+                        <h4 id="prediction_list" contenteditable="false">    </h4>
                         <div class="gridrow" id="gridrow1"></div>
                         <div class="gridrow" id="gridrow2"></div>
                         <div class="gridrow" id="gridrow3"></div>
@@ -128,6 +132,7 @@
             
                 </div> <!-- end of right container  -->
             </div> <!-- end of all work container  -->
+
 
             <!--<canvas id="testCanvas"></canvas>-->
         </div> <!-- end of sitecontainer -->
