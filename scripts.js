@@ -14,14 +14,25 @@ async function loadmodelsFunction(cancer_type_selected){
 	}
 
 	if (cancer_type_selected == 'Lung') {
+			console.log("downloading...")
 			var progressgraphic = document.getElementById("progress_bar");
 			progressgraphic.style.width = "0%";
-			model_five_diseases = await tf.loadLayersModel('https://raw.githubusercontent.com/bachtses/Medical-Report-Generation-Tool-First-Prototype/main/models/X-Ray_5_Diseases_Classification/model.json', {
+
+			model_lung_hnh = await tf.loadLayersModel('https://raw.githubusercontent.com/bachtses/Medical-Report-Generation-Tool-First-Prototype/main/models/X-Ray_Lung_Cancer_Classification/model.json', {
+				onProgress: function (fraction) {
+					//console.log(Math.round(100*fraction))
+					if (fraction == 1) {
+						console.log("downloaded : Lung Healthy-Non Healthy model")
+						progressgraphic.style.width = "33%";
+					}
+				}
+			});	
+			model_lung_tnm = await tf.loadLayersModel('https://raw.githubusercontent.com/bachtses/Medical-Report-Generation-Tool-First-Prototype/main/models/X-Ray_5_Diseases_Classification/model.json', {
 			onProgress: function (fraction) {
 				//console.log(Math.round(100*fraction))
 				if (fraction == 1) {
-					console.log("MODEL DOWNLOADED!: Five Diseases model")
-					progressgraphic.style.width = "33%";
+					console.log("downloaded : TNM staging model")
+					progressgraphic.style.width = "66%";
 				}
 			}
 			});
@@ -29,25 +40,17 @@ async function loadmodelsFunction(cancer_type_selected){
 				onProgress: function (fraction) {
 					//console.log(Math.round(100*fraction))
 					if (fraction == 1) {
-						console.log("MODEL DOWNLOADED!: Pneumonia model")
-						progressgraphic.style.width = "66%";
-					}
-				}
-			});
-			model_lung_cancer = await tf.loadLayersModel('https://raw.githubusercontent.com/bachtses/Medical-Report-Generation-Tool-First-Prototype/main/models/X-Ray_Lung_Cancer_Classification/model.json', {
-				onProgress: function (fraction) {
-					//console.log(Math.round(100*fraction))
-					if (fraction == 1) {
-						console.log("MODEL DOWNLOADED!: Lung Cancer model")
+						console.log("downloaded : Pneumonia model")
 						progressgraphic.style.width = "99%";
 					}
 				}
-			});	
+			});
+			
 			//model_nature = await tf.loadLayersModel('https://raw.githubusercontent.com/bachtses/Chest_X-Ray_Medical_Report_Web_App/main/models/X-Ray_Nature_Classification/model.json');
 			//console.log("MODEL DOWNLOADED!: Nature");
 
 			document.getElementById("divModelDownloadFraction").style.marginTop = "22%";
-			document.getElementById("divModelDownloadFraction").innerHTML = "The required Lung Cancer AI models have been downloaded succesfully: <br><br>Lung X-ray Classification model<br>Lung CT Segmentation model<br>Lung Metastasis model<br>Lung TNM Staging model<br><br><h1 style='font-size:20px;'>Please proceed to the image upload</h1><br> <a class='proceed_button' onclick='uploadContainer()'><i class='fa-solid fa-angle-right'></i>  Proceed</a>";
+			document.getElementById("divModelDownloadFraction").innerHTML = "The required AI models for Lung Cancer have been downloaded succesfully: <br><br>Lung X-ray Classification model<br>Lung CT Segmentation model<br>Lung Metastasis model<br>Lung TNM Staging model<br><br><h1 style='font-size:20px;'>Please proceed to the image upload</h1><br> <a class='proceed_button' onclick='uploadContainer()'><i class='fa-solid fa-angle-right'></i>  Proceed</a>";
 	
 	}
 
@@ -66,13 +69,11 @@ async function loadmodelsFunction(cancer_type_selected){
 // ### MENU
 //#################################################################################
 let cancer_type_selected = null;
-let modality_selected = null;
+
 async function cancertypeSelection(cancertypeselection) {
 	cancer_type_selected = cancertypeselection;
-	$("#menuoptions_container_p").replaceWith(`<p id="menuoptions_container_p" > AI service for: ${cancer_type_selected} Cancer <br> Please select an imaging modality </p>`);
 	document.getElementById("menuoptions_container").style.display = "none";
 	document.getElementById("notifications_container").style.display = "inline";
-
 	await loadmodelsFunction(cancer_type_selected);
 }
 
@@ -114,17 +115,18 @@ var clicked_button_value = null
 
 async function buttonClicked(value) {
 	clicked_button_value = value;
-	//console.log("CLICKED BUTTON VALUE: ", clicked_button_value)
+	console.log("\n\nBUTTON CLICKED : ", clicked_button_value)
 }
 
 
 async function showFiles(event) {
-	console.log("Clicked value: ", clicked_button_value)
+	var allowed_extensions_for_dicom_formats = new Array("dcm");
+	var allowed_extensions_for_other_formats = new Array("jpeg","jpg","png");
+	console.log("CLICKED VALUE : ", clicked_button_value)
 
 	// read the file from the user
     let file = document.querySelector('input[type=file]').files[0];
-	console.log("\n\n\n\n\n\n\NEW UPLOADED FILE: \n\n", file)
-	console.log("\n\n")
+	console.log("\nNEW UPLOADED FILE: \n", file)
 	var fileName = file.name;
 	var file_extension = fileName.split('.').pop().toLowerCase(); 
  
@@ -139,8 +141,8 @@ async function showFiles(event) {
 			const viewport = cornerstone.getDefaultViewportForImage(element, image);
 			cornerstone.displayImage(element, image, viewport);
 		});
-
 		imagesPreprocessor(clicked_button_value);
+		
 	}else if (allowed_extensions_for_other_formats.includes(file_extension)){
 		$(".cornerstone-canvas").fadeOut("fast");
 		$("#initial_image_display").fadeIn("fast");
@@ -148,7 +150,7 @@ async function showFiles(event) {
 		// An empty img element
 		let demoImage = document.getElementById('initial_image_display');
 		console.log("new image: ", demoImage)
-		console.log("\n\n")
+
 		// read the file from the user
 		let file = document.querySelector('input[type=file]').files[0];
 		
@@ -169,6 +171,7 @@ async function showFiles(event) {
 //#################################################################################
 var image_lung_xray = null;
 var image_lung_ct = null;
+var image_lung_petct = null;
 
 async function imagesPreprocessor(clicked_button_value) {
 
@@ -182,6 +185,28 @@ async function imagesPreprocessor(clicked_button_value) {
 	}
 	//console.log("img_: ", img_);
 
+
+
+
+
+
+
+	var canvas = document.createElement('canvas');
+	var context = canvas.getContext('2d');
+	var img = img_;
+	canvas.width = img.width;
+	canvas.height = img.height;
+	context.drawImage(img, 0, 0 );
+	var myData = context.getImageData(0, 0, img.width, img.height);
+	console.log("myData: ", myData)
+
+
+
+
+
+
+
+
 	if (clicked_button_value == "lungxray"){ 
 		image_lung_xray = img_;
 		//console.log("uploaded image: ", image_lung_xray);
@@ -190,18 +215,23 @@ async function imagesPreprocessor(clicked_button_value) {
 		image_lung_ct = img_;
 		//console.log("uploaded image: ", image_lung_ct);
 		//console.log("uploaded image stored in variable: image_lung_ct ");
+	}	else if(clicked_button_value == "lungpetct"){
+		image_lung_petct = img_;
+		//console.log("uploaded image: ", image_lung_petct);
+		//console.log("uploaded image stored in variable: image_lung_petct ");
 	}
 }
 
 async function getMedicalreport() {
-	console.log("\n image_lung_xray:",image_lung_xray, "\n image_lung_ct: ", image_lung_ct);
+	console.log("\n\n\nTOTAL UPLOADED IMAGES : ")
+	console.log("\nimage_lung_xray:",image_lung_xray, "\nimage_lung_ct: ", image_lung_ct, "\nimage_lung_petct: ", image_lung_petct);
 	
 	document.getElementById("notifications_container").style.display = "none";
 	document.getElementById("upload_container").style.display = "none";
 	document.getElementById("report_container").style.display = "block";
 
 
-	predict(image_lung_xray, image_lung_ct);
+	predict(image_lung_xray, image_lung_ct, image_lung_petct);
 
 }
 
@@ -213,30 +243,37 @@ async function getMedicalreport() {
 var fileName = null;
 
 
-async function predict(image_lung_xray, image_lung_ct){
-
-	console.log("\n\n")
+async function predict(image_lung_xray, image_lung_ct, image_lung_petct){
+	
+	console.log("\n\n\nSTART RUNNING THE MODELS")
+	var modalities_uploaded = '';
 
 	if (image_lung_xray !== null) {
-		console.log("run the models for:  image_lung_xray")
+		console.log("running for:  image_lung_xray")
+		modalities_uploaded += 'X-Ray ';
 
-		// Pre-process the image
+		// _____________________  PREPROCESS THE IMAGES  ______________________  
+		// model lungcancer classification h/nh
+		let tensor_lung_hnh = tf.browser.fromPixels(image_lung_xray)
+		.resizeNearestNeighbor([128,128]) // change the image size here
+		.toFloat()
+		.div(tf.scalar(255.0))
+		.expandDims();
+		console.log("input for lungcancer_hnh model: ", tensor_lung_hnh.shape)
+
 		// model five diseases classification
-		let tensor_5_diseases = tf.browser.fromPixels(image_lung_xray)
+		let tensor_lung_tnm = tf.browser.fromPixels(image_lung_xray)
 		.resizeNearestNeighbor([224,224]) // change the image size here
 		.toFloat()
 		.div(tf.scalar(255.0))
 		.expandDims();
+		console.log("input for lungcancer_tnm model: ", tensor_lung_tnm.shape)
+
+
 		// model pneumonia classification
 		let tensor_pneumonia = tf.browser.fromPixels(image_lung_xray)
 		.resizeNearestNeighbor([200,200]) // change the image size here
 		.toFloat()
-		.expandDims();
-		// model lungcancer classification
-		let tensor_lungcancer = tf.browser.fromPixels(image_lung_xray)
-		.resizeNearestNeighbor([128,128]) // change the image size here
-		.toFloat()
-		.div(tf.scalar(255.0))
 		.expandDims();
 
 		// model nature classification ---------->  PYTORCH MODEL
@@ -250,11 +287,7 @@ async function predict(image_lung_xray, image_lung_ct){
 		//tensor_nature = tf.expandDims(tensor_nature);
 
 
-		console.log("\n")
-		console.log("inputs for each model:")
-		console.log(tensor_5_diseases.shape)
 		console.log(tensor_pneumonia.shape)
-		console.log(tensor_lungcancer.shape)
 		//console.log(tensor_nature.shape)
 
 		document.getElementById("divModelDownloadFraction").style.display = "none";
@@ -263,83 +296,100 @@ async function predict(image_lung_xray, image_lung_ct){
 		console.log("\n")
 
 
-		let predictions_five_diseases = await model_five_diseases.predict(tensor_5_diseases).data(); //model disease predictions
-		
+
+		// _____________________  PERFORM PREDICTIONS  ______________________     
+		let predictions_lung_hnh = await model_lung_hnh.predict(tensor_lung_hnh).data(); //model lung healthy - non healthy predictions
+		predictions_lung_hnh[1] = 1 - predictions_lung_hnh[0];
+		let predictions_lung_tnm = await model_lung_tnm.predict(tensor_lung_tnm).data(); //model lung tnm staging predictions
+		predictions_lung_tnm = [1, 1, 0]	      //THIS IS AN EXAMPLE FOR DEMONSTRATION PURPOSES! TO BE DELETED!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 		let predictions_pneumonia = await model_pneumonia.predict(tensor_pneumonia).data(); //model pneumonia predictions
 		predictions_pneumonia[1] = 1 - predictions_pneumonia[0];
-		
-		let predictions_lungcancer = await model_lung_cancer.predict(tensor_lungcancer).data(); //model lungcancer predictions
-		predictions_lungcancer[1] = 1 - predictions_lungcancer[0]; 
-
+	
 		//let predictions_nature = await model_nature.predict(tensor_nature).data(); //model nature classification
 
 
-		var LABELS_five_diseases = ['Atelectasis', 'Cardiomegaly', 'Consolidation', 'Edema', 'Pleural Effusion'];
-		var LABELS_pneumonia = ['Metastasis M1', 'No Metastasis M0'];
-		var LABELS_lungcancer = ['Benign', 'Malignant'];
-
-		let RESULTS_five_diseases = Array.from(predictions_five_diseases)  //i.e. const RESULTS = ["0", "0", "1", "1", "1"]
-		RESULTS_five_diseases = RESULTS_five_diseases.map(function(each_element){
+		// _____________________  DEFINE LABELS  ______________________ 
+		var LABELS_lung_hnh = ['Healthy [H]', 'Non Healthy [NH]'];
+		let RESULTS_lung_hnh = Array.from(predictions_lung_hnh)
+		RESULTS_lung_hnh = RESULTS_lung_hnh.map(function(each_element){
 			return Number(each_element.toFixed(3));
 		});
+		console.log("predictions lung healthy-non healthy:\n"+ RESULTS_lung_hnh)
 
+		var LABELS_lung_tnm = ['Size [T]', 'Nodes invasion [N]', 'Metastasis [M]'];		
+		let RESULTS_lung_tnm = Array.from(predictions_lung_tnm)  //i.e. const RESULTS = ["0", "0", "1"]
+		RESULTS_lung_tnm = RESULTS_lung_tnm.map(function(each_element){
+			return Number(each_element.toFixed(3));
+		});
+		console.log("predictions TNM staging:\n"+ RESULTS_lung_tnm)
+
+		var LABELS_pneumonia = ['Metastasis [M1]', 'No Metastasis [M0]'];
 		let RESULTS_pneumonia = Array.from(predictions_pneumonia)
 		RESULTS_pneumonia = RESULTS_pneumonia.map(function(each_element){
 			return Number(each_element.toFixed(3));
 		});
-
-		let RESULTS_lungcancer = Array.from(predictions_lungcancer)
-		RESULTS_lungcancer = RESULTS_lungcancer.map(function(each_element){
-			return Number(each_element.toFixed(3));
-		});
-
-		console.log("predictions five diseases:\n"+ RESULTS_five_diseases)
 		console.log("predictions pneumonia:\n"+ RESULTS_pneumonia)
-		console.log("predictions lung cancer:\n"+ RESULTS_lungcancer)
 		//console.log("predictions nature:\n"+ predictions_nature)
-
 		
-		// Construct the pre-generated templates
-		var text = '';
+		// _____________________  CONSTRUCT THE SENTENCES  ______________________ 
+		//Healthy - Non Healthy
 		var found_a_disease = 0;
-		var predefined_sentences = [['There are no signs of atelectasis. ', 'There are signs of atelectasis. '],
-		['The heart size is within normal limits and cardiac silhouette is normal. ', 'The cardiac silhouette is enlarged. '],
-		['No focal consolidation. ', 'There is focal consolidation. '],
-		['No typical findings of pulmonary edema. ', 'Pulmonary edema is seen. '],
-		['No pleural effusion. ', 'Pleural effusion is seen. ']];
-		for (let i = 0; i < LABELS_five_diseases.length; i++) {
-			if (RESULTS_five_diseases[i] >= 0.5) {
-				text += predefined_sentences[i][1];
-				found_a_disease = 1;
-			}
-			else {
-				text += predefined_sentences[i][0];
-			}
+		var text_lung_hnh = '';
+		if (predictions_lung_hnh[0] > predictions_lung_hnh[1]) {
+			text_lung_hnh = 'The lungs appear to be healthy without any abnormal mass or nodule and also with no any oncological findings.'
 		}
+		else {
+			text_lung_hnh = 'The lungs appear to contain oncological findings, specifically lung tumor with an abnormal mass or nodule.'
+			found_a_disease = 1;
+		}
+		var text_clear_report = '';
+		if (found_a_disease == 0) {
+			text_clear_report = 'Overall, there is no evidence of an active disease and the lungs are clear.'
+		}
+
+		//TNM staging
+
+		//T size
+		var text_lung_T = '';
+		var predefined_sentences_T = ['T0', 'T1 3cm or smaller and contained within the lung', 'T2 '];
+		if (RESULTS_lung_tnm[0] <= 0.5) {
+			text_lung_T += predefined_sentences_T[0];
+		}
+		else {
+			text_lung_T += predefined_sentences_T[1];
+		}
+
+		//N nodes invasion
+		var text_lung_N = '';
+		var predefined_sentences_N = ['N0','N1 There are cancer cells in lymph nodes within the lung or in lymph nodes in the area where the lungs join the airway (the hilum)', 'N2 There is cancer in lymph nodes: in the centre of the chest (mediastinum) on the same side as the affected lung or just under where the windpipe branches off to each lung'];
+		if (RESULTS_lung_tnm[1] <= 0.5) {
+			text_lung_N += predefined_sentences_N[0];
+		}
+		else {
+			text_lung_N += predefined_sentences_N[1];
+		}
+
+		//M metastasis
+		var text_lung_M = '';
+		var predefined_sentences_M = ['M0 the cancer has not spread to another lobe of the lung or any other part of the body', 'M1 the cancer has spread to other areas of the body'];
+		if (RESULTS_lung_tnm[2] <= 0.5) {
+			text_lung_M += predefined_sentences_M[0];
+		}
+		else {
+			text_lung_M += predefined_sentences_M[1];
+		}
+		
 
 		var text_pneumonia = '';
 		if (predictions_pneumonia[0] > predictions_pneumonia[1]) {
-			text_pneumonia = 'in terms of metastasis the cancer has spread to other areas of the body'
+			text_pneumonia = 'test111'
 			found_a_disease = 1;
 		}
 		else {
-			text_pneumonia = 'in terms of metastasis the cancer has not spread to another lobe of the lung or any other part of the body'
+			text_pneumonia = 'test11'
 		}
 
-		var text_lungcancer = '';
-		if (predictions_lungcancer[0] > predictions_lungcancer[1]) {
-			text_lungcancer = 'benign lung tumor without any abnormal mass or nodule.'
-		}
-		else {
-			text_lungcancer = 'malignant lung tumor with an abnormal mass or nodule.'
-			found_a_disease = 1;
-		}
-
-		var text_clear_report = '';
-		if (found_a_disease == 0) {
-			text_clear_report = 'Overall, there is no evidence of active disease and the lungs are clear.'
-		}
-
+		
 		var slow_velocity = 500;
 
 		// Clear the previous session and display the results of medical report
@@ -357,7 +407,7 @@ async function predict(image_lung_xray, image_lung_ct){
 		$('#image_modality').fadeOut(slow_velocity, function(){
 			$("#image_modality").hide();
 			var todayDate = new Date().toISOString().slice(0, 10);
-			$("#image_modality").replaceWith(`<h2>Imaging Modality: ${modality_selected} &nbsp; Location: Chest/Thorax &nbsp; Date: ${todayDate}</h2>`);
+			$("#image_modality").replaceWith(`<h2>Imaging Modality:  &nbsp; Location: Chest/Thorax &nbsp; Date: ${todayDate}</h2>`);
 			$('#image_modality').fadeIn(slow_velocity);
 		});
 		$('#findings').fadeOut(slow_velocity, function(){
@@ -367,22 +417,22 @@ async function predict(image_lung_xray, image_lung_ct){
 		});
 		$('#gridrow1').fadeOut(slow_velocity, function(){
 			$("#gridrow1").hide();
-			$("#gridrow1").replaceWith(`<div class="gridrow" id="gridrow1" style="border-bottom: 1px solid #363634;"><li>${LABELS_lungcancer[0]}</li><li>${LABELS_lungcancer[1]}</li></div>`);
+			$("#gridrow1").replaceWith(`<div class="gridrow" id="gridrow1" style="border-bottom: 1px solid #363634;"><li>${LABELS_lung_hnh[0]}</li><li>${LABELS_lung_hnh[1]}</li></div>`);
 			$('#gridrow1').fadeIn(slow_velocity);
 		});
 		$('#gridrow2').fadeOut(slow_velocity, function(){
 			$("#gridrow2").hide();
-			$("#gridrow2").replaceWith(`<div class="gridrow" id="gridrow2"><li>${RESULTS_lungcancer[0]}</li><li>${RESULTS_lungcancer[1]}</li></div>`);
+			$("#gridrow2").replaceWith(`<div class="gridrow" id="gridrow2"><li>${RESULTS_lung_hnh[0]}</li><li>${RESULTS_lung_hnh[1]}</li></div>`);
 			$('#gridrow2').fadeIn(slow_velocity);
 		});
 		$('#gridrow3').fadeOut(slow_velocity, function(){
 			$("#gridrow3").hide();
-			$("#gridrow3").replaceWith(`<div class="gridrow" id="gridrow3" style="border-bottom: 1px solid #363634;"><li>${LABELS_five_diseases[0]}</li><li>${LABELS_five_diseases[1]}</li><li>${LABELS_five_diseases[2]}</li><li>${LABELS_five_diseases[3]}</li><li>${LABELS_five_diseases[4]}</li></div>`);
+			$("#gridrow3").replaceWith(`<div class="gridrow" id="gridrow3" style="border-bottom: 1px solid #363634;"><li>${LABELS_lung_tnm[0]}</li><li>${LABELS_lung_tnm[1]}</li><li>${LABELS_lung_tnm[2]}</li></div>`);
 			$('#gridrow3').fadeIn(slow_velocity);
 		});
 		$('#gridrow4').fadeOut(slow_velocity, function(){
 			$("#gridrow4").hide();
-			$("#gridrow4").replaceWith(`<div class="gridrow" id="gridrow4"><li>${RESULTS_five_diseases[0]}</li><li>${RESULTS_five_diseases[1]}</li><li>${RESULTS_five_diseases[2]}</li><li>${RESULTS_five_diseases[3]}</li><li>${RESULTS_five_diseases[4]}</li></div>`);
+			$("#gridrow4").replaceWith(`<div class="gridrow" id="gridrow4"><li>T${RESULTS_lung_tnm[0]}</li><li>N${RESULTS_lung_tnm[1]}</li><li>M${RESULTS_lung_tnm[2]}</li></div>`);
 			$('#gridrow4').fadeIn(slow_velocity);
 		});
 		$('#gridrow5').fadeOut(slow_velocity, function(){
@@ -398,14 +448,24 @@ async function predict(image_lung_xray, image_lung_ct){
 
 		$('#prediction_list').fadeOut(slow_velocity, function(){
 			$("#prediction_list").hide();
-			$("#prediction_list").replaceWith(`<h4 id='prediction_list'>The patient of the scan ${fileName}, has been diagnosed with ${text_lungcancer} ${text} Also, ${text_pneumonia} . ${text_clear_report}</h4>`);
+			$("#prediction_list").replaceWith(`<h4 id='prediction_list'>The diagnostic report for the patient of the scan "${fileName}", summarizes the following details. Following the TNM staging system, the size of the tumour is ${text_lung_T}. ${text_lung_N}.  Also, in terms of metastasis ${text_lung_M}. ${text_clear_report}</h4>`);
 			$('#prediction_list').fadeIn(slow_velocity);
 		});
 	}
 
 
 	if (image_lung_ct !== null) {
-		console.log("run the models for: image_lung_ct")
+		console.log("running for: image_lung_ct")
+		modalities_uploaded += 'CT ';
+
+		console.log("image_lung_ct: ", image_lung_ct);		
+		
+		var ctx = image_lung_ct.getContext("2d");
+		ctx.fillStyle = "red";
+		ctx.fillRect(10, 10, 50, 50);
+
+
+  		var imgData = ctx.getImageData(10, 10, 50, 50);
 
 
 
@@ -414,6 +474,15 @@ async function predict(image_lung_xray, image_lung_ct){
 
 
 
+
+
+
+
+	}
+
+	if (image_lung_petct !== null) {
+		console.log("running for: image_lung_petct")
+		modalities_uploaded += 'PET/CT ';
 	}
 
 
@@ -421,7 +490,6 @@ async function predict(image_lung_xray, image_lung_ct){
 	//document.getElementById('testCanvas').getContext('2d').canvas.width = img_.width;
 	//document.getElementById('testCanvas').getContext('2d').canvas.height = img_.height;
 	//document.getElementById('testCanvas').getContext('2d').drawImage(img_, 0, 0, img_.width, img_.height);
-
 
 	//export button visible
 	$('.export_button').fadeIn(slow_velocity);
@@ -526,6 +594,10 @@ function DownloadScreenshotPDF() {
 	});
 	console.log("PDF exported")
 }
+
+
+
+
 
 
 
