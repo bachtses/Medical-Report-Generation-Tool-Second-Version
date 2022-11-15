@@ -120,8 +120,6 @@ async function buttonClicked(value) {
 
 
 async function showFiles(event) {
-	var allowed_extensions_for_dicom_formats = new Array("dcm");
-	var allowed_extensions_for_other_formats = new Array("jpeg","jpg","png");
 	console.log("CLICKED VALUE : ", clicked_button_value)
 
 	// read the file from the user
@@ -184,28 +182,6 @@ async function imagesPreprocessor(clicked_button_value) {
 		var img_ = document.getElementById('initial_image_display');
 	}
 	//console.log("img_: ", img_);
-
-
-
-
-
-
-
-	var canvas = document.createElement('canvas');
-	var context = canvas.getContext('2d');
-	var img = img_;
-	canvas.width = img.width;
-	canvas.height = img.height;
-	context.drawImage(img, 0, 0 );
-	var myData = context.getImageData(0, 0, img.width, img.height);
-	console.log("myData: ", myData)
-
-
-
-
-
-
-
 
 	if (clicked_button_value == "lungxray"){ 
 		image_lung_xray = img_;
@@ -459,23 +435,6 @@ async function predict(image_lung_xray, image_lung_ct, image_lung_petct){
 		modalities_uploaded += 'CT ';
 
 		console.log("image_lung_ct: ", image_lung_ct);		
-		
-		var ctx = image_lung_ct.getContext("2d");
-		ctx.fillStyle = "red";
-		ctx.fillRect(10, 10, 50, 50);
-
-
-  		var imgData = ctx.getImageData(10, 10, 50, 50);
-
-
-
-
-
-
-
-
-
-
 
 
 	}
