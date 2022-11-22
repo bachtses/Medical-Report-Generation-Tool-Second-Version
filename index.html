@@ -67,10 +67,10 @@
                 <div class="menuoptions_container" id="menuoptions_container">
                     <p id="menuoptions_container_p" >Please select a Cancer type </p> 
                     <div class="cancer_types_dropdown" id="cancer_types_dropdown">
-                        <a onclick="cancertypeSelection('Breast')"><img src="images/breast-cancer.png" alt="icon"> Breast Cancer</a>
-                        <a onclick="cancertypeSelection('Prostate')"><img src="images/prostate-cancer.png" alt="icon"> Prostate Cancer</a>
+                        <a><img src="images/breast-cancer.png" alt="icon"> Breast Cancer</a>
+                        <a><img src="images/prostate-cancer.png" alt="icon"> Prostate Cancer</a>
                         <a onclick="cancertypeSelection('Lung')"><img src="images/lung-cancer.png" alt="icon"> Lung Cancer</a>
-                        <a onclick="cancertypeSelection('Colorectal')" style="border-bottom: none"><img src="images/colorectal-cancer.png" alt="icon"> Colorectal Cancer</a>
+                        <a style="border-bottom: none"><img src="images/colorectal-cancer.png" alt="icon"> Colorectal Cancer</a>
                     </div>
                 </div> 
 
@@ -94,7 +94,7 @@
                         </div> 
                     </div>
                     <div class="instructions_area" id="instructions_area">
-                        <h1> Medical report for lung cancer requires X-RAY scan, CT scan and PET-CT scan.</h1>
+                        <h1 id="instructions_area_h1"> Medical report for lung cancer requires an X-ray scan, and optional a CT scan and PET-CT scan too.</h1>
                         <h2 id="instructions_area_h2" ></h2> 
 
                         <!-- upload Button -->    
@@ -103,11 +103,9 @@
                         <label for="files_upload" onclick="buttonClicked('lungct')"><i class='fa fa-camera'></i> &nbsp; CT scan</label>
                         <label for="files_upload" onclick="buttonClicked('lungpetct')"><i class='fa fa-camera'></i> &nbsp; PET/CT scan</label>
 
-                        <a class='upload_buttons' onclick='getMedicalreport()'> Get Medical Report</a>
+                        <a class='upload_buttons' onclick='uploadimagesChecker()'> Get Medical Report</a>
                     </div>
                 </div> 
-           
-
                 <div class="report_container" id="report_container">
                     <button id="export_button" class="export_button" type="button" onClick="DownloadScreenshotPDF();" >
                         <!--<i class="fa fa-file-pdf-o" aria-hidden="true"></i>-->
@@ -122,7 +120,7 @@
                         <h1 id="image_name"></h1>
                         <h2 id="image_modality"></h2>
                         <h3 id="findings"></h3>    
-                        <h4 id="prediction_list" contenteditable="false">    </h4>
+                        <h4 id="prediction_list" contenteditable="false">   </h4>
                         <div class="gridrow" id="gridrow1"></div>
                         <div class="gridrow" id="gridrow2"></div>
                         <div class="gridrow" id="gridrow3"></div>
@@ -130,7 +128,6 @@
                         <div class="gridrow" id="gridrow5"></div>
                         <div class="gridrow" id="gridrow6"></div>
                     </div>
-            
                 </div> <!-- end of right container  -->
             </div> <!-- end of all work container  -->
 
