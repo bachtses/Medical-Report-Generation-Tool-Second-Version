@@ -115,7 +115,7 @@ var clicked_button_value = null
 
 async function buttonClicked(value) {
 	clicked_button_value = value;
-	console.log("\n\nBUTTON CLICKED : ", clicked_button_value)
+	console.log("BUTTON CLICKED : ", clicked_button_value)
 }
 
 
@@ -124,7 +124,7 @@ async function showFiles(event) {
 
 	// read the file from the user
     let file = document.querySelector('input[type=file]').files[0];
-	console.log("\nNEW UPLOADED FILE: \n", file)
+	//console.log("\nNEW UPLOADED FILE: \n", file)
 	var fileName = file.name;
 	var file_extension = fileName.split('.').pop().toLowerCase(); 
  
@@ -147,7 +147,7 @@ async function showFiles(event) {
 
 		// An empty img element
 		let demoImage = document.getElementById('initial_image_display');
-		console.log("new image: ", demoImage)
+		//console.log("new image: ", demoImage)
 
 		// read the file from the user
 		let file = document.querySelector('input[type=file]').files[0];
@@ -200,14 +200,14 @@ async function imagesPreprocessor(clicked_button_value) {
 
 async function getMedicalreport() {
 	console.log("\n\n\nTOTAL UPLOADED IMAGES : ")
-	console.log("\nimage_lung_xray:",image_lung_xray, "\nimage_lung_ct: ", image_lung_ct, "\nimage_lung_petct: ", image_lung_petct);
+	console.log("image_lung_xray:",image_lung_xray, "\nimage_lung_ct: ", image_lung_ct, "\nimage_lung_petct: ", image_lung_petct);
+	console.log("\n\n\n")
 	
+	await predict(image_lung_xray, image_lung_ct, image_lung_petct);
+
 	document.getElementById("notifications_container").style.display = "none";
 	document.getElementById("upload_container").style.display = "none";
 	document.getElementById("report_container").style.display = "block";
-
-
-	predict(image_lung_xray, image_lung_ct, image_lung_petct);
 
 }
 
@@ -217,17 +217,23 @@ async function getMedicalreport() {
 // ### PREDICTIONS
 //#################################################################################
 var fileName = null;
+var slow_velocity = 500;
 
 
 async function predict(image_lung_xray, image_lung_ct, image_lung_petct){
-	
-	console.log("\n\n\nSTART RUNNING THE MODELS")
 	var modalities_uploaded = '';
+	var text_lung_hnh = '';
+	var text_lung_T = '';
+	var text_lung_N = '';
+	var text_lung_M = '';
+	var text_location = '';
+	var text_pneumonia = '';
+	var text_clear_report = '';
+
+
 
 	if (image_lung_xray !== null) {
-		console.log("running for:  image_lung_xray")
-		modalities_uploaded += 'X-Ray ';
-
+		modalities_uploaded += 'X-ray scan ';
 		// _____________________  PREPROCESS THE IMAGES  ______________________  
 		// model lungcancer classification h/nh
 		let tensor_lung_hnh = tf.browser.fromPixels(image_lung_xray)
@@ -245,12 +251,13 @@ async function predict(image_lung_xray, image_lung_ct, image_lung_petct){
 		.expandDims();
 		console.log("input for lungcancer_tnm model: ", tensor_lung_tnm.shape)
 
-
 		// model pneumonia classification
 		let tensor_pneumonia = tf.browser.fromPixels(image_lung_xray)
 		.resizeNearestNeighbor([200,200]) // change the image size here
 		.toFloat()
 		.expandDims();
+		console.log(tensor_pneumonia.shape)
+
 
 		// model nature classification ---------->  PYTORCH MODEL
 		//let tensor_nature = tf.browser.fromPixels(img_)
@@ -263,21 +270,20 @@ async function predict(image_lung_xray, image_lung_ct, image_lung_petct){
 		//tensor_nature = tf.expandDims(tensor_nature);
 
 
-		console.log(tensor_pneumonia.shape)
 		//console.log(tensor_nature.shape)
 
 		document.getElementById("divModelDownloadFraction").style.display = "none";
 		document.getElementById("divModelDownloadFraction").style.lineHeight = "0px";
 		document.getElementById("divModelDownloadFraction").style.height = "0px";
-		console.log("\n")
-
 
 
 		// _____________________  PERFORM PREDICTIONS  ______________________     
 		let predictions_lung_hnh = await model_lung_hnh.predict(tensor_lung_hnh).data(); //model lung healthy - non healthy predictions
 		predictions_lung_hnh[1] = 1 - predictions_lung_hnh[0];
+
 		let predictions_lung_tnm = await model_lung_tnm.predict(tensor_lung_tnm).data(); //model lung tnm staging predictions
 		predictions_lung_tnm = [1, 1, 0]	      //THIS IS AN EXAMPLE FOR DEMONSTRATION PURPOSES! TO BE DELETED!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 		let predictions_pneumonia = await model_pneumonia.predict(tensor_pneumonia).data(); //model pneumonia predictions
 		predictions_pneumonia[1] = 1 - predictions_pneumonia[0];
 	
@@ -310,15 +316,13 @@ async function predict(image_lung_xray, image_lung_ct, image_lung_petct){
 		// _____________________  CONSTRUCT THE SENTENCES  ______________________ 
 		//Healthy - Non Healthy
 		var found_a_disease = 0;
-		var text_lung_hnh = '';
 		if (predictions_lung_hnh[0] > predictions_lung_hnh[1]) {
 			text_lung_hnh = 'The lungs appear to be healthy without any abnormal mass or nodule and also with no any oncological findings.'
 		}
 		else {
-			text_lung_hnh = 'The lungs appear to contain oncological findings, specifically lung tumor with an abnormal mass or nodule.'
+			text_lung_hnh = 'The lungs appear to contain oncological findings for lung cancer with an abnormal mass or nodule.'
 			found_a_disease = 1;
 		}
-		var text_clear_report = '';
 		if (found_a_disease == 0) {
 			text_clear_report = 'Overall, there is no evidence of an active disease and the lungs are clear.'
 		}
@@ -326,124 +330,219 @@ async function predict(image_lung_xray, image_lung_ct, image_lung_petct){
 		//TNM staging
 
 		//T size
-		var text_lung_T = '';
-		var predefined_sentences_T = ['T0', 'T1 3cm or smaller and contained within the lung', 'T2 '];
+		var predefined_sentences_T = ['Following the TNM staging system, the size of the tumour is T0.', 'Following the TNM staging system, the size of the tumour is T1 3cm or smaller and contained within the lung.', 'T2. '];
 		if (RESULTS_lung_tnm[0] <= 0.5) {
 			text_lung_T += predefined_sentences_T[0];
-		}
-		else {
+		}else {
 			text_lung_T += predefined_sentences_T[1];
 		}
 
 		//N nodes invasion
-		var text_lung_N = '';
-		var predefined_sentences_N = ['N0','N1 There are cancer cells in lymph nodes within the lung or in lymph nodes in the area where the lungs join the airway (the hilum)', 'N2 There is cancer in lymph nodes: in the centre of the chest (mediastinum) on the same side as the affected lung or just under where the windpipe branches off to each lung'];
+		var predefined_sentences_N = ['N0','N1 There are cancer cells in lymph nodes within the lung or in lymph nodes in the area where the lungs join the airway (the hilum).', 'N2 There is cancer in lymph nodes: in the centre of the chest (mediastinum) on the same side as the affected lung or just under where the windpipe branches off to each lung.'];
 		if (RESULTS_lung_tnm[1] <= 0.5) {
 			text_lung_N += predefined_sentences_N[0];
-		}
-		else {
+		}else {
 			text_lung_N += predefined_sentences_N[1];
 		}
 
 		//M metastasis
-		var text_lung_M = '';
-		var predefined_sentences_M = ['M0 the cancer has not spread to another lobe of the lung or any other part of the body', 'M1 the cancer has spread to other areas of the body'];
+		var predefined_sentences_M = ['Also, in terms of metastasis M0 the cancer has not spread to another lobe of the lung or any other part of the body.', 'Also, in terms of metastasis M1 the cancer has spread to other areas of the body.'];
 		if (RESULTS_lung_tnm[2] <= 0.5) {
 			text_lung_M += predefined_sentences_M[0];
-		}
-		else {
+		}else {
 			text_lung_M += predefined_sentences_M[1];
 		}
-		
-
-		var text_pneumonia = '';
 		if (predictions_pneumonia[0] > predictions_pneumonia[1]) {
 			text_pneumonia = 'test111'
 			found_a_disease = 1;
-		}
-		else {
+		}else {
 			text_pneumonia = 'test11'
 		}
 
-		
-		var slow_velocity = 500;
-
-		// Clear the previous session and display the results of medical report
-		$('#summary_title').fadeOut(slow_velocity, function(){
-			$("#summary_title").hide();
-			$("#summary_title").replaceWith(`<p id="summary_title">Medical Report Summary</p>`);
-			$('#summary_title').fadeIn(slow_velocity);
-		}); 
-
-		$('#image_name').fadeOut(slow_velocity, function(){
-			$("#image_name").hide();
-			$("#image_name").replaceWith(`<h1 id="image_name">Uploaded Scan: ${fileName} </h1>`);
-			$('#image_name').fadeIn(slow_velocity);
-		});
-		$('#image_modality').fadeOut(slow_velocity, function(){
-			$("#image_modality").hide();
-			var todayDate = new Date().toISOString().slice(0, 10);
-			$("#image_modality").replaceWith(`<h2>Imaging Modality:  &nbsp; Location: Chest/Thorax &nbsp; Date: ${todayDate}</h2>`);
-			$('#image_modality').fadeIn(slow_velocity);
-		});
-		$('#findings').fadeOut(slow_velocity, function(){
+		$('#findings').fadeOut(slow_velocity, function() {
 			$("#findings").hide();
 			$("#findings").replaceWith(`<h3 id="findings" style="border-bottom: 1px solid #363634;">Findings</h3>`);
 			$('#findings').fadeIn(slow_velocity);
 		});
-		$('#gridrow1').fadeOut(slow_velocity, function(){
+		$('#gridrow1').fadeOut(slow_velocity, function() {
 			$("#gridrow1").hide();
 			$("#gridrow1").replaceWith(`<div class="gridrow" id="gridrow1" style="border-bottom: 1px solid #363634;"><li>${LABELS_lung_hnh[0]}</li><li>${LABELS_lung_hnh[1]}</li></div>`);
 			$('#gridrow1').fadeIn(slow_velocity);
 		});
-		$('#gridrow2').fadeOut(slow_velocity, function(){
+		$('#gridrow2').fadeOut(slow_velocity, function() {
 			$("#gridrow2").hide();
 			$("#gridrow2").replaceWith(`<div class="gridrow" id="gridrow2"><li>${RESULTS_lung_hnh[0]}</li><li>${RESULTS_lung_hnh[1]}</li></div>`);
 			$('#gridrow2').fadeIn(slow_velocity);
 		});
-		$('#gridrow3').fadeOut(slow_velocity, function(){
+		$('#gridrow3').fadeOut(slow_velocity, function() {
 			$("#gridrow3").hide();
 			$("#gridrow3").replaceWith(`<div class="gridrow" id="gridrow3" style="border-bottom: 1px solid #363634;"><li>${LABELS_lung_tnm[0]}</li><li>${LABELS_lung_tnm[1]}</li><li>${LABELS_lung_tnm[2]}</li></div>`);
 			$('#gridrow3').fadeIn(slow_velocity);
 		});
-		$('#gridrow4').fadeOut(slow_velocity, function(){
+		$('#gridrow4').fadeOut(slow_velocity, function() {
 			$("#gridrow4").hide();
 			$("#gridrow4").replaceWith(`<div class="gridrow" id="gridrow4"><li>T${RESULTS_lung_tnm[0]}</li><li>N${RESULTS_lung_tnm[1]}</li><li>M${RESULTS_lung_tnm[2]}</li></div>`);
 			$('#gridrow4').fadeIn(slow_velocity);
 		});
-		$('#gridrow5').fadeOut(slow_velocity, function(){
+		$('#gridrow5').fadeOut(slow_velocity, function() {
 			$("#gridrow5").hide();
 			$("#gridrow5").replaceWith(`<div class="gridrow" id="gridrow5" style="border-bottom: 1px solid #363634;"><li>${LABELS_pneumonia[0]}</li><li>${LABELS_pneumonia[1]}</li></div>`);
 			$('#gridrow5').fadeIn(slow_velocity);
 		});
-		$('#gridrow6').fadeOut(slow_velocity, function(){
+		$('#gridrow6').fadeOut(slow_velocity, function() {
 			$("#gridrow6").hide();
 			$("#gridrow6").replaceWith(`<div class="gridrow" id="gridrow6"><li>${RESULTS_pneumonia[0]}</li><li>${RESULTS_pneumonia[1]}</li></div>`);
 			$('#gridrow6').fadeIn(slow_velocity);
 		});
 
-		$('#prediction_list').fadeOut(slow_velocity, function(){
-			$("#prediction_list").hide();
-			$("#prediction_list").replaceWith(`<h4 id='prediction_list'>The diagnostic report for the patient of the scan "${fileName}", summarizes the following details. Following the TNM staging system, the size of the tumour is ${text_lung_T}. ${text_lung_N}.  Also, in terms of metastasis ${text_lung_M}. ${text_clear_report}</h4>`);
-			$('#prediction_list').fadeIn(slow_velocity);
-		});
 	}
 
 
 	if (image_lung_ct !== null) {
-		console.log("running for: image_lung_ct")
-		modalities_uploaded += 'CT ';
+		modalities_uploaded += 'CT scan';
+		console.log("image_lung_ct: ", image_lung_ct);	
+		var HEIGHT = 128;	
+		var WIDTH = 128;	
 
-		console.log("image_lung_ct: ", image_lung_ct);		
+		let image_lung_ct_tensor = tf.browser.fromPixels(image_lung_ct)
+		.resizeNearestNeighbor([HEIGHT, WIDTH]) 
+		.toFloat();
+		console.log("image_lung_ct_tensor: ")
+		//image_lung_ct_tensor.print()
+		console.log("image_lung_ct_tensor shape: ", image_lung_ct_tensor.shape)
+		var image_lung_ct_array = await image_lung_ct_tensor.array();
 
-
+		var interested_in_color_low_bound = [250, 250, 250]  // RGB code of ROI color!!!
+		var interested_in_color_up_bound = [255, 255, 255]   // RGB code of ROI color!!!
+		var all_pixels = HEIGHT * WIDTH;
+		var roi_pixels = 0;
+		var x_min = WIDTH-1;
+		var x_max = 0;
+		var y_min = HEIGHT-1;
+		var y_max = 0;
+		for (let y = 0; y < image_lung_ct_array.length; y++) {
+			for (let x = 0; x < image_lung_ct_array[y].length; x++) {
+				if ( between(image_lung_ct_array[y][x][0], interested_in_color_low_bound[0], interested_in_color_up_bound[0])  &&   between(image_lung_ct_array[y][x][1], interested_in_color_low_bound[1], interested_in_color_up_bound[1])   &&   between(image_lung_ct_array[y][x][2], interested_in_color_low_bound[2], interested_in_color_up_bound[2])  ){
+					roi_pixels += 1;
+					if (x < x_min) {x_min = x;}
+					if (x > x_max) {x_max = x;}
+					if (y < y_min) {y_min = y;}
+					if (y > y_max) {y_max = y;}
+				}
+			}
+		}
+		console.log("prediction location: ")
+		console.log("all_pixels: ", all_pixels)
+		console.log("roi_pixels: ", roi_pixels)	
+		if (x_min <= x_max && y_min <= y_max) {
+			var x_centerROI = (x_min + x_max)/2 ;
+			var y_centerROI = (y_min + y_max)/2 ;
+			console.log("The ROI region of the tumor can be found between:  ", "\n x-axis:", x_min,"-",x_max, "\n y-axis:", y_min,"-",y_max)
+			console.log("The center of ROI region is concentrated at: \n x-axis: ", x_centerROI,"\n y-axis: ", y_centerROI)
+			if (y_centerROI >= 0 && y_centerROI < (HEIGHT/3)) {
+				text_location += 'The location where the cancer is concentrated is at the upper lobe ';			
+			}
+			if (y_centerROI >= (HEIGHT/3) && y_centerROI <= (HEIGHT/3*2)) {
+				text_location += 'The location where the cancer is concentrated is at the middle lobe ';			
+			}
+			if (y_centerROI > (HEIGHT/3*2) && y_centerROI <= HEIGHT) {
+				text_location += 'The location where the cancer is concentrated is at the lower lobe ';			
+			}
+			if (x_centerROI >= 0 && x_centerROI < (WIDTH/2)) {
+				text_location += 'of the left lung.';			
+			}
+			if (x_centerROI >= (WIDTH/2) && x_centerROI <= WIDTH ) {
+				text_location += 'of the right lung.';			
+			}
+		}
 	}
 
 	if (image_lung_petct !== null) {
-		console.log("running for: image_lung_petct")
-		modalities_uploaded += 'PET/CT ';
+		modalities_uploaded += 'PET/CT scan ';
+		if (image_lung_ct == null) {
+			var HEIGHT = 128;	
+			var WIDTH = 128;	
+
+			let image_lung_petct_tensor = tf.browser.fromPixels(image_lung_petct)
+			.resizeNearestNeighbor([HEIGHT, WIDTH]) 
+			.toFloat();
+			console.log("image_lung_petct_tensor: ")
+			//image_lung_petct_tensor.print()
+			console.log("image_lung_petct_tensor shape: ", image_lung_petct_tensor.shape)
+			var image_lung_petct_array = await image_lung_petct_tensor.array();
+
+			var interested_in_color_low_bound = [250, 250, 250]  // RGB code of ROI color!!!
+			var interested_in_color_up_bound = [255, 255, 255]   // RGB code of ROI color!!!
+			var all_pixels = HEIGHT * WIDTH;
+			var roi_pixels = 0;
+			var x_min = WIDTH-1;
+			var x_max = 0;
+			var y_min = HEIGHT-1;
+			var y_max = 0;
+			for (let y = 0; y < image_lung_petct_array.length; y++) {
+				for (let x = 0; x < image_lung_petct_array[y].length; x++) {
+					if ( between(image_lung_petct_array[y][x][0], interested_in_color_low_bound[0], interested_in_color_up_bound[0])  &&   between(image_lung_petct_array[y][x][1], interested_in_color_low_bound[1], interested_in_color_up_bound[1])   &&   between(image_lung_petct_array[y][x][2], interested_in_color_low_bound[2], interested_in_color_up_bound[2])  ){
+						roi_pixels += 1;
+						if (x < x_min) {x_min = x;}
+						if (x > x_max) {x_max = x;}
+						if (y < y_min) {y_min = y;}
+						if (y > y_max) {y_max = y;}
+					}
+				}
+			}
+			console.log("prediction location: ")
+			console.log("all_pixels: ", all_pixels)
+			console.log("roi_pixels: ", roi_pixels)	
+			if (x_min <= x_max && y_min <= y_max) {
+				var x_centerROI = (x_min + x_max)/2 ;
+				var y_centerROI = (y_min + y_max)/2 ;
+				console.log("The ROI region of the tumor can be found between:  ", "\n x-axis:", x_min,"-",x_max, "\n y-axis:", y_min,"-",y_max)
+				console.log("The center of ROI region is concentrated at: \n x-axis: ", x_centerROI,"\n y-axis: ", y_centerROI)
+				if (y_centerROI >= 0 && y_centerROI < (HEIGHT/3)) {
+					text_location += 'The location where the cancer is concentrated is at the upper lobe ';			
+				}
+				if (y_centerROI >= (HEIGHT/3) && y_centerROI <= (HEIGHT/3*2)) {
+					text_location += 'The location where the cancer is concentrated is at the middle lobe ';			
+				}
+				if (y_centerROI > (HEIGHT/3*2) && y_centerROI <= HEIGHT) {
+					text_location += 'The location where the cancer is concentrated is at the lower lobe ';			
+				}
+				if (x_centerROI >= 0 && x_centerROI < (WIDTH/2)) {
+					text_location += 'of the left lung.';			
+				}
+				if (x_centerROI >= (WIDTH/2) && x_centerROI <= WIDTH ) {
+					text_location += 'of the right lung.';			
+				}
+			}
+		}
 	}
 
+
+	// _____________________  FINAL CONSTRUCTION OF LUNG REPORT  ______________________ 
+	// Clear the previous session and display the results of medical report
+	$('#summary_title').fadeOut(slow_velocity, function() {
+		$("#summary_title").hide();
+		$("#summary_title").replaceWith(`<p id="summary_title">Medical Report Summary</p>`);
+		$('#summary_title').fadeIn(slow_velocity);
+	}); 
+
+	$('#image_name').fadeOut(slow_velocity, function() {
+		$("#image_name").hide();
+		$("#image_name").replaceWith(`<h1 id="image_name">Uploaded Scan: ${fileName} </h1>`);
+		$('#image_name').fadeIn(slow_velocity);
+	});
+	$('#image_modality').fadeOut(slow_velocity, function() {
+		$("#image_modality").hide();
+		var todayDate = new Date().toISOString().slice(0, 10);
+		$("#image_modality").replaceWith(`<h2>Imaging Modality: ${modalities_uploaded} &nbsp; Location: Chest/Thorax &nbsp; Date: ${todayDate}</h2>`);
+		$('#image_modality').fadeIn(slow_velocity);
+	});
+
+	$('#prediction_list').fadeOut(slow_velocity, function(){
+		$("#prediction_list").hide();
+		$("#prediction_list").replaceWith(`<h4 id='prediction_list'>The diagnostic report for the patient of the scan "${fileName}", summarizing the uploaded exams and conclusions that arise from the AI models, suggests the following. ${text_lung_hnh} ${text_location} ${text_lung_T} ${text_lung_N} ${text_lung_M} ${text_clear_report}</h4>`);
+		$('#prediction_list').fadeIn(slow_velocity);
+	});
 
 
 	//document.getElementById('testCanvas').getContext('2d').canvas.width = img_.width;
@@ -558,6 +657,12 @@ function DownloadScreenshotPDF() {
 
 
 
+
+function between(x, min, max) {
+	return x >= min && x <= max;
+}
+  
+  
 
 
 
