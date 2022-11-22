@@ -669,7 +669,7 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
     letter-spacing: 0.5px;
     text-decoration: none;
     padding: 0;
-    padding-top: 60px;
+    padding-top: 40px;
     margin: 0;
     border: 0;
     background-color: #f8f8f8;
@@ -748,7 +748,7 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
     width: 304px;
     height: 75px;
     margin: auto;
-    margin-top: 107px;
+    margin-top: 60px;
     padding: 24px;
     border: 1px solid #363634;
     -webkit-touch-callout: none;
