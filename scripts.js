@@ -191,24 +191,34 @@ async function imagesPreprocessor(clicked_button_value) {
 		image_lung_ct = img_;
 		//console.log("uploaded image: ", image_lung_ct);
 		//console.log("uploaded image stored in variable: image_lung_ct ");
-	}	else if(clicked_button_value == "lungpetct"){
+	}else if(clicked_button_value == "lungpetct"){
 		image_lung_petct = img_;
 		//console.log("uploaded image: ", image_lung_petct);
 		//console.log("uploaded image stored in variable: image_lung_petct ");
 	}
 }
 
+
+async function uploadimagesChecker() {
+	if (image_lung_xray == null) {
+		$("#instructions_area_h1").replaceWith(`<h1 id="instructions_area_h1">X-ray scan is required.</h1>`);
+	}else{
+		$("#instructions_area_h1").replaceWith(`<h1 id="instructions_area_h1">Medical report is getting prepared.</h1>`);
+		getMedicalreport()
+	}
+}
+
+
 async function getMedicalreport() {
 	console.log("\n\n\nTOTAL UPLOADED IMAGES : ")
 	console.log("image_lung_xray:",image_lung_xray, "\nimage_lung_ct: ", image_lung_ct, "\nimage_lung_petct: ", image_lung_petct);
 	console.log("\n\n\n")
-	
+
 	await predict(image_lung_xray, image_lung_ct, image_lung_petct);
 
 	document.getElementById("notifications_container").style.display = "none";
 	document.getElementById("upload_container").style.display = "none";
 	document.getElementById("report_container").style.display = "block";
-
 }
 
 
@@ -292,7 +302,6 @@ async function predict(image_lung_xray, image_lung_ct, image_lung_petct){
 		
 		// _____________________  DEFINE SENTENCES  ______________________ 
 		//Healthy - Non Healthy
-		var found_a_disease = 0;
 		if (predictions_lung_hnh[0] > predictions_lung_hnh[1]) {
 			// _____________________  DEFINE SENTENCES  ______________________ 
 			text_lung_hnh = 'The lungs appear to be healthy without any abnormal mass or nodule and also with no any oncological findings.'
@@ -300,106 +309,107 @@ async function predict(image_lung_xray, image_lung_ct, image_lung_petct){
 		}else {
 			text_lung_hnh = 'The lungs appear to contain oncological findings for lung cancer with an abnormal mass or nodule.'
 
-			// _____________________  PERFORM PREDICTIONS  ______________________    
-			let predictions_lung_tnm = await model_lung_tnm.predict(tensor_lung_tnm).data(); //model lung tnm staging predictions
-			predictions_lung_tnm = [1, 1, 0]	      //THIS IS AN EXAMPLE FOR DEMONSTRATION PURPOSES! TO BE DELETED!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-			let predictions_pneumonia = await model_pneumonia.predict(tensor_pneumonia).data(); //model pneumonia predictions
-			predictions_pneumonia[1] = 1 - predictions_pneumonia[0];
-
-			// _____________________  DEFINE LABELS  ______________________ 
-			var LABELS_lung_tnm = ['Size [T]', 'Nodes invasion [N]', 'Metastasis [M]'];		
-			let RESULTS_lung_tnm = Array.from(predictions_lung_tnm)  //i.e. const RESULTS = ["0", "0", "1"]
-			RESULTS_lung_tnm = RESULTS_lung_tnm.map(function(each_element) {
-				return Number(each_element.toFixed(3));
-			});
-			console.log("predictions TNM staging:\n"+ RESULTS_lung_tnm)
-
-			var LABELS_pneumonia = ['Metastasis [M1]', 'No Metastasis [M0]'];
-			let RESULTS_pneumonia = Array.from(predictions_pneumonia)
-			RESULTS_pneumonia = RESULTS_pneumonia.map(function(each_element) {
-				return Number(each_element.toFixed(3));
-			});
-			console.log("predictions pneumonia:\n"+ RESULTS_pneumonia)
-	
-			// _____________________  DEFINE SENTENCES  ______________________ 
-			//TNM staging
-			//T size
-			var predefined_sentences_T = ['Following the TNM staging system, the size of the tumour is T0.', 'Following the TNM staging system, the size of the tumour is T1 3cm or smaller and contained within the lung.', 'T2. '];
-			if (RESULTS_lung_tnm[0] <= 0.5) {
-				text_lung_T += predefined_sentences_T[0];
-			}else {
-				text_lung_T += predefined_sentences_T[1];
-			}
-			//N nodes invasion
-			var predefined_sentences_N = ['N0','N1 There are cancer cells in lymph nodes within the lung or in lymph nodes in the area where the lungs join the airway (the hilum).', 'N2 There is cancer in lymph nodes: in the centre of the chest (mediastinum) on the same side as the affected lung or just under where the windpipe branches off to each lung.'];
-			if (RESULTS_lung_tnm[1] <= 0.5) {
-				text_lung_N += predefined_sentences_N[0];
-			}else {
-				text_lung_N += predefined_sentences_N[1];
-			}
-			//M metastasis
-			var predefined_sentences_M = ['Also, in terms of metastasis M0 the cancer has not spread to another lobe of the lung or any other part of the body.', 'Also, in terms of metastasis M1 the cancer has spread to other areas of the body.'];
-			if (RESULTS_lung_tnm[2] <= 0.5) {
-				text_lung_M += predefined_sentences_M[0];
-			}else {
-				text_lung_M += predefined_sentences_M[1];
-			}
-			if (predictions_pneumonia[0] > predictions_pneumonia[1]) {
-				text_pneumonia = 'test111'
-				found_a_disease = 1;
-			}else {
-				text_pneumonia = 'test11'
-			}
-
-			$('#findings').fadeOut(slow_velocity, function() {
-				$("#findings").hide();
-				$("#findings").replaceWith(`<h3 id="findings" style="border-bottom: 1px solid #363634;">Findings</h3>`);
-				$('#findings').fadeIn(slow_velocity);
-			});
-			$('#gridrow1').fadeOut(slow_velocity, function() {
-				$("#gridrow1").hide();
-				$("#gridrow1").replaceWith(`<div class="gridrow" id="gridrow1" style="border-bottom: 1px solid #363634;"><li>${LABELS_lung_hnh[0]}</li><li>${LABELS_lung_hnh[1]}</li></div>`);
-				$('#gridrow1').fadeIn(slow_velocity);
-			});
-			$('#gridrow2').fadeOut(slow_velocity, function() {
-				$("#gridrow2").hide();
-				$("#gridrow2").replaceWith(`<div class="gridrow" id="gridrow2"><li>${RESULTS_lung_hnh[0]}</li><li>${RESULTS_lung_hnh[1]}</li></div>`);
-				$('#gridrow2').fadeIn(slow_velocity);
-			});
-			$('#gridrow3').fadeOut(slow_velocity, function() {
-				$("#gridrow3").hide();
-				$("#gridrow3").replaceWith(`<div class="gridrow" id="gridrow3" style="border-bottom: 1px solid #363634;"><li>${LABELS_lung_tnm[0]}</li><li>${LABELS_lung_tnm[1]}</li><li>${LABELS_lung_tnm[2]}</li></div>`);
-				$('#gridrow3').fadeIn(slow_velocity);
-			});
-			$('#gridrow4').fadeOut(slow_velocity, function() {
-				$("#gridrow4").hide();
-				$("#gridrow4").replaceWith(`<div class="gridrow" id="gridrow4"><li>T${RESULTS_lung_tnm[0]}</li><li>N${RESULTS_lung_tnm[1]}</li><li>M${RESULTS_lung_tnm[2]}</li></div>`);
-				$('#gridrow4').fadeIn(slow_velocity);
-			});
-			$('#gridrow5').fadeOut(slow_velocity, function() {
-				$("#gridrow5").hide();
-				$("#gridrow5").replaceWith(`<div class="gridrow" id="gridrow5" style="border-bottom: 1px solid #363634;"><li>${LABELS_pneumonia[0]}</li><li>${LABELS_pneumonia[1]}</li></div>`);
-				$('#gridrow5').fadeIn(slow_velocity);
-			});
-			$('#gridrow6').fadeOut(slow_velocity, function() {
-				$("#gridrow6").hide();
-				$("#gridrow6").replaceWith(`<div class="gridrow" id="gridrow6"><li>${RESULTS_pneumonia[0]}</li><li>${RESULTS_pneumonia[1]}</li></div>`);
-				$('#gridrow6').fadeIn(slow_velocity);
-			});
-
-
 			if (image_lung_ct !== null) {
 				modalities_uploaded += 'CT scan';
 				console.log("image_lung_ct: ", image_lung_ct);	
+
+
+				// _____________________  PERFORM PREDICTIONS  ______________________    
+				let predictions_lung_tnm = await model_lung_tnm.predict(tensor_lung_tnm).data(); //model lung tnm staging predictions
+				predictions_lung_tnm = [1, 1, 0]	      //THIS IS AN EXAMPLE FOR DEMONSTRATION PURPOSES! TO BE DELETED!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+				let predictions_pneumonia = await model_pneumonia.predict(tensor_pneumonia).data(); //model pneumonia predictions
+				predictions_pneumonia[1] = 1 - predictions_pneumonia[0];
+
+				// _____________________  DEFINE LABELS  ______________________ 
+				var LABELS_lung_tnm = ['Size [T]', 'Nodes invasion [N]', 'Metastasis [M]'];		
+				let RESULTS_lung_tnm = Array.from(predictions_lung_tnm)  //i.e. const RESULTS = ["0", "0", "1"]
+				RESULTS_lung_tnm = RESULTS_lung_tnm.map(function(each_element) {
+					return Number(each_element.toFixed(3));
+				});
+				console.log("predictions TNM staging:\n"+ RESULTS_lung_tnm)
+
+				var LABELS_pneumonia = ['Metastasis [M1]', 'No Metastasis [M0]'];
+				let RESULTS_pneumonia = Array.from(predictions_pneumonia)
+				RESULTS_pneumonia = RESULTS_pneumonia.map(function(each_element) {
+					return Number(each_element.toFixed(3));
+				});
+				console.log("predictions pneumonia:\n"+ RESULTS_pneumonia)
+		
+				// _____________________  DEFINE SENTENCES  ______________________ 
+				//TNM staging
+				//T size
+				var predefined_sentences_T = ['Following the TNM staging system, the size of the tumour is T0.', 'Following the TNM staging system, the size of the tumour is T1 3cm or smaller and contained within the lung.', 'T2. '];
+				if (RESULTS_lung_tnm[0] <= 0.5) {
+					text_lung_T += predefined_sentences_T[0];
+				}else {
+					text_lung_T += predefined_sentences_T[1];
+				}
+				//N nodes invasion
+				var predefined_sentences_N = ['N0','N1 There are cancer cells in lymph nodes within the lung or in lymph nodes in the area where the lungs join the airway (the hilum).', 'N2 There is cancer in lymph nodes: in the centre of the chest (mediastinum) on the same side as the affected lung or just under where the windpipe branches off to each lung.'];
+				if (RESULTS_lung_tnm[1] <= 0.5) {
+					text_lung_N += predefined_sentences_N[0];
+				}else {
+					text_lung_N += predefined_sentences_N[1];
+				}
+				//M metastasis
+				var predefined_sentences_M = ['Also, in terms of metastasis M0 the cancer has not spread to another lobe of the lung or any other part of the body.', 'Also, in terms of metastasis M1 the cancer has spread to other areas of the body.'];
+				if (RESULTS_lung_tnm[2] <= 0.5) {
+					text_lung_M += predefined_sentences_M[0];
+				}else {
+					text_lung_M += predefined_sentences_M[1];
+				}
+				if (predictions_pneumonia[0] > predictions_pneumonia[1]) {
+					text_pneumonia = 'test111'
+					found_a_disease = 1;
+				}else {
+					text_pneumonia = 'test11'
+				}
+
+				$('#findings').fadeOut(slow_velocity, function() {
+					$("#findings").hide();
+					$("#findings").replaceWith(`<h3 id="findings" style="border-bottom: 1px solid #363634;">Findings</h3>`);
+					$('#findings').fadeIn(slow_velocity);
+				});
+				$('#gridrow1').fadeOut(slow_velocity, function() {
+					$("#gridrow1").hide();
+					$("#gridrow1").replaceWith(`<div class="gridrow" id="gridrow1" style="border-bottom: 1px solid #363634;"><li>${LABELS_lung_hnh[0]}</li><li>${LABELS_lung_hnh[1]}</li></div>`);
+					$('#gridrow1').fadeIn(slow_velocity);
+				});
+				$('#gridrow2').fadeOut(slow_velocity, function() {
+					$("#gridrow2").hide();
+					$("#gridrow2").replaceWith(`<div class="gridrow" id="gridrow2"><li>${RESULTS_lung_hnh[0]}</li><li>${RESULTS_lung_hnh[1]}</li></div>`);
+					$('#gridrow2').fadeIn(slow_velocity);
+				});
+				$('#gridrow3').fadeOut(slow_velocity, function() {
+					$("#gridrow3").hide();
+					$("#gridrow3").replaceWith(`<div class="gridrow" id="gridrow3" style="border-bottom: 1px solid #363634;"><li>${LABELS_lung_tnm[0]}</li><li>${LABELS_lung_tnm[1]}</li><li>${LABELS_lung_tnm[2]}</li></div>`);
+					$('#gridrow3').fadeIn(slow_velocity);
+				});
+				$('#gridrow4').fadeOut(slow_velocity, function() {
+					$("#gridrow4").hide();
+					$("#gridrow4").replaceWith(`<div class="gridrow" id="gridrow4"><li>T${RESULTS_lung_tnm[0]}</li><li>N${RESULTS_lung_tnm[1]}</li><li>M${RESULTS_lung_tnm[2]}</li></div>`);
+					$('#gridrow4').fadeIn(slow_velocity);
+				});
+				$('#gridrow5').fadeOut(slow_velocity, function() {
+					$("#gridrow5").hide();
+					$("#gridrow5").replaceWith(`<div class="gridrow" id="gridrow5" style="border-bottom: 1px solid #363634;"><li>${LABELS_pneumonia[0]}</li><li>${LABELS_pneumonia[1]}</li></div>`);
+					$('#gridrow5').fadeIn(slow_velocity);
+				});
+				$('#gridrow6').fadeOut(slow_velocity, function() {
+					$("#gridrow6").hide();
+					$("#gridrow6").replaceWith(`<div class="gridrow" id="gridrow6"><li>${RESULTS_pneumonia[0]}</li><li>${RESULTS_pneumonia[1]}</li></div>`);
+					$('#gridrow6').fadeIn(slow_velocity);
+				});
+
+				//Location
 				var HEIGHT = 128;	
 				var WIDTH = 128;	
 		
 				let image_lung_ct_tensor = tf.browser.fromPixels(image_lung_ct)
 				.resizeNearestNeighbor([HEIGHT, WIDTH]) 
 				.toFloat();
-				console.log("image_lung_ct_tensor: ")
-				//image_lung_ct_tensor.print()
+				console.log("image_lung_ct_tensor: ")  //image_lung_ct_tensor.print()
 				console.log("image_lung_ct_tensor shape: ", image_lung_ct_tensor.shape)
 				var image_lung_ct_array = await image_lung_ct_tensor.array();
 		
@@ -447,7 +457,7 @@ async function predict(image_lung_xray, image_lung_ct, image_lung_petct){
 					}
 				}
 			}
-		
+			
 			if (image_lung_petct !== null) {
 				modalities_uploaded += 'PET/CT scan ';
 				if (image_lung_ct == null) {
@@ -457,8 +467,7 @@ async function predict(image_lung_xray, image_lung_ct, image_lung_petct){
 					let image_lung_petct_tensor = tf.browser.fromPixels(image_lung_petct)
 					.resizeNearestNeighbor([HEIGHT, WIDTH]) 
 					.toFloat();
-					console.log("image_lung_petct_tensor: ")
-					//image_lung_petct_tensor.print()
+					console.log("image_lung_petct_tensor: ")  //image_lung_petct_tensor.print()
 					console.log("image_lung_petct_tensor shape: ", image_lung_petct_tensor.shape)
 					var image_lung_petct_array = await image_lung_petct_tensor.array();
 		
@@ -507,6 +516,9 @@ async function predict(image_lung_xray, image_lung_ct, image_lung_petct){
 					}
 				}
 			}
+			if(image_lung_ct == null && image_lung_petct == null ) {
+				text_lung_hnh += ' A CT scan or a PET/CT scan is suggested for more detailed diagnostic report.';
+			}
 		}
 
 		// _____________________  FINAL CONSTRUCTION OF LUNG REPORT  ______________________ 
@@ -541,9 +553,6 @@ async function predict(image_lung_xray, image_lung_ct, image_lung_petct){
 
 
 	
-
-
-
 
 
 	//document.getElementById('testCanvas').getContext('2d').canvas.width = img_.width;
