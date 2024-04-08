@@ -1,4 +1,4 @@
-# Augmented Reality Tool
+# Medical Report Generation Tool
 http://medical-report-generation-tool.incisive.iti.gr/
 
 # Requirements
@@ -16,6 +16,4 @@ cd docs/ && make clean check all && cd ..
 # Staging
 cd docs/ && make STAGING=1
 
-# Usage
-medical-report-generation-tool README
 
