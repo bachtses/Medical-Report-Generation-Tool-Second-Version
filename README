@@ -1,0 +1,21 @@
+# Augmented Reality Tool
+http://medical-report-generation-tool.incisive.iti.gr/
+
+# Requirements
+POSIX Shell & Utilities
+Git
+Docker
+
+# Download
+git clone https://github.com/valab-certh/medical-report-generation-tool $HOME/github.com/valab-certh/medical-report-generation-tool
+cd $HOME/github.com/valab-certh/medical-report-generation-tool
+
+# Development
+cd docs/ && make clean check all && cd ..
+
+# Staging
+cd docs/ && make STAGING=1
+
+# Usage
+medical-report-generation-tool README
+
