@@ -786,6 +786,10 @@ html,body,h2,h3,h4,p,h5,li {font-family: sans-serif}
     outline: 0 solid transparent;
 }
 
+ol { 
+    padding:0;
+} 
+
 .report-container ol{
     color: #363634;
     cursor:default;
@@ -799,26 +803,7 @@ html,body,h2,h3,h4,p,h5,li {font-family: sans-serif}
     width:100%;
 }
 
-.report-container ol li{
-    background-color: transparent;
-    border:none;
-    color: #363634;
-    color: inherit;
-    cursor:inherit;
-    display: block;
-    font-size: 15px;
-    font-weight: 100;
-    letter-spacing: 0.5px;
-    line-height: 25px;
-    margin: 20px auto 0;
-    object-fit: fill;
-    padding:0;
-    text-align: justify!important;
-    text-decoration: none;
-    transition: all 0.3s!important;
-    white-space:normal;
-    width:84%;
-}
+
 
 .gridrow {
     cursor: default;
@@ -852,6 +837,27 @@ html,body,h2,h3,h4,p,h5,li {font-family: sans-serif}
     width: 100%;
 }
 
+.report-container ol li{
+    background-color: transparent;
+    border:none;
+    color: #363634;
+    color: inherit;
+    cursor:inherit;
+    display: block;
+    font-size: 15px;
+    font-weight: 100;
+    letter-spacing: 0.5px;
+    line-height: 25px;
+    margin: 20px auto 0;
+    object-fit: fill;
+    padding:0;
+    text-align: justify!important;
+    text-decoration: none;
+    transition: all 0.3s!important;
+    white-space:normal;
+    width:84%;
+}
+
 .footer{
     background-color: #fff;
     color:#fff;
@@ -866,9 +872,6 @@ html,body,h2,h3,h4,p,h5,li {font-family: sans-serif}
     width:100%;
 }
 
-ol { 
-    padding:0;
-} 
 
 
 @media only screen and (width <= 1700px) {
@@ -1153,7 +1156,6 @@ ol {
     }
 
     #div-model-download-fraction {
-
         margin-top: 20%!important;
     }
     
