@@ -136,7 +136,7 @@ html,body,h2,h3,h4,p,h5,li {font-family: sans-serif}
     text-decoration: none;
 }
   
-.just-another_border {
+.just-another-border {
     border: 0 solid #2a8aff;
     height:22px;
     margin-top: 15px;
@@ -145,7 +145,7 @@ html,body,h2,h3,h4,p,h5,li {font-family: sans-serif}
     width: 100%;
 }
 
-.just-another_border img {
+.just-another-border img {
     cursor: default;
     display: block; 
     margin:0;
