@@ -39,34 +39,34 @@
     <!-- start of content -->
     <div class="content" id="content"> 
         <!-- top border -->
-        <div class="just_a_border">
+        <div class="just-a-border">
         </div>
         <!-- sitecontainer -->
         <div class="sitecontainer" id="sitecontainer">
             <!-- top menu bar -->
-            <div class="top_menu_bar">
+            <div class="top-menu-bar">
                 <img src="prm/images/incisive-header-logo.svg" alt="icon" onClick="window.location.reload();">
                 <i class="fa fa-info-circle" aria-hidden="true"></i>
-                <div class="info_dropdown">
+                <div class="info-dropdown">
                     <p>This is a web app that predicts the probability of each common thorax disease to occur inside a medical image, using trained AI models. 
                         This app is not yet ready for medical use. It is in development stage.</p>
                 </div>
             </div>
             <!-- top title -->
-            <div class="top_title">
+            <div class="top-title">
                 <h3>HOME&nbsp; &nbsp; >&nbsp; &nbsp;  MEDICAL REPORT GENERATION TOOL</h3> 
                 <h1>Medical report</h1>   
                 <h2>Generating automatically a diagnostic report with the usage of AI models.</h2>   
             </div>
-            <div class="just_another_border">
+            <div class="just-another-border">
                 <img src="prm/images/incisive-background.jpg" alt="icon">
             </div>
              <!-- all work container  -->
-            <div class="all_work_container" id="all_work_container">
+            <div class="all-work-container" id="all-work-container">
         
-                <div class="menuoptions_container" id="menuoptions_container">
-                    <p id="menuoptions_container_p" >Please select a Cancer type </p> 
-                    <div class="cancer_types_dropdown" id="cancer_types_dropdown">
+                <div class="menuoptions-container" id="menuoptions-container">
+                    <p id="menuoptions-container-p" >Please select a Cancer type </p> 
+                    <div class="cancer-types-dropdown" id="cancer-types-dropdown">
                         <a><img src="prm/images/breast-cancer.png" alt="icon"> Breast Cancer</a>
                         <a><img src="prm/images/prostate-cancer.png" alt="icon"> Prostate Cancer</a>
                         <a onclick="cancertypeSelection('Lung')"><img src="prm/images/lung-cancer.png" alt="icon"> Lung Cancer</a>
@@ -74,53 +74,53 @@
                     </div>
                 </div> 
 
-                <div class="notifications_container" id="notifications_container">
+                <div class="notifications-container" id="notifications-container">
                     <div id="divModelDownloadFraction"> 
-                        <div id="progress_bar_container">
-                            <div id="progress_bar"></div>
+                        <div id="progress-bar-container">
+                            <div id="progress-bar"></div>
                         </div>  
                         AI models downloading... 
                     </div> 
                 </div> 
                 
-                <div class="upload_container" id="upload_container">
-                    <div class="upload_area" id="upload_area">
-                        <div class="upload_subcontainer" id="upload_subcontainer">
+                <div class="upload-container" id="upload-container">
+                    <div class="upload-area" id="upload-area">
+                        <div class="upload-subcontainer" id="upload-subcontainer">
                             <!-- upload DICOM Image -->
-                            <div class="image_container" id="idImage">
-                                <img id="initial_image_display" src="https://raw.githubusercontent.com/bachtses/Medical-Report-Generation-Tool-Second-Version/main/prm/images/x-ray_sample_image.jpg">
+                            <div class="image-container" id="idImage">
+                                <img id="initial-image_display" src="https://raw.githubusercontent.com/bachtses/Medical-Report-Generation-Tool-Second-Version/main/prm/images/x-ray_sample_image.jpg">
                             </div>    
                             <h1>Image preview</h1>     
                         </div> 
                     </div>
-                    <div class="instructions_area" id="instructions_area">
-                        <h1 id="instructions_area_h1"> Medical report for lung cancer requires an X-ray scan, and optional a CT scan and PET-CT scan too.</h1>
-                        <h2 id="instructions_area_h2" ></h2> 
+                    <div class="instructions-area" id="instructions-area">
+                        <h1 id="instructions-area-h1"> Medical report for lung cancer requires an X-ray scan, and optional a CT scan and PET-CT scan too.</h1>
+                        <h2 id="instructions-area-h2" ></h2> 
 
                         <!-- upload Button -->    
-                        <input type="file" id="files_upload" onchange="showFiles(event)" accept=".dcm , .jpeg , .jpg , .png"> 
-                        <label for="files_upload" onclick="buttonClicked('lungxray')"><i class='fa fa-camera'></i> &nbsp; X-Ray scan</label>
-                        <label for="files_upload" onclick="buttonClicked('lungct')"><i class='fa fa-camera'></i> &nbsp; CT scan</label>
-                        <label for="files_upload" onclick="buttonClicked('lungpetct')"><i class='fa fa-camera'></i> &nbsp; PET/CT scan</label>
+                        <input type="file" id="files-upload" onchange="showFiles(event)" accept=".dcm , .jpeg , .jpg , .png"> 
+                        <label for="files-upload" onclick="buttonClicked('lungxray')"><i class='fa fa-camera'></i> &nbsp; X-Ray scan</label>
+                        <label for="files-upload" onclick="buttonClicked('lungct')"><i class='fa fa-camera'></i> &nbsp; CT scan</label>
+                        <label for="files-upload" onclick="buttonClicked('lungpetct')"><i class='fa fa-camera'></i> &nbsp; PET/CT scan</label>
 
-                        <a class='upload_buttons' onclick='uploadimagesChecker()'> Get Medical Report</a>
+                        <a class='upload-buttons' onclick='uploadimagesChecker()'> Get Medical Report</a>
                     </div>
                 </div> 
-                <div class="report_container" id="report_container">
-                    <button id="export_button" class="export_button" type="button" onClick="DownloadScreenshotPDF();" >
+                <div class="report-container" id="report-container">
+                    <button id="export-button" class="export-button" type="button" onClick="DownloadScreenshotPDF();" >
                         <!--<i class="fa fa-file-pdf-o" aria-hidden="true"></i>-->
                         <i class="fa fa-download" aria-hidden="true"></i>
                     </button>    
-                    <button id="textedit_button" class="textedit_button" type="button" onClick="MakeTextEditable();" >
+                    <button id="textedit-button" class="textedit-button" type="button" onClick="MakeTextEditable();" >
                         <i class="fa fa-pencil" aria-hidden="true"></i>
                     </button>  
                     <div class="results" id="results">
                         <!-- Results Box -->
-                        <p id="summary_title"></p>  
-                        <h1 id="image_name"></h1>
-                        <h2 id="image_modality"></h2>
+                        <p id="summary-title"></p>  
+                        <h1 id="image-name"></h1>
+                        <h2 id="image-modality"></h2>
                         <h3 id="findings"></h3>    
-                        <h4 id="prediction_list" contenteditable="false">   </h4>
+                        <h4 id="prediction-list" contenteditable="false">   </h4>
                         <div class="gridrow" id="gridrow1"></div>
                         <div class="gridrow" id="gridrow2"></div>
                         <div class="gridrow" id="gridrow3"></div>
