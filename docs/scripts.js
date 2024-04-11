@@ -15,7 +15,7 @@ async function loadmodelsFunction(cancer_type_selected){
 
 	if (cancer_type_selected == 'Lung') {
 			console.log("downloading...")
-			var progressgraphic = document.getElementById("progress_bar");
+			var progressgraphic = document.getElementById("progress-bar");
 			progressgraphic.style.width = "0%";
 
 			model_lung_hnh = await tf.loadLayersModel('https://raw.githubusercontent.com/bachtses/Medical-Report-Generation-Tool-First-Prototype/main/prm/models/X-Ray_Lung_Cancer_Classification/model.json', {
@@ -72,23 +72,23 @@ let cancer_type_selected = null;
 
 async function cancertypeSelection(cancertypeselection) {
 	cancer_type_selected = cancertypeselection;
-	document.getElementById("menuoptions_container").style.display = "none";
-	document.getElementById("notifications_container").style.display = "inline";
+	document.getElementById("menuoptions-container").style.display = "none";
+	document.getElementById("notifications-container").style.display = "inline";
 	await loadmodelsFunction(cancer_type_selected);
 }
 
 async function notificationsPanel() {
-	document.getElementById("notifications_container").style.display = "inline";
-	document.getElementById("upload_container").style.opacity = "0";
-	document.getElementById("report_container").style.display = "none";
+	document.getElementById("notifications-container").style.display = "inline";
+	document.getElementById("upload-container").style.opacity = "0";
+	document.getElementById("report-container").style.display = "none";
 	
 }
 
 // onclick of "proceed" button
 async function uploadContainer() {
-	document.getElementById("notifications_container").style.display = "none";
-	document.getElementById("upload_container").style.opacity = "1";
-	document.getElementById("report_container").style.display = "none";
+	document.getElementById("notifications-container").style.display = "none";
+	document.getElementById("upload-container").style.opacity = "1";
+	document.getElementById("report-container").style.display = "none";
 
 }
 
@@ -129,7 +129,7 @@ async function showFiles(event) {
 	var file_extension = fileName.split('.').pop().toLowerCase(); 
  
 	if (allowed_extensions_for_dicom_formats.includes(file_extension)){
-		$("#initial_image_display").fadeOut("fast");
+		$("#initial-image-display").fadeOut("fast");
 		$(".cornerstone-canvas").fadeIn("fast");
 		
 		var imageId = cornerstoneWADOImageLoader.wadouri.fileManager.add(file);
@@ -143,10 +143,10 @@ async function showFiles(event) {
 		
 	}else if (allowed_extensions_for_other_formats.includes(file_extension)){
 		$(".cornerstone-canvas").fadeOut("fast");
-		$("#initial_image_display").fadeIn("fast");
+		$("#initial-image-display").fadeIn("fast");
 
 		// An empty img element
-		let demoImage = document.getElementById('initial_image_display');
+		let demoImage = document.getElementById('initial-image-display');
 		//console.log("new image: ", demoImage)
 
 		// read the file from the user
@@ -179,7 +179,7 @@ async function imagesPreprocessor(clicked_button_value) {
 	if(allowed_extensions_for_dicom_formats.includes(file_extension)){
 		var img_ = document.getElementById('idImage').getElementsByClassName("cornerstone-canvas")[0];
 	}else if(allowed_extensions_for_other_formats.includes(file_extension)){
-		var img_ = document.getElementById('initial_image_display');
+		var img_ = document.getElementById('initial-image-display');
 	}
 	//console.log("img_: ", img_);
 
@@ -201,9 +201,9 @@ async function imagesPreprocessor(clicked_button_value) {
 
 async function uploadimagesChecker() {
 	if (image_lung_xray == null) {
-		$("#instructions_area_h1").replaceWith(`<h1 id="instructions_area_h1">X-ray scan is required.</h1>`);
+		$("#instructions-area-h1").replaceWith(`<h1 id="instructions-area-h1">X-ray scan is required.</h1>`);
 	}else{
-		$("#instructions_area_h1").replaceWith(`<h1 id="instructions_area_h1">Medical report is getting prepared.</h1>`);
+		$("#instructions-area-h1").replaceWith(`<h1 id="instructions-area-h1">Medical report is getting prepared.</h1>`);
 		getMedicalreport()
 	}
 }
@@ -216,9 +216,9 @@ async function getMedicalreport() {
 
 	await predict(image_lung_xray, image_lung_ct, image_lung_petct);
 
-	document.getElementById("notifications_container").style.display = "none";
-	document.getElementById("upload_container").style.display = "none";
-	document.getElementById("report_container").style.display = "block";
+	document.getElementById("notifications-container").style.display = "none";
+	document.getElementById("upload-container").style.display = "none";
+	document.getElementById("report-container").style.display = "block";
 }
 
 
