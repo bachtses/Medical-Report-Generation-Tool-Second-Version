@@ -49,8 +49,8 @@ async function loadmodelsFunction(cancer_type_selected){
 			//model_nature = await tf.loadLayersModel('https://raw.githubusercontent.com/bachtses/Chest_X-Ray_Medical_Report_Web_App/main/prm/models/X-Ray_Nature_Classification/model.json');
 			//console.log("MODEL DOWNLOADED!: Nature");
 
-			document.getElementById("divModelDownloadFraction").style.marginTop = "22%";
-			document.getElementById("divModelDownloadFraction").innerHTML = "The required AI models for Lung Cancer have been downloaded succesfully: <br><br>Lung X-ray Classification model<br>Lung CT Segmentation model<br>Lung Metastasis model<br>Lung TNM Staging model<br><br><h1 style='font-size:20px;'>Please proceed to the image upload</h1><br> <a class='proceed_button' onclick='uploadContainer()'><i class='fa-solid fa-angle-right'></i>  Proceed</a>";
+			document.getElementById("div-model-download-fraction").style.marginTop = "22%";
+			document.getElementById("div-model-download-fraction").innerHTML = "The required AI models for Lung Cancer have been downloaded succesfully: <br><br>Lung X-ray Classification model<br>Lung CT Segmentation model<br>Lung Metastasis model<br>Lung TNM Staging model<br><br><h1 style='font-size:20px;'>Please proceed to the image upload</h1><br> <a class='proceed_button' onclick='uploadContainer()'><i class='fa-solid fa-angle-right'></i>  Proceed</a>";
 	
 	}
 
@@ -280,9 +280,9 @@ async function predict(image_lung_xray, image_lung_ct, image_lung_petct){
 
 		//console.log(tensor_nature.shape)
 
-		document.getElementById("divModelDownloadFraction").style.display = "none";
-		document.getElementById("divModelDownloadFraction").style.lineHeight = "0px";
-		document.getElementById("divModelDownloadFraction").style.height = "0px";
+		document.getElementById("div-model-download-fraction").style.display = "none";
+		document.getElementById("div-model-download-fraction").style.lineHeight = "0px";
+		document.getElementById("div-model-download-fraction").style.height = "0px";
 
 
 		// _____________________  PERFORM PREDICTIONS  ______________________     
