@@ -322,7 +322,7 @@ html,body,h2,h3,h4,p,h5,li {font-family: sans-serif}
 
 
 
-#divModelDownloadFraction{
+#div-model-download-fraction{
     color: #363634;   
     cursor: default;
     font-size: 15px;
@@ -971,7 +971,7 @@ ol {
         padding: 15vw 0 0;
     }
 
-    #divModelDownloadFraction {
+    #div-model-download-fraction {
         margin-top: 20%!important;
     }
 
@@ -1021,7 +1021,7 @@ ol {
         padding: 2.5vw 0;
     }
     
-    #divModelDownloadFraction {
+    #div-model-download-fraction {
         margin-top: 28%!important;
     }
 }
@@ -1152,7 +1152,8 @@ ol {
         margin: 2px 8%;
     }
 
-    #divModelDownloadFraction {
+    #div-model-download-fraction {
+
         margin-top: 20%!important;
     }
     
@@ -1252,7 +1253,7 @@ ol {
         font-size: 18px!important;
     }
 
-    #divModelDownloadFraction {
+    #div-model-download-fraction {
         font-size: 18px;
         margin-top: 45%!important;
     }
