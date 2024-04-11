@@ -31,9 +31,6 @@ html,body,h2,h3,h4,p,h5,li {font-family: sans-serif}
     padding-left: 16%;
     padding-right: 16%;
     transition: all 0.3s;
-    transition: all 0.3s;
-    transition: all 0.3s;
-    transition: all 0.3s;
     width: 100%;
 }
 
@@ -62,21 +59,15 @@ html,body,h2,h3,h4,p,h5,li {font-family: sans-serif}
     opacity: 1;
     padding:2px;
     transition: all 0.3s;
-    transition: all 0.3s;
-    transition: all 0.3s;
-    transition: all 0.3s;
     
 }
 
 .top-menu-bar i:hover{
     opacity: 0.7;
     transition: all 0.3s;
-    transition: all 0.3s;
-    transition: all 0.3s;
-    transition: all 0.3s;
 }
 
-.info_dropdown {
+.info-dropdown {
     color: #363634;
     cursor: default;
     font-size: 12px;
@@ -90,33 +81,23 @@ html,body,h2,h3,h4,p,h5,li {font-family: sans-serif}
     text-decoration: none;
     top:100px;
     transition: all 0.3s;
-    transition: all 0.3s;
-    transition: all 0.3s;
-    transition: all 0.3s;
     width:20%;
 
 }
 
-.top_menu_bar i:hover ~ .info_dropdown {
+.top-menu-bar i:hover ~ .info-dropdown {
     opacity: 1;
-    transition: all 0.3s;
-    transition: all 0.3s;
-    transition: all 0.3s;
     transition: all 0.3s;
    
 }
 
-.top_title {
-    -webkit-touch-callout: none; /* iOS Safari */
-    user-select: none; /* Safari */
-     user-select: none; /* Konqueror HTML */
-       user-select: none; /* Old versions of Firefox */
-        user-select: none; /* Internet Explorer/Edge */
+.top-title {
+    -webkit-touch-callout: none; /* iOS Safari */ /* Safari */ /* Konqueror HTML */ /* Old versions of Firefox */ /* Internet Explorer/Edge */
             user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Edge, Opera and Firefox */
 }
 
-.top_title h1 {
+.top-title h1 {
     color: #363634;
     display:block;
     font-size: 46px;
@@ -128,7 +109,7 @@ html,body,h2,h3,h4,p,h5,li {font-family: sans-serif}
     text-decoration: none;
 }
 
-.top_title h2 {
+.top-title h2 {
     color: #363634;
     display:block;
     font-size: 22px;
@@ -141,7 +122,7 @@ html,body,h2,h3,h4,p,h5,li {font-family: sans-serif}
     text-decoration: none;
 }
 
-.top_title h3 {
+.top-title h3 {
     color: #696969;
     display:block;
     font-size: 12px;
@@ -155,33 +136,27 @@ html,body,h2,h3,h4,p,h5,li {font-family: sans-serif}
     text-decoration: none;
 }
   
-.just_another_border {
+.just-another_border {
     border: 0 solid #2a8aff;
     height:22px;
     margin-top: 15px;
     overflow: hidden;
     transition: all 0.3s;
-    transition: all 0.3s;
-    transition: all 0.3s;
-    transition: all 0.3s;
     width: 100%;
 }
 
-.just_another_border img {
+.just-another_border img {
     cursor: default;
     display: block; 
     margin:0;
     object-fit: fill;
     padding:0;   
-    padding-bottom:7px; 
-    transition: all 0.3s;
-    transition: all 0.3s;
-    transition: all 0.3s;
+    padding-bottom:7px;
     transition: all 0.3s;
     width: 100%;
 }
  
-.all_work_container{
+.all-work-container{
     color:#fff;
     cursor:pointer;    
     cursor: default;
@@ -194,16 +169,13 @@ html,body,h2,h3,h4,p,h5,li {font-family: sans-serif}
     text-align:center;
     text-decoration:none;
     transition: all 0.3s;
-    transition: all 0.3s;
-    transition: all 0.3s;
-    transition: all 0.3s;
     white-space:nowrap;
     width: auto;
 }
 
 
 
-.menuoptions_container{
+.menuoptions-container{
     align-items: center;
     background-color: #f8f8f8;
     background-image: url("prm/images/incisive_watermark_gray_blur.png");
@@ -226,21 +198,14 @@ html,body,h2,h3,h4,p,h5,li {font-family: sans-serif}
     text-align: center!important;
     text-decoration: none;
     -webkit-touch-callout: none; /* iOS Safari */
-    transition: all 0.3s;
-    transition: all 0.3s;
-    transition: all 0.3s;
-    transition: all 0.3s;
-    user-select: none; /* Safari */
-    user-select: none; /* Konqueror HTML */
-    user-select: none; /* Old versions of Firefox */
-    user-select: none; /* Internet Explorer/Edge */
+    transition: all 0.3s; /* Safari */ /* Konqueror HTML */ /* Old versions of Firefox */ /* Internet Explorer/Edge */
     user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
     white-space:normal;
     width: 100%;
     
 }
 
-.menuoptions_container p {
+.menuoptions-container p {
     background-color: #f8f8f8;
     border-bottom: 7px solid #fff;
     color: #363634;    
@@ -257,14 +222,10 @@ html,body,h2,h3,h4,p,h5,li {font-family: sans-serif}
     text-align: center;
     text-decoration: none;
     transition: all 0.3s!important;
-    transition: all 0.3s!important;
-    transition: all 0.3s!important;
-    transition: all 0.3s!important;
     width: 100%;
 }
 
-.cancer_types_dropdown {
-    place-items: center center;
+.cancer-types-dropdown {
     background-color: transparent;
     border: none;
     display: grid;
@@ -274,15 +235,13 @@ html,body,h2,h3,h4,p,h5,li {font-family: sans-serif}
     height: 70%;
     margin: 3% 15%;
     overflow: hidden;
+    place-items: center center;
     text-align: center;
-    transition: all 0.3s;
-    transition: all 0.3s;
-    transition: all 0.3s;
     transition: all 0.3s;
     width: 70%;
 }
 
-.cancer_types_dropdown a{
+.cancer-types-dropdown a{
     align-items: center;
     background-color: transparent;
     border: none;
@@ -302,16 +261,13 @@ html,body,h2,h3,h4,p,h5,li {font-family: sans-serif}
 }
 
   
-.cancer_types_dropdown a:hover {
+.cancer-types-dropdown a:hover {
     background-color: rgb(42 138 255 / 100%)!important ;
     color: #fff!important;
     transition: all 0.3s;
-    transition: all 0.3s;
-    transition: all 0.3s;
-    transition: all 0.3s;
 }
 
-.cancer_types_dropdown img {
+.cancer-types-dropdown img {
     align-items: center;   
     cursor: default;
     display: inline;
@@ -319,17 +275,14 @@ html,body,h2,h3,h4,p,h5,li {font-family: sans-serif}
     margin: 0;
     margin-right: 10px;
     object-fit: fill;
-    padding: 0; 
-    transition: all 0.3s!important;
-    transition: all 0.3s!important;
-    transition: all 0.3s!important;
+    padding: 0;
     transition: all 0.3s!important; 
     width: 70px;
 }
 
 
 
-.notifications_container{
+.notifications-container{
     background-color: #f8f8f8;
     background-image: url("prm/images/incisive_watermark_gray_blur.png");
     background-position: right 15% bottom;
@@ -343,13 +296,10 @@ html,body,h2,h3,h4,p,h5,li {font-family: sans-serif}
     padding: 0;
     position: relative;
     transition: all 0.3s!important;
-    transition: all 0.3s!important;
-    transition: all 0.3s!important;
-    transition: all 0.3s!important;
     width: 100%; 
 }
 
-.notifications_container p{
+.notifications-container p{
     background-color: #f8f8f8;
     border-bottom: 7px solid #fff;
     color: #363634;   
@@ -366,9 +316,6 @@ html,body,h2,h3,h4,p,h5,li {font-family: sans-serif}
     padding-top: 30px; 
     text-align: center;
     text-decoration: none;
-    transition: all 0.3s!important;
-    transition: all 0.3s!important;
-    transition: all 0.3s!important;
     transition: all 0.3s!important;
     width: 100%;
 }
@@ -388,20 +335,17 @@ html,body,h2,h3,h4,p,h5,li {font-family: sans-serif}
     text-align: center!important;
     text-decoration: none;
     transition: all 0.3s;
-    transition: all 0.3s;
-    transition: all 0.3s;
-    transition: all 0.3s;
     vertical-align: middle;
     white-space:normal;
     width: 100%;
 }
 
-#progress_bar_container {
+#progress-bar-container {
     background-color: #ddd;
     width: 100%;
 }
   
-#progress_bar {
+#progress-bar {
     background-color: #2a8aff;
     height: 8px;
     margin-top: 26%!important;
@@ -409,7 +353,7 @@ html,body,h2,h3,h4,p,h5,li {font-family: sans-serif}
 }
 
 
-.proceed_button{
+.proceed-button{
     background-color: #f8f8f8;
     border:none;
     border: 1px solid #363634;
@@ -427,34 +371,24 @@ html,body,h2,h3,h4,p,h5,li {font-family: sans-serif}
     padding: 16px;
     text-align:center!important;
     text-decoration:none;
-    -webkit-touch-callout: none; /* iOS Safari */
-    transition: all 0.3s;
-    transition: all 0.3s;
-    transition: all 0.3s; 
+    -webkit-touch-callout: none; /* iOS Safari */ 
     transition: 0.3s;
-    transition: all 0.3s;
-    user-select: none; /* Safari */
-    user-select: none; /* Konqueror HTML */
-    user-select: none; /* Old versions of Firefox */
-    user-select: none; /* Internet Explorer/Edge */
+    transition: all 0.3s; /* Safari */ /* Konqueror HTML */ /* Old versions of Firefox */ /* Internet Explorer/Edge */
     user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
     white-space:nowrap;
     width: 260px;
 
 }
 
-.proceed_button:hover {
+.proceed-button:hover {
     background-color: #2a8aff!important;
     color: #fff!important;
-    transition: all 0.3s;
-    transition: all 0.3s;
-    transition: all 0.3s;
     transition: all 0.3s;
 
 }
 
 
-.upload_container{
+.upload-container{
     cursor: default;
     display: inline;
     height:100%;
@@ -462,13 +396,10 @@ html,body,h2,h3,h4,p,h5,li {font-family: sans-serif}
     opacity: 1;
     padding:0;
     transition: all 0.3s;
-    transition: all 0.3s;
-    transition: all 0.3s;
-    transition: all 0.3s;
     width:100%;
 }
 
-.upload_area{
+.upload-area{
     cursor: default;
     display: grid; 
     float: left;
@@ -479,14 +410,11 @@ html,body,h2,h3,h4,p,h5,li {font-family: sans-serif}
     opacity: 1;
     padding:0;
     transition: all 0.3s;
-    transition: all 0.3s;
-    transition: all 0.3s;
-    transition: all 0.3s;
     width: 30%;
 }
 
 
-.upload_subcontainer{
+.upload-subcontainer{
     cursor: default;
     margin:0;
     opacity: 1;
@@ -494,13 +422,10 @@ html,body,h2,h3,h4,p,h5,li {font-family: sans-serif}
     padding-left:3px;
     padding-right:3px;
     transition: all 0.3s;
-    transition: all 0.3s;
-    transition: all 0.3s;
-    transition: all 0.3s;
 }
 
 
-.image_container {
+.image-container {
     cursor: default;
     display: block;
     height: 83%; 
@@ -510,44 +435,35 @@ html,body,h2,h3,h4,p,h5,li {font-family: sans-serif}
     overflow:hidden;
     padding:0;
     transition: all 0.3s;
-    transition: all 0.3s;
-    transition: all 0.3s;
-    transition: all 0.3s;
     width: 100%;
 }
 
-.upload_subcontainer canvas {   
+.upload-subcontainer canvas {   
     cursor: default;
     display: block;
     height: 100% !important;
     margin:0;
     object-fit: fill;
-    padding:0; 
-    transition: all 0.3s!important;
-    transition: all 0.3s!important;
-    transition: all 0.3s!important;
+    padding:0;
     transition: all 0.3s!important;
     width: 100% !important;
     
 }
 
-.upload_subcontainer img {   
+.upload-subcontainer img {   
     cursor: default;
     display: block;
     height: 100% !important;
     margin:0;
     object-fit: fill;
-    padding:0; 
-    transition: all 0.3s!important;
-    transition: all 0.3s!important;
-    transition: all 0.3s!important;
+    padding:0;
     transition: all 0.3s!important;
     width: 100% !important;
 
 }
 
 
-.upload_subcontainer h1 { 
+.upload-subcontainer h1 { 
     background-color: #f8f8f8;
     border:none;
     color: #363634;
@@ -564,16 +480,9 @@ html,body,h2,h3,h4,p,h5,li {font-family: sans-serif}
     padding: 6% 0 7%;
     text-align:center!important;
     text-decoration:none;
-    -webkit-touch-callout: none; /* iOS Safari */
-    transition: all 0.3s;
-    transition: all 0.3s;
-    transition: all 0.3s; 
+    -webkit-touch-callout: none; /* iOS Safari */ 
     transition: 0.3s;
-    transition: all 0.3s;
-    user-select: none; /* Safari */
-     user-select: none; /* Konqueror HTML */
-       user-select: none; /* Old versions of Firefox */
-        user-select: none; /* Internet Explorer/Edge */
+    transition: all 0.3s; /* Safari */ /* Konqueror HTML */ /* Old versions of Firefox */ /* Internet Explorer/Edge */
             user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
     white-space:nowrap;
     width: 100%;
@@ -582,7 +491,7 @@ html,body,h2,h3,h4,p,h5,li {font-family: sans-serif}
 
 
 
-.instructions_area{
+.instructions-area{
     background-color: #f8f8f8;
     cursor: default;
     display:block; 
@@ -592,14 +501,11 @@ html,body,h2,h3,h4,p,h5,li {font-family: sans-serif}
     opacity: 1;
     padding:0;
     transition: all 0.3s;
-    transition: all 0.3s;
-    transition: all 0.3s;
-    transition: all 0.3s;
     white-space: initial;
     width: 69%;
 }
 
-.instructions_area h1{
+.instructions-area h1{
     background-color: #f8f8f8;
     border-bottom: 7px solid #fff;
     color: #363634;
@@ -616,13 +522,10 @@ html,body,h2,h3,h4,p,h5,li {font-family: sans-serif}
     text-align: center;
     text-decoration: none;
     transition: all 0.3s!important;
-    transition: all 0.3s!important;
-    transition: all 0.3s!important;
-    transition: all 0.3s!important;
     width: 100%;
 }
 
-.instructions_area h2{
+.instructions-area h2{
     background-color: #f8f8f8;
     border: 0;
     color: #363634;   
@@ -637,13 +540,10 @@ html,body,h2,h3,h4,p,h5,li {font-family: sans-serif}
     text-align: center;
     text-decoration: none;
     transition: all 0.3s!important;
-    transition: all 0.3s!important;
-    transition: all 0.3s!important;
-    transition: all 0.3s!important;
 }
 
 
-.instructions_area label {
+.instructions-area label {
     border:none;
     border: 1px solid #363634;
     color: #363634!important;
@@ -661,37 +561,27 @@ html,body,h2,h3,h4,p,h5,li {font-family: sans-serif}
     padding: 16px;
     text-align:center!important;
     text-decoration:none;
-    -webkit-touch-callout: none; /* iOS Safari */
-    transition: all 0.3s;
-    transition: all 0.3s;
-    transition: all 0.3s; 
+    -webkit-touch-callout: none; /* iOS Safari */ 
     transition: 0.3s;
-    transition: all 0.3s;
-    user-select: none; /* Safari */
-    user-select: none; /* Konqueror HTML */
-    user-select: none; /* Old versions of Firefox */
-    user-select: none; /* Internet Explorer/Edge */
+    transition: all 0.3s; /* Safari */ /* Konqueror HTML */ /* Old versions of Firefox */ /* Internet Explorer/Edge */
     user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
     white-space:nowrap;
     width: 230px;
 
 }
 
-.instructions_area label:hover{
+.instructions-area label:hover{
     background-color: #2a8aff!important;
     color: #fff!important;
     transition: all 0.3s;
-    transition: all 0.3s;
-    transition: all 0.3s;
-    transition: all 0.3s;
 }
 
-.instructions_area input{
+.instructions-area input{
     display: none;
 }
 
 
-.upload_buttons{
+.upload-buttons{
     border: none;
     border: 1px solid #363634;
     color: #363634!important;
@@ -710,32 +600,22 @@ html,body,h2,h3,h4,p,h5,li {font-family: sans-serif}
     text-align: center!important;
     text-decoration: none;
     -webkit-touch-callout: none;
-    transition: all 0.3s;
-    transition: all 0.3s;
-    transition: all 0.3s;
     transition: 0.3s;
-    transition: all 0.3s;
-    user-select: none; /* Safari */
-    user-select: none; /* Konqueror HTML */
-    user-select: none; /* Old versions of Firefox */
-    user-select: none; /* Internet Explorer/Edge */
+    transition: all 0.3s; /* Safari */ /* Konqueror HTML */ /* Old versions of Firefox */ /* Internet Explorer/Edge */
     user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
     white-space: nowrap;
     width: 304px;
 
 }
 
-.upload_buttons:hover {
+.upload-buttons:hover {
     background-color: #2a8aff!important;
     color: #fff!important;
-    transition: all 0.3s;
-    transition: all 0.3s;
-    transition: all 0.3s;
     transition: all 0.3s;
 
 }
 
-.report_container{
+.report-container{
     background-color: #f8f8f8;
     background-image: url("prm/images/incisive_watermark_gray_blur.png");
     background-position: right 15% bottom;
@@ -749,13 +629,10 @@ html,body,h2,h3,h4,p,h5,li {font-family: sans-serif}
     padding: 0;
     position: relative;
     transition: all 0.3s!important;
-    transition: all 0.3s!important;
-    transition: all 0.3s!important;
-    transition: all 0.3s!important;
     width: 100%; 
 }
 
-.report_container p{
+.report-container p{
     background-color: #f8f8f8;
     border-bottom: 7px solid #fff;
     color: #363634;   
@@ -773,9 +650,6 @@ html,body,h2,h3,h4,p,h5,li {font-family: sans-serif}
     text-align: center;
     text-decoration: none;
     transition: all 0.3s!important;
-    transition: all 0.3s!important;
-    transition: all 0.3s!important;
-    transition: all 0.3s!important;
     width: 100%;
 }
 
@@ -789,7 +663,7 @@ html,body,h2,h3,h4,p,h5,li {font-family: sans-serif}
     width: 100%;
 }
 
-.export_button {
+.export-button {
     background-color: transparent;
     border: none;
     color: #2a8aff;
@@ -804,21 +678,15 @@ html,body,h2,h3,h4,p,h5,li {font-family: sans-serif}
     right: 10px;
     top: 25px;
     transition: all 0.3s;
-    transition: all 0.3s;
-    transition: all 0.3s;
-    transition: all 0.3s;
     z-index: 10;
 }
 
-.export_button:hover{
+.export-button:hover{
     opacity: 0.7;
-    transition: all 0.3s;
-    transition: all 0.3s;
-    transition: all 0.3s;
     transition: all 0.3s;
 }
 
-.textedit_button{
+.textedit-button{
     background-color: transparent;
     border: none;
     color: #2a8aff;
@@ -833,21 +701,15 @@ html,body,h2,h3,h4,p,h5,li {font-family: sans-serif}
     right: 50px;
     top: 25px;
     transition: all 0.3s;
-    transition: all 0.3s;
-    transition: all 0.3s;
-    transition: all 0.3s;
     z-index: 10;
 }
 
-.textedit_button:hover{
+.textedit-button:hover{
     opacity: 0.7;
-    transition: all 0.3s;
-    transition: all 0.3s;
-    transition: all 0.3s;
     transition: all 0.3s;
 }
 
-.report_container h1{
+.report-container h1{
     color: #363634;   
     cursor: default;
     display: block;
@@ -862,14 +724,11 @@ html,body,h2,h3,h4,p,h5,li {font-family: sans-serif}
     text-align: center!important;
     text-decoration: none;
     transition: all 0.3s;
-    transition: all 0.3s;
-    transition: all 0.3s;
-    transition: all 0.3s;
     white-space:normal;
     width: 100%;
 }
 
-.report_container h2{
+.report-container h2{
     color: #363634;   
     cursor: default;
     display: block;
@@ -884,14 +743,11 @@ html,body,h2,h3,h4,p,h5,li {font-family: sans-serif}
     text-align: center!important;
     text-decoration: none;
     transition: all 0.3s;
-    transition: all 0.3s;
-    transition: all 0.3s;
-    transition: all 0.3s;
     white-space:normal;
     width: 100%;
 }
 
-.report_container h3{
+.report-container h3{
     color: #363634;   
     cursor: default;
     display: block;
@@ -905,14 +761,11 @@ html,body,h2,h3,h4,p,h5,li {font-family: sans-serif}
     text-align: center!important;
     text-decoration: none;
     transition: all 0.3s;
-    transition: all 0.3s;
-    transition: all 0.3s;
-    transition: all 0.3s;
     white-space:normal;
 }
 
 
-.report_container h4{
+.report-container h4{
     color: #363634;   
     cursor: default;
     display: block;
@@ -926,9 +779,6 @@ html,body,h2,h3,h4,p,h5,li {font-family: sans-serif}
     text-align: justify!important;
     text-decoration: none;
     transition: all 0.3s;
-    transition: all 0.3s;
-    transition: all 0.3s;
-    transition: all 0.3s;
     white-space:normal;
 }
 
@@ -936,7 +786,7 @@ html,body,h2,h3,h4,p,h5,li {font-family: sans-serif}
     outline: 0 solid transparent;
 }
 
-.report_container ol{
+.report-container ol{
     color: #363634;
     cursor:default;
     display: block;
@@ -946,13 +796,10 @@ html,body,h2,h3,h4,p,h5,li {font-family: sans-serif}
     padding-top:2px;
     text-decoration:none;
     transition: all 0.3s!important;
-    transition: all 0.3s!important;
-    transition: all 0.3s!important;
-    transition: all 0.3s!important;
     width:100%;
 }
 
-.report_container ol li{
+.report-container ol li{
     background-color: transparent;
     border:none;
     color: #363634;
@@ -969,9 +816,6 @@ html,body,h2,h3,h4,p,h5,li {font-family: sans-serif}
     text-align: justify!important;
     text-decoration: none;
     transition: all 0.3s!important;
-    transition: all 0.3s!important;
-    transition: all 0.3s!important;
-    transition: all 0.3s!important;
     white-space:normal;
     width:84%;
 }
@@ -984,8 +828,6 @@ html,body,h2,h3,h4,p,h5,li {font-family: sans-serif}
     display: flex;
     display: flex;
     flex-wrap: nowrap;
-    flex-wrap: nowrap;
-    justify-content: space-around;
     justify-content: space-around;
     list-style: none;
     margin: 0;
@@ -1005,9 +847,6 @@ html,body,h2,h3,h4,p,h5,li {font-family: sans-serif}
     padding: 0;
     text-align: center;
     text-decoration: none;
-    transition: all 0.3s;
-    transition: all 0.3s;
-    transition: all 0.3s;
     transition: all 0.3s;
     white-space: normal;
     width: 100%;
@@ -1033,7 +872,7 @@ ol {
 
 
 @media only screen and (width <= 1700px) {
-    .info_dropdown{
+    .info-dropdown{
         right: 8%;  
     }
 
@@ -1043,50 +882,50 @@ ol {
         width: 100%;
     }
 
-    .all_work_container {
+    .all-work-container {
         height: 36vw;
     }
 
-    .cancer_types_dropdown img {
+    .cancertypes-dropdown img {
         height: 60px;
         width: 60px;
     }
 
-    .cancer_types_dropdown a {
+    .cancer-types-dropdown a {
         padding: 3.8vw 0% 0%;
     }
 }
 
 /* Laptop 15" */
 @media only screen and (width <= 1380px) {
-    .top_menu_bar {
+    .top-menu-bar {
         padding-top: 12px;
     }
 
-    .top_menu_bar img {
+    .top-menu-bar img {
         min-width: 190px;
     }
 
-    .just_a_border {
+    .just-a-border {
         top: 80px;
     }
 
-    .just_another_border{
+    .just-another-border{
         margin-top: 8px;
     }
 
-    .top_title h1 {
+    .top-title h1 {
         font-size: 40px;
         line-height: 36px;
     }
 
-    .top_title h3 {
+    .top-title h3 {
         font-size: 11px;
         line-height: 35px;
         margin-top: 38px;
     }
 
-    .top_title h2 {
+    .top-title h2 {
         font-size: 18px;
     }
 
@@ -1096,24 +935,24 @@ ol {
         width:1020px;
     }
 
-    .all_work_container {
+    .all-work-container {
         height: 40vw;
     }
 
-    .upload_container label {
+    .upload-container label {
         padding: 9% 0;
     }
 
-    .cancer_types_dropdown {
+    .cancer-types-dropdown {
         height: 40%;
         margin: 70px 10% 0;
     }
 
-    .cancer_types_dropdown a {
+    .cancer-types-dropdown a {
         padding: 1vw 0% 0%;
     }
 
-    .cancer_types_dropdown img {
+    .cancer-types-dropdown img {
         align-items: center;
         display: block;
         height: 50px; 
@@ -1124,11 +963,11 @@ ol {
         width: 50px;
     }
 
-    .modalities_dropdown a {
+    .modalities-dropdown a {
         padding: 18px;
     }
 
-    .modality_option_text {
+    .modality-option-text {
         padding: 15vw 0 0;
     }
 
@@ -1140,11 +979,11 @@ ol {
 
 /* Laptop 13" */
 @media only screen and (width <= 1290px) {
-    .info_dropdown{
+    .info-dropdown{
         display:none;
     }
 
-    .top_menu_bar i {
+    .top-menu-bar i {
         display:none;
     }
 
@@ -1154,15 +993,15 @@ ol {
         width:1000px;
     }
 
-    .all_work_container {
+    .all-work-container {
         min-height: 560px;
     }
 
-    .modality_option_text {
+    .modality-option-text {
         padding: 18vw 0 0;
     }
 
-    .image_container {
+    .image-container {
         background-color: #000;
         display: block;
         height: 85%;
@@ -1172,11 +1011,11 @@ ol {
         width: 100%;
     }
 
-    .upload_container img {
+    .upload-container img {
         object-fit: cover;
     }
 
-    .upload_container label {
+    .upload-container label {
         height: 15%;
         margin: 0;
         padding: 2.5vw 0;
@@ -1195,7 +1034,7 @@ ol {
         width:730px;
     }
 
-    .top_menu_bar {
+    .top-menu-bar {
         background-color: #fff;
         height: 75px;
         padding-top: 10px;
@@ -1205,22 +1044,22 @@ ol {
         z-index: 100;
     }
 
-    .top_menu_bar img {    
+    .top-menu-bar img {    
         margin-top: 4px;
         min-width: 190px;
     }
 
-    .top_menu_bar i {
+    .top-menu-bar i {
         display:none;
     }
 
-    .top_title h3 {
+    .top-title h3 {
         display: none;
         line-height: 65px;
         margin-top: 60px;
     }
 
-    .top_title h1 {
+    .top-title h1 {
         font-size: 36px;
         letter-spacing: -0.5px;
         line-height: 28px;
@@ -1228,21 +1067,21 @@ ol {
         margin-top: 110px;
     }
 
-    .top_title h2 {
+    .top-title h2 {
         font-size: 18px; 
         font-weight: 100;
         line-height: 18px;
     }
 
-    .just_another_border {
+    .just-another-border {
         margin-top: 12px;
     }
 
-    .all_work_container {
+    .all-work-container {
         height: 115vw;
     }
 
-    .upload_container {
+    .upload-container {
         display: block;
         height: 42%;
         margin: 0;
@@ -1252,7 +1091,7 @@ ol {
         width: 100%;
     }
 
-    .image_container {
+    .image-container {
         background-color: #000;
         display: block;
         height: 82%;
@@ -1262,20 +1101,20 @@ ol {
         width: 100%;
     }
 
-    .upload_container img {
+    .upload-container img {
         display: block;
         margin: 0;
         object-fit: contain;
         padding: 0;
     }
 
-    .upload_container label {
+    .upload-container label {
         height: 18%;
         margin: 0;
         padding: 3% 0;
     }
 
-    .menuoptions_container {
+    .menuoptions-container {
         height: 57%;
         margin: 0;
         margin-top: 7px;
@@ -1283,11 +1122,11 @@ ol {
         width: 100%;
     }
 
-    .cancer_types_dropdown a {
+    .cancer-types-dropdown a {
         padding: 5.5vw 0% 0%;
     }
 
-    .report_container {
+    .report-container {
         display:block;
         height: 57%;
         margin: 0;
@@ -1296,7 +1135,7 @@ ol {
         width: 100%;
     }
 
-    .report_container p {
+    .report-container p {
         background-color: transparent;
         border-bottom: 0;;
         border-bottom: 4px solid #fff;
@@ -1305,7 +1144,7 @@ ol {
         padding-top: 33px;
     }
 
-    .report_container h1 {
+    .report-container h1 {
         margin-top: 20px;
     }
 
@@ -1322,7 +1161,7 @@ ol {
 
 /* Mobile */
 @media only screen and (width <= 800px) {
-    .just_another_border {
+    .just-another-border {
         height: 20px;
     }
 
@@ -1332,30 +1171,30 @@ ol {
         width: 100%;
     }
 
-    .all_work_container {
+    .all-work-container {
         height: 1400px;
         margin-top:0;
     }
 
-    .upload_container {
+    .upload-container {
         height: 39%;
     }
 
-    .menuoptions_container {
+    .menuoptions-container {
         font-size: 18px;
         height: 60%;
     }   
 
-    .menuoptions_container p{
+    .menuoptions-container p{
         font-size: 18px;
         height: 12%;
     }    
 
-    .cancer_types_dropdown a {
+    .cancer-types-dropdown a {
         font-size: 18px;
     }
 
-    .cancer_types_dropdown img {
+    .cancer-types-dropdown img {
         align-items: center;
         display: block;
         height: 50px; 
@@ -1366,41 +1205,41 @@ ol {
         width: 50px;
     }
 
-    .modalities_dropdown {
+    .modalities-dropdown {
         width: 35%;
     }
 
-    .upload_container label {
+    .upload-container label {
         font-size: 18px;
         padding: 37px 0 25px;
     }       
 
-    .report_container {
+    .report-container {
         height: 60%;
     }
 
-    .report_container p {
+    .report-container p {
         font-size: 18px;
         height: 12%;
     }
 
-    .report_container h1 {
+    .report-container h1 {
         font-size: 18px!important;
         margin-top: 30px;
     }
 
-    .report_container h2 {
+    .report-container h2 {
         font-size: 18px!important;
         margin: 0 2%;
         width: 96%;
     }
 
-    .report_container h3 {
+    .report-container h3 {
         font-size: 18px!important;
         margin: 20px 2% 0;
     }
 
-    .report_container h4 {
+    .report-container h4 {
         font-size: 18px!important;
         margin: 20px 5% 0;
     }
@@ -1418,11 +1257,11 @@ ol {
         margin-top: 45%!important;
     }
 
-    .export_button {
+    .export-button {
         right: -7px;
     }
 
-    .textedit_button {
+    .textedit-button {
         right: 25px;
     }
     
@@ -1430,7 +1269,7 @@ ol {
 
 
 @media only screen and (width <= 550px) {
-    .upload_container img {
+    .upload-container img {
         object-fit: cover;
     }
 }
