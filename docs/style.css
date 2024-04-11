@@ -1,27 +1,6 @@
 
 
-@font-face {
-    font-family: "Larsseit";
-    src: url("prm/larsseit/Larsseit.otf");
-}
-@font-face {
-    font-family: "Larsseit-Bold";
-    src: url("prm/larsseit/Larsseit-Bold.otf");
-}
-@font-face {
-    font-family: "Larsseit-Thin";
-    src: url("prm/larsseit/Larsseit-Thin.otf");
-}
-@font-face {
-    font-family: "Larsseit-Light";
-    src: url("prm/larsseit/Larsseit-Light.otf");
-}
-@font-face {
-    font-family: "Larsseit-Extra-Bold";
-    src: url("prm/larsseit/Larsseit-ExtraBold.otf");
-}
-
-html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}  
+html,body,h2,h3,h4,p,h5,li {font-family: sans-serif}  
 
 
 .content{
@@ -105,7 +84,6 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
     width:20%;
     text-decoration: none;
     text-align: justify;
-    font-family: 'Larsseit-Light';
     font-weight: 100;
     letter-spacing: 0.2px;
     color: #363634;
@@ -144,7 +122,6 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
     margin:0;
     padding:0;
     text-decoration: none;
-    font-family: 'Larsseit-Extra-Bold';
     font-size: 46px;
     color: #363634;
     letter-spacing: 0.5px;
@@ -157,7 +134,7 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
     margin:0;
     padding:0;
     text-decoration: none;
-    font-family: 'Larsseit-Thin';
+
     font-size: 22px;
     color: #363634;
     letter-spacing: 0.5px;
@@ -171,7 +148,7 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
     margin:0;
     padding:0;
     text-decoration: none;
-    font-family: 'Larsseit-Thin';
+
     color: #696969;
     font-size: 12px;
     letter-spacing: 0.5px;
@@ -246,7 +223,6 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
     justify-content: center;
     cursor: default; 
     text-align: center!important;
-    font-family: 'Larsseit-Light';
     font-size: 15px;
     line-height: 25px;
     color: #363634;
@@ -274,7 +250,6 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
     height: 16%;    
     cursor: default; 
     text-align: center;
-    font-family: 'Larsseit-Light';
     font-size: 15px;
     color: #363634;
     font-weight: 100;
@@ -320,7 +295,6 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
     align-items: center; 
     justify-content: center;
     background-color: transparent;
-    font-family: 'Larsseit-Light';
     font-size: 15px;
     line-height: 25px;
     color: #363634;
@@ -388,7 +362,6 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
     padding:0;   
     cursor: default; 
     text-align: center;
-    font-family: 'Larsseit-Light';
     font-size: 15px;
     color: #363634;
     font-weight: 100;
@@ -414,7 +387,6 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
     padding: 0 10% 0 10% ;   
     cursor: default; 
     text-align: center!important;
-    font-family: 'Larsseit-Light';
     font-size: 15px;
     color: #363634;
     font-weight: 100;
@@ -447,7 +419,6 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
     overflow:hidden;
     text-decoration:none;
     text-align:center!important;
-    font-family: 'Larsseit-Light';
     font-size: 15px;
     line-height: 25px;
     color: #363634;
@@ -587,7 +558,6 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
     overflow:hidden;
     text-decoration:none;
     text-align:center!important;
-    font-family: 'Larsseit-Light';
     font-size: 15px;
     line-height: 25px;
     color: #363634;
@@ -641,7 +611,6 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
     height: 16%;
     cursor: default;
     text-align: center;
-    font-family: 'Larsseit-Light';
     font-size: 15px;
     color: #363634;
     font-weight: 100;
@@ -662,7 +631,6 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
     display: block;   
     cursor: default; 
     text-align: center;
-    font-family: 'Larsseit-Light';
     font-size: 15px;
     color: #363634;
     font-weight: 100;
@@ -686,7 +654,6 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
     overflow:hidden;
     text-decoration:none;
     text-align:center!important;
-    font-family: 'Larsseit-Light';
     font-size: 15px;
     line-height: 25px;
     color: #363634!important;
@@ -735,7 +702,6 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
     overflow: hidden;
     text-decoration: none;
     text-align: center!important;
-    font-family: 'Larsseit-Light';
     font-size: 15px;
     line-height: 25px;
     color: #363634!important;
@@ -803,7 +769,6 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
     padding:0;   
     cursor: default; 
     text-align: center;
-    font-family: 'Larsseit-Light';
     font-size: 15px;
     color: #363634;
     font-weight: 100;
@@ -896,7 +861,6 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
     padding:0;   
     cursor: default; 
     text-align: center!important;
-    font-family: 'Larsseit-Light';
     font-size: 15px!important;
     line-height: 25px;
     color: #363634;
@@ -919,7 +883,6 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
     padding:0;   
     cursor: default; 
     text-align: center!important;
-    font-family: 'Larsseit-Light';
     font-size: 15px;
     line-height: 25px;
     color: #363634;
@@ -940,7 +903,6 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
     padding:0;   
     cursor: default; 
     text-align: center!important;
-    font-family: 'Larsseit-Light';
     font-size: 15px;
     line-height: 25px;
     color: #363634;
@@ -962,7 +924,6 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
     padding:0;   
     cursor: default; 
     text-align: justify!important;
-    font-family: 'Larsseit-Light';
     font-size: 15px;
     line-height: 25px;
     color: #363634;
@@ -1003,7 +964,6 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
     padding:0;
     margin: 20px auto 0 auto;
     background-color: transparent;
-    font-family: 'Larsseit-Light';
     color: #363634;
     font-size: 15px;
     line-height: 25px;
@@ -1045,7 +1005,6 @@ html,body,h2,h3,h4,p,h5,li {font-family: 'Larsseit', sans-serif}
     width: 100%;
     margin: 0;
     padding: 0;
-    font-family: 'Larsseit-Light';
     font-size: 15px;
     line-height: 25px;
     color: #363634;
@@ -1238,7 +1197,6 @@ ol {
     .top_title h1 {
         font-size: 36px;
         line-height: 28px;
-        font-family: 'Larsseit-Bold';
         margin-bottom: 10px;
         margin-top: 110px;
         letter-spacing: -0.5px;
@@ -1247,7 +1205,6 @@ ol {
         font-size: 18px;
         line-height: 18px; 
         font-weight: 100;
-        font-family: 'Larsseit-Light';
     }
     .just_another_border {
         margin-top: 12px;
@@ -1343,16 +1300,13 @@ ol {
     }
     .menuoptions_container {
         height: 60%;
-        font-family: 'Larsseit-Light';
         font-size: 18px;
     }   
     .menuoptions_container p{
-        font-family: 'Larsseit-Light';
         height: 12%;
         font-size: 18px;
     }    
     .cancer_types_dropdown a {
-        font-family: 'Larsseit-Light';
         font-size: 18px;
     }
     .cancer_types_dropdown img {
@@ -1369,7 +1323,6 @@ ol {
         width: 35%;
     }
     .upload_container label {
-        font-family: 'Larsseit-Light';
         font-size: 18px;
         padding: 37px 0 25px 0;
     }       
