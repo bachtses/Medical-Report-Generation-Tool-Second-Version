@@ -809,7 +809,7 @@ ol {
     cursor: default;
     display: -webkit-box;
     display: -moz-box;
-    display: flexbox;
+    display: flex;                           
     display: flex;
     display: flex;
     flex-wrap: nowrap;
@@ -960,9 +960,8 @@ ol {
         display: block;
         height: 50px; 
         justify-content: center;
-        margin: auto;
+        margin: 0 auto;
         margin-bottom: 10px;
-        padding: auto;
         width: 50px;
     }
 
@@ -1203,8 +1202,8 @@ ol {
         height: 50px; 
         justify-content: center;
         margin: auto;
+        margin: 0 auto;
         margin-bottom: 10px;
-        padding: auto;
         width: 50px;
     }
 
