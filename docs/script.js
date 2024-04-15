@@ -18,7 +18,7 @@ async function loadmodelsFunction(cancer_type_selected){
 			var progressgraphic = document.getElementById("progress-bar");
 			progressgraphic.style.width = "0%";
 
-			model_lung_hnh = await tf.loadLayersModel('https://raw.githubusercontent.com/bachtses/Medical-Report-Generation-Tool-First-Prototype/main/prm/models/X-Ray_Lung_Cancer_Classification/model.json', {
+			model_lung_hnh = await tf.loadLayersModel('prm/models/X-Ray_Lung_Cancer_Classification/model.json', {
 				onProgress: function (fraction) {
 					//console.log(Math.round(100*fraction))
 					if (fraction == 1) {
@@ -27,7 +27,7 @@ async function loadmodelsFunction(cancer_type_selected){
 					}
 				}
 			});	
-			model_lung_tnm = await tf.loadLayersModel('https://raw.githubusercontent.com/bachtses/Medical-Report-Generation-Tool-First-Prototype/main/prm/models/X-Ray_5_Diseases_Classification/model.json', {
+			model_lung_tnm = await tf.loadLayersModel('prm/models/X-Ray_5_Diseases_Classification/model.json', {
 			onProgress: function (fraction) {
 				//console.log(Math.round(100*fraction))
 				if (fraction == 1) {
@@ -36,7 +36,7 @@ async function loadmodelsFunction(cancer_type_selected){
 				}
 			}
 			});
-			model_pneumonia = await tf.loadLayersModel('https://raw.githubusercontent.com/bachtses/Medical-Report-Generation-Tool-First-Prototype/main/prm/models/X-Ray_Pneumonia_Detection/model.json', {
+			model_pneumonia = await tf.loadLayersModel('prm/models/X-Ray_Pneumonia_Detection/model.json', {
 				onProgress: function (fraction) {
 					//console.log(Math.round(100*fraction))
 					if (fraction == 1) {
