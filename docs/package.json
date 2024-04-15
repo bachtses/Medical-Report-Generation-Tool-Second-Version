@@ -1,1 +1,18 @@
-{"stylelint":{"extends":"stylelint-config-standard","plugins":["stylelint-order"],"rules":{"order/properties-alphabetical-order":true}},"dependencies":{"serve":"latest"},"devDependencies":{"@biomejs/biome":"latest","css-validator":"latest","html-validate":"latest","js-beautify":"latest","sort-package-json":"latest","stylelint":"latest","stylelint-config-standard":"latest","stylelint-order":"latest"}}
+{
+	"stylelint": {
+		"extends": "stylelint-config-standard",
+		"plugins": ["stylelint-order"],
+		"rules": { "order/properties-alphabetical-order": true }
+	},
+	"dependencies": { "serve": "latest" },
+	"devDependencies": {
+		"@biomejs/biome": "latest",
+		"css-validator": "latest",
+		"html-validate": "latest",
+		"js-beautify": "latest",
+		"sort-package-json": "latest",
+		"stylelint": "latest",
+		"stylelint-config-standard": "latest",
+		"stylelint-order": "latest"
+	}
+}

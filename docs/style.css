@@ -91,11 +91,14 @@ html,body,h2,h3,h4,p,h5,li {font-family: sans-serif}
    
 }
 
-.top-title {
+/* .top-title {
     -webkit-touch-callout: none; /* iOS Safari */ /* Safari */ /* Konqueror HTML */ /* Old versions of Firefox */ /* Internet Explorer/Edge */
-            user-select: none; /* Non-prefixed version, currently
-                                  supported by Chrome, Edge, Opera and Firefox */
-}
+
+            /* user-select: none; /* Non-prefixed version, currently */
+
+                                  /* supported by Chrome, Edge, Opera and Firefox */ 
+
+/* } */ 
 
 .top-title h1 {
     color: #363634;
@@ -197,9 +200,12 @@ html,body,h2,h3,h4,p,h5,li {font-family: sans-serif}
     position: relative; 
     text-align: center!important;
     text-decoration: none;
-    -webkit-touch-callout: none; /* iOS Safari */
-    transition: all 0.3s; /* Safari */ /* Konqueror HTML */ /* Old versions of Firefox */ /* Internet Explorer/Edge */
-    user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+
+    /* -webkit-touch-callout: none; iOS Safari */
+
+    /* transition: all 0.3s; Safari Konqueror HTML Old versions of Firefox Internet Explorer/Edge */
+
+    /* user-select: none; Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
     white-space:normal;
     width: 100%;
     
@@ -371,7 +377,8 @@ html,body,h2,h3,h4,p,h5,li {font-family: sans-serif}
     padding: 16px;
     text-align:center!important;
     text-decoration:none;
-    -webkit-touch-callout: none; /* iOS Safari */ 
+
+    /* -webkit-touch-callout: none; iOS Safari  */
     transition: 0.3s;
     transition: all 0.3s; /* Safari */ /* Konqueror HTML */ /* Old versions of Firefox */ /* Internet Explorer/Edge */
     user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
@@ -480,10 +487,13 @@ html,body,h2,h3,h4,p,h5,li {font-family: sans-serif}
     padding: 6% 0 7%;
     text-align:center!important;
     text-decoration:none;
-    -webkit-touch-callout: none; /* iOS Safari */ 
+
+    /* -webkit-touch-callout: none; iOS Safari  */
     transition: 0.3s;
-    transition: all 0.3s; /* Safari */ /* Konqueror HTML */ /* Old versions of Firefox */ /* Internet Explorer/Edge */
-            user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+
+    /* transition: all 0.3s; Safari Konqueror HTML Old versions of Firefox Internet Explorer/Edge */
+
+            /* user-select: none; Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
     white-space:nowrap;
     width: 100%;
 
@@ -561,7 +571,8 @@ html,body,h2,h3,h4,p,h5,li {font-family: sans-serif}
     padding: 16px;
     text-align:center!important;
     text-decoration:none;
-    -webkit-touch-callout: none; /* iOS Safari */ 
+
+    /* -webkit-touch-callout: none; iOS Safari  */
     transition: 0.3s;
     transition: all 0.3s; /* Safari */ /* Konqueror HTML */ /* Old versions of Firefox */ /* Internet Explorer/Edge */
     user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
@@ -599,7 +610,8 @@ html,body,h2,h3,h4,p,h5,li {font-family: sans-serif}
     padding: 24px;
     text-align: center!important;
     text-decoration: none;
-    -webkit-touch-callout: none;
+
+    /* -webkit-touch-callout: none; */
     transition: 0.3s;
     transition: all 0.3s; /* Safari */ /* Konqueror HTML */ /* Old versions of Firefox */ /* Internet Explorer/Edge */
     user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
@@ -807,10 +819,10 @@ ol {
 
 .gridrow {
     cursor: default;
-    display: -webkit-box;
-    display: -moz-box;
-    display: flex;                           
-    display: flex;
+
+    /* display: -webkit-box; */
+
+    /* display: -moz-box; */
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-around;
