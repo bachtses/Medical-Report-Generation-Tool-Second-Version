@@ -120,7 +120,7 @@ async function showFiles(event) {
 
 	// read the file from the user
 	const file = document.querySelector("input[type=file]").files[0];
-	//console.log("\nNEW UPLOADED FILE: \n", file)
+	console.log("\nNEW UPLOADED FILE: \n", file)
 	const fileName = file.name;
 	const file_extension = fileName.split(".").pop().toLowerCase();
 
@@ -163,23 +163,23 @@ async function showFiles(event) {
 let image_lung_xray = null;
 let image_lung_ct = null;
 let image_lung_petct = null;
+let img_ = null;
 
 async function imagesPreprocessor(clicked_button_value) {
 	const file = document.querySelector("input[type=file]").files[0];
 	fileName = file.name;
 	const file_extension = fileName.split(".").pop().toLowerCase();
 	if (allowed_extensions_for_dicom_formats.includes(file_extension)) {
-		const img_ = document
+		img_ = document
 			.getElementById("idImage")
 			.getElementsByClassName("cornerstone-canvas")[0];
 	} else if (allowed_extensions_for_other_formats.includes(file_extension)) {
-		const img_ = document.getElementById("initial-image-display");
+		img_ = document.getElementById("initial-image-display");
 	}
-	//console.log("img_: ", img_);
 
+	//console.log("img_: ", img_);
 	if (clicked_button_value === "lungxray") {
 		image_lung_xray = img_;
-		//console.log("uploaded image: ", image_lung_xray);
 		//console.log("uploaded image stored in variable: image_lung_xray ");
 	} else if (clicked_button_value === "lungct") {
 		image_lung_ct = img_;
