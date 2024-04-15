@@ -176,8 +176,9 @@ async function imagesPreprocessor(clicked_button_value) {
 		const img_ = document.getElementById("initial-image-display");
 	}
 	//console.log("img_: ", img_);
-
+	console.log("dok1");
 	if (clicked_button_value === "lungxray") {
+		console.log("dok2");
 		image_lung_xray = img_;
 		//console.log("uploaded image: ", image_lung_xray);
 		//console.log("uploaded image stored in variable: image_lung_xray ");
