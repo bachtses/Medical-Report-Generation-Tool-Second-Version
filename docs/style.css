@@ -273,7 +273,7 @@ html,body,h2,h3,h4,p,h5,li {font-family: sans-serif}
     transition: all 0.3s;
 }
 
-.cancer-types-dropdown img {
+.cancer-types-dropdown a img {
     align-items: center;   
     cursor: default;
     display: inline;
