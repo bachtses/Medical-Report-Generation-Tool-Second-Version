@@ -2,9 +2,13 @@
 	"stylelint": {
 		"extends": "stylelint-config-standard",
 		"plugins": ["stylelint-order"],
-		"rules": { "order/properties-alphabetical-order": true }
+		"rules": {
+			"order/properties-alphabetical-order": true
+		}
 	},
-	"dependencies": { "serve": "latest" },
+	"dependencies": {
+		"serve": "latest"
+	},
 	"devDependencies": {
 		"@biomejs/biome": "latest",
 		"css-validator": "latest",

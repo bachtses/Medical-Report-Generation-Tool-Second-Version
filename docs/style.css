@@ -273,19 +273,6 @@ html,body,h2,h3,h4,p,h5,li {font-family: sans-serif}
     transition: all 0.3s;
 }
 
-.cancer-types-dropdown a img {
-    align-items: center;   
-    cursor: default;
-    display: inline;
-    height: 70px;
-    margin: 0;
-    margin-right: 10px;
-    object-fit: fill;
-    padding: 0;
-    transition: all 0.3s!important; 
-    width: 70px;
-}
-
 
 
 .notifications-container{
@@ -497,6 +484,19 @@ html,body,h2,h3,h4,p,h5,li {font-family: sans-serif}
     white-space:nowrap;
     width: 100%;
 
+}
+
+.cancer-types-dropdown a img {
+    align-items: center;   
+    cursor: default;
+    display: inline;
+    height: 70px;
+    margin: 0;
+    margin-right: 10px;
+    object-fit: fill;
+    padding: 0;
+    transition: all 0.3s!important; 
+    width: 70px;
 }
 
 
